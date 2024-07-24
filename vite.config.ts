@@ -7,7 +7,8 @@ export default defineConfig({
   server: {
     open: true,
   },
-  build: {
-    outDir: '../dist',
-  },
+  // build: {
+  //   outDir: '../dist',
+  // },
+  base: '/react_phone-catalog/',
 });
