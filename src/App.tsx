@@ -1,9 +1,12 @@
 import './App.css';
+// import { Header } from './components/Header/Header';
+// import { ThemeProvider } from './contexts/ThemeContext';
 
 export function App() {
   return (
-    <>
-      <h1>phone catalog</h1>
-    </>
+    // <ThemeProvider>
+    //   <Header />
+    // </ThemeProvider>
+    <h1>test</h1>
   );
 }
