@@ -10,7 +10,7 @@
 
 .footer {
   @apply 
-  bg-white border-t-2 border-customGray w-screen;
+  bg-white border-t-2 border-customTextColor w-screen;
   
   &__content {
   @apply 
@@ -32,7 +32,7 @@
 
   &__link {
     @apply 
-    uppercase text-customGray 
+    uppercase text-customTextColor 
     hover:text-black transition-all duration-300;
   }
 
