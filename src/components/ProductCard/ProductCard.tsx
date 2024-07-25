@@ -40,7 +40,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           <button className="flex items-center justify-center h-10 w-40 bg-[#313237] text-white rounded-none hover:bg-gray-800 transition">
             Add to cart
           </button>
-          <button className="h-10 w-14 hover:text-gray-800 bg-transparent border border-gray-500 rounded-none">
+          <button className="h-10 w-10 hover:text-gray-800 bg-transparent border border-gray-500 rounded-none flex items-center justify-center">
             <img src={stroke} className="h-4 w-4" alt="Icon" />
           </button>
         </div>
