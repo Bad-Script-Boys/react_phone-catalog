@@ -1,9 +1,7 @@
+import React from 'react';
 import './App.css';
+import { Footer } from './components/footer/Footer';
 
-export function App() {
-  return (
-    <>
-      <h1>phone catalog</h1>
-    </>
-  );
-}
+export const App: React.FC = () => {
+  return <Footer />;
+};
