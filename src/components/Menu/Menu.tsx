@@ -38,19 +38,19 @@ export const Menu: React.FC<Props> = ({ isOpen, setIsOpen }) => {
   return (
     <div
       className={classNames(
-        'absolute z-10 top-0 bg-white transition-transform duration-500 overflow-hidden w-full   h-screen flex flex-col',
+        'absolute z-10 top-0 bg-white transition-transform duration-500 overflow-hidden w-screen h-screen flex flex-col',
         {
           'right-0': isOpen,
           'right-[-100vw]': !isOpen,
         },
       )}
     >
-      <div className="flex justify-between p-0">
+      <div className="flex justify-between p-0 shadow-md h-16">
         <Link to="/">
           <img
             src="img/icons/nice-gadgets-logo.svg"
             alt="logo"
-            className="ml-6 block w-16 h-6 my-4"
+            className="ml-6 block w-16 h-6 my-5"
           />
         </Link>
         <div
@@ -61,7 +61,7 @@ export const Menu: React.FC<Props> = ({ isOpen, setIsOpen }) => {
         </div>
       </div>
 
-      <div className="border-b border-gray-300 mb-6"></div>
+      <div className="border-b border-gray-300 mb-10"></div>
 
       <div className="flex flex-col items-center">
         <ul className="flex flex-col items-center gap-6">

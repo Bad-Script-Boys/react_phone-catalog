@@ -25,7 +25,7 @@ export const Header: React.FC = () => {
 
   return (
     <>
-      <header className="bg-white flex border-b border-borderHeader items-center justify-between text-xs font-extrabold leading-3 tracking-wide uppercase fixed top-0 left-0 w-full shadow-md h-16">
+      <header className="bg-white dark:bg-gray-900 flex border-b border-borderHeader items-center justify-between text-xs font-extrabold leading-3 tracking-wide uppercase fixed top-0 left-0 w-screen shadow-md h-16">
         <div className="flex items-center justify-between h-full">
           <Link to="/">
             <MainLogo />
