@@ -17,6 +17,9 @@ export const theme = {
     transitionDuration: {
       300: '300ms',
     },
+    borderWidth: {
+      3: '3px',
+    },
   },
 };
 export const plugins = [];
