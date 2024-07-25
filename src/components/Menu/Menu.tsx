@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { StateContext } from '../../Store';
 
 export const classActiveNavLink = ({ isActive }: { isActive: boolean }) =>
-  classNames('text-customTextColor font-bold text-xs uppercase', {
+  classNames('text-black font-bold text-xs uppercase', {
     'border-b-2 border-black': isActive,
   });
 
@@ -38,7 +38,7 @@ export const Menu: React.FC<Props> = ({ isOpen, setIsOpen }) => {
   return (
     <div
       className={classNames(
-        'absolute z-10 top-0 bg-white transition-transform duration-500 overflow-hidden w-screen h-screen flex flex-col',
+        'absolute z-10 top-0 bg-white transition-transform duration-500 overflow-hidden w-full   h-screen flex flex-col',
         {
           'right-0': isOpen,
           'right-[-100vw]': !isOpen,
@@ -54,10 +54,10 @@ export const Menu: React.FC<Props> = ({ isOpen, setIsOpen }) => {
           />
         </Link>
         <div
-          className="w-12 flex justify-center items-center cursor-pointer"
+          className="w-12 flex justify-center items-center border-1 border-borderHeader"
           onClick={() => setIsOpen(false)}
         >
-          <img src="img/icons/close-icon.svg" alt="close" className="w-4 h-4" />
+          <img src="img/icons/close-icon.svg" alt="close" className="w-6 h-6" />
         </div>
       </div>
 
@@ -109,7 +109,7 @@ export const Menu: React.FC<Props> = ({ isOpen, setIsOpen }) => {
           <img
             src="img/icons/favourites-logo.svg"
             alt="favorites"
-            className="w-6 h-6"
+            className="w-5 h-5"
           />
           {favorites.length !== 0 && (
             <span className="flex items-center justify-center text-xs absolute top-3 left-7 h-4 w-4 bg-red-500 text-white rounded-full">
@@ -121,7 +121,7 @@ export const Menu: React.FC<Props> = ({ isOpen, setIsOpen }) => {
         <div className="border-r border-gray-300"></div>
 
         <NavLink to="/card" className={getLinkClass} onClick={click}>
-          <img src="img/icons/basket-logo.svg" alt="shop" className="w-6 h-6" />
+          <img src="img/icons/basket-logo.svg" alt="shop" className="w-5 h-5" />
           {basket.length !== 0 && (
             <span className="flex items-center justify-center text-xs absolute top-3 left-7 h-4 w-4 bg-red-500 text-white rounded-full">
               {totalQuantity}
