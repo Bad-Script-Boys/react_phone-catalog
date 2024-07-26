@@ -1,6 +1,6 @@
 import { useTheme } from '../../contexts/ThemeContext';
 
-export const ThemeIcon = () => {
+export const MainLogo = () => {
   const { theme } = useTheme();
 
   return theme === 'light' ? (

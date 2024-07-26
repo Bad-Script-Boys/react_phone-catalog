@@ -10,9 +10,9 @@ export const ThemeSwitch = () => {
       onClick={toggleTheme}
     >
       {theme === 'light' ? (
-        <FaMoon size={24} className="text-gray-800" />
+        <FaMoon size={20} className="text-gray-800" />
       ) : (
-        <FaSun size={24} className="text-yellow-300" />
+        <FaSun size={20} className="text-yellow-300" />
       )}
     </div>
   );

@@ -21,7 +21,7 @@ export const ThemeProvider: React.FC<Props> = ({ children }) => {
   const [theme, setTheme] = useState('light');
 
   useEffect(() => {
-    document.body.className = theme;
+    document.body.className = theme === 'light' ? 'light' : 'dark';
   }, [theme]);
 
   const toggleTheme = () => {

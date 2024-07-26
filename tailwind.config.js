@@ -11,6 +11,7 @@ export const theme = {
     colors: {
       customTextColor: '#89939A',
       borderHeader: '#E2E6E9',
+      darkTheme: '#0F1121',
     },
     boxShadow: {
       custom: '0 4px 4px 0 rgba(0, 0, 0, 0.25)',
@@ -22,5 +23,6 @@ export const theme = {
       3: '3px',
     },
   },
+  darkMode: 'class',
 };
 export const plugins = [];
