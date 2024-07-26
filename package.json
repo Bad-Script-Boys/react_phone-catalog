@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://bad-script-boys.github.io/react_phone-catalog/",
   "scripts": {
     "start": "vite",
     "dev": "vite",
