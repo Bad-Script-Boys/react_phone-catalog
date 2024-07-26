@@ -15,16 +15,14 @@ const {
   btn_toTop,
 } = styles;
 
+const logo = new URL('./img/logo.png', import.meta.url).href;
+
 export const Footer: React.FC = () => {
   return (
     <footer className={footer}>
       <div className={footer__content}>
         <a href="#" className={footer__logo_link}>
-          <img
-            src="/img/icons/nice-gadgets-logo.svg"
-            alt="NICE_GADGETS_logo"
-            className={logo_img}
-          />
+          <img src={logo} alt="NICE_GADGETS_logo" className={logo_img} />
         </a>
         <ul className={footer__list}>
           <li className={footer__item}>
