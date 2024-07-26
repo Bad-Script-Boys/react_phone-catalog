@@ -9,8 +9,8 @@ import { MainLogo } from '../ThemeIcons/MainLogo';
 
 const classActiveNavLink = ({ isActive }: { isActive: boolean }) =>
   isActive
-    ? 'text-black relative pb-2 before:absolute before:bottom-0 before:left-0 before:w-full before:h-[2px] before:bg-black'
-    : 'text-customTextColor transition-transform duration-500 hover:scale-110 ';
+    ? 'relative before:absolute before:top-9 before:left-0 before:w-full before:h-[3px] before:bg-black'
+    : ' transition-transform duration-200 hover:scale-110 relative';
 
 export const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,7 +25,7 @@ export const Header: React.FC = () => {
 
   return (
     <>
-      <header className="bg-white dark:bg-gray-900 flex border-b border-borderHeader items-center justify-between text-xs font-extrabold leading-3 tracking-wide uppercase fixed top-0 left-0 w-screen shadow-md h-16">
+      <header className="flex border-b-2 border-borderHeader items-center justify-between text-xs font-extrabold leading-3 tracking-wide uppercase fixed top-0 left-0 w-screen shadow-md h-16">
         <div className="flex items-center justify-between h-full">
           <Link to="/">
             <MainLogo />
@@ -56,7 +56,7 @@ export const Header: React.FC = () => {
             </ul>
           </nav>
         </div>
-        <div className="hidden sm:flex items-center justify-between">
+        <div className="hidden sm:flex items-center justify-between mr-4">
           <ThemeSwitch />
           <div className="flex items-center justify-center p-4 border-1 border-borderHeader relative cursor-pointer">
             <Link to="/favorites">
@@ -68,8 +68,8 @@ export const Header: React.FC = () => {
               </span>
             )}
           </div>
-          <div className="flex items-center justify-center p-4 border-l border-borderHeader relative cursor-pointer">
-            <Link to="/card">
+          <div className="flex items-center justify-center h-16 p-4 border-l-2 border-borderHeader relative cursor-pointer">
+            <Link to="/cart">
               <BasketLogo />
             </Link>
             {basket.length !== 0 && (

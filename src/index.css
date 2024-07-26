@@ -1,5 +1,4 @@
 
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -24,7 +23,7 @@
 }
 
 body {
-  @apply transition-colors duration-700 ease-in-out;
+  @apply transition-colors duration-300 ease-in-out;
   font-family: 'Mont', sans-serif;
   overflow-x: hidden;
 }
@@ -34,6 +33,7 @@ body.light {
 }
 
 body.dark {
-  background-color: #0F1121;
-  color: white;
+  @apply bg-darkTheme text-white;
+  /* background-color: #0F1121; */
+  /* color: white; */
 }

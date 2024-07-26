@@ -54,7 +54,7 @@ export const Menu: React.FC<Props> = ({ isOpen, setIsOpen }) => {
           />
         </Link>
         <div
-          className="w-12 flex justify-center items-center border-1 border-borderHeader"
+          className="w-16 flex justify-center items-center border-l"
           onClick={() => setIsOpen(false)}
         >
           <img src="img/icons/close-icon.svg" alt="close" className="w-6 h-6" />
