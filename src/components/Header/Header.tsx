@@ -1,15 +1,12 @@
 import { Link, NavLink } from 'react-router-dom';
 import { ThemeSwitch } from '../ThemeSwitch/ThemeSwitch';
 
-
-
 import { useContext, useState } from 'react';
 import { Menu } from '../Menu/Menu';
 import { StateContext } from '../../Store';
 import { BasketLogo } from '../ThemeIcons/BasketLogo';
 import { FavoriteLogo } from '../ThemeIcons/FavoritesLogo';
 import { MainLogo } from '../ThemeIcons/MainLogo';
-
 
 const classActiveNavLink = ({ isActive }: { isActive: boolean }) =>
   isActive

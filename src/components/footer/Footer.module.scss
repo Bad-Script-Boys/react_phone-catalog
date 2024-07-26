@@ -10,7 +10,7 @@
 
 .footer {
   @apply 
-  bg-white border-t-2 border-customTextColor w-screen;
+  border-t-2 border-customTextColor w-screen absolute bottom-0;
   
   &__content {
   @apply 
