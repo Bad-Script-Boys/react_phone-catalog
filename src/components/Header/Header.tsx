@@ -1,5 +1,6 @@
 import { Link, NavLink } from 'react-router-dom';
 import { ThemeSwitch } from '../ThemeSwitch/ThemeSwitch';
+// import Phones from '../../pages/Phones';
 
 const classActiveNavLink = ({ isActive }: { isActive: boolean }) =>
   isActive
