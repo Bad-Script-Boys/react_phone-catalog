@@ -22,7 +22,7 @@ export const Footer: React.FC = () => {
         <a href="#" className={footer__logo_link}>
           <img
             src="img/icons/nice-gadgets-logo.svg"
-            alt="NICE_GADGETS_logo"
+            alt="NICE_GADGETS_logos"
             className={logo_img}
           />
         </a>
