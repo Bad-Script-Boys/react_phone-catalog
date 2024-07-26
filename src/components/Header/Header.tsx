@@ -36,7 +36,7 @@ export const Header: React.FC = () => {
             <ul className="flex ml-12 sm:ml-2 list-none h-full space-x-8 sm:space-x-8 md:space-x-8 lg:space-x-16">
               <li className="transition-all duration-500 h-full flex items-center ">
                 <NavLink to="/" className={classActiveNavLink}>
-                  buybay
+                  home
                 </NavLink>
               </li>
               <li className="transition-all duration-500 h-full flex items-center">
