@@ -1,9 +1,13 @@
 import { Link, NavLink } from 'react-router-dom';
 import { ThemeSwitch } from '../ThemeSwitch/ThemeSwitch';
+
+
+
 import { useContext, useState } from 'react';
 import { Menu } from '../Menu/Menu';
 import { StateContext } from '../../Store';
 import { ThemeIcon } from '../ThemeIcon/ThemeIcon';
+
 
 const classActiveNavLink = ({ isActive }: { isActive: boolean }) =>
   isActive
