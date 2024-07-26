@@ -2,8 +2,9 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: 
-      - develop
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
 
 jobs:
   eslint:
@@ -19,7 +20,7 @@ jobs:
         node-version: '18.17.0'
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build the project
         run: |
