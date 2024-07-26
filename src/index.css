@@ -42,6 +42,7 @@ a:hover {
 body {
   @apply transition-colors duration-700 ease-in-out;
   font-family: 'Mont', sans-serif;
+  overflow-x: hidden;
 }
 
 body.light {
