@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://bad-script-boys.github.io/react_phone-catalog/",
   "scripts": {
     "start": "vite",
     "dev": "vite",
@@ -11,17 +12,22 @@
     "preview": "vite preview",
     "prepare": "husky install",
     "predeploy": "npm run build",
-    "deploy": "vercel --prod"
+    "deploy-vercel": "vercel --prod",
+    "deploy-gh": "gh-pages -d dist"
   },
   "dependencies": {
-    "@vercel/static-build": "^2.5.17",
+    "@fortawesome/fontawesome-svg-core": "^6.6.0",
+    "@fortawesome/free-solid-svg-icons": "^6.6.0",
+    "@fortawesome/react-fontawesome": "^0.2.2",
     "classnames": "^2.5.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.2.1",
+    "@vercel/static-build": "^2.5.17",
     "react-router-dom": "^6.25.1"
   },
   "devDependencies": {
+    "@types/node": "^20.14.12",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^7.17.0",
@@ -35,14 +41,17 @@
     "eslint-plugin-react": "^7.35.0",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.7",
+    "eslint-plugin-tailwindcss": "^3.17.4",
     "gh-pages": "^6.1.1",
     "husky": "^9.1.1",
     "lint-staged": "^15.2.7",
     "postcss": "^8.4.39",
     "prettier": "^3.3.3",
+    "sass": "^1.77.8",
     "tailwindcss": "^3.4.6",
     "typescript": "^5.2.2",
-    "vite": "^5.3.4"
+    "vite": "^5.3.4",
+    "vite-plugin-svgr": "^4.2.0"
   },
   "husky": {
     "hooks": {
