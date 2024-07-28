@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../App.css';
 import { ProductCard } from '../../components/ProductCard/ProductCard';
-import productsFromServer from '../../api/products.json'
+import productsFromServer from '../../api/products.json';
 import { Product } from '../../types';
 
 // const products: Product[] = productsFromServer;

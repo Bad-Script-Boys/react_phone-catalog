@@ -1,12 +1,13 @@
-import { useContext } from 'react';
-import { StateContext } from '../../Store';
 import { PhonesForNewModels } from '../PhoneCards/PhonesForNewModels';
+import productsFromServer from '../../api/products.json';
+import { Product } from '../../types';
 
 export const BrandNewModels = () => {
-  const state = useContext(StateContext);
-  const { products } = state;
+  const phones: Product[] = productsFromServer.filter(
+    product => product.category === 'phones',
+  );
 
-  const phones = products
+  const filetredPhones = phones
     .filter(product => product.category === 'phones')
     .filter(phone => phone.year > 2021 && phone.capacity === '128GB');
 
@@ -17,7 +18,7 @@ export const BrandNewModels = () => {
       </div>
       <div className="flex overflow-hidden w-full">
         <div className="flex w-max animate-scrollForNewModels gap-5">
-          {phones.map(product => (
+          {filetredPhones.map(product => (
             <PhonesForNewModels
               key={`${product.id}-duplicate`}
               image={product.image}

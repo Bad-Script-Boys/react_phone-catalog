@@ -1,12 +1,12 @@
-import { useContext } from 'react';
-import { StateContext } from '../../Store';
 import { PhonesForHotPrices } from '../PhoneCards/PhonesForHotPrices';
+import productsFromServer from '../../api/products.json';
+import { Product } from '../../types';
 
 export const HotPrices = () => {
-  const state = useContext(StateContext);
-  const { products } = state;
-
-  const phones = products
+  const phones: Product[] = productsFromServer.filter(
+    product => product.category === 'phones',
+  );
+  const filteredPhones = phones
     .filter(product => product.category === 'phones')
     .filter(
       phone =>
@@ -20,7 +20,7 @@ export const HotPrices = () => {
       </div>
       <div className="flex overflow-hidden w-full">
         <div className="flex w-max animate-scrollForHotPrices gap-5">
-          {phones.map(product => (
+          {filteredPhones.map(product => (
             <PhonesForHotPrices
               key={product.id}
               image={product.image}
