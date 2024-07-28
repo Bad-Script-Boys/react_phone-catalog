@@ -4,7 +4,7 @@ import { BrandNewModels } from '../../components/BrandNewModels/BrandNewModel';
 import { ShopByCategory } from '../../components/ShopByCategory/ShopByCategory';
 import { HotPrices } from '../../components/HotPrices/HotPrices';
 
-export const Home: React.FC = () => (
+const Home: React.FC = () => (
   <>
     <Welcome />
     <BrandNewModels />
@@ -12,3 +12,5 @@ export const Home: React.FC = () => (
     <HotPrices />
   </>
 );
+
+export default Home;

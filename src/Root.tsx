@@ -1,6 +1,6 @@
 import { App } from './App';
 // import NotFound from './pages/NotFound';
-import { Home } from './pages/Home/Home';
+import Home from './pages/Home/Home';
 import Phones from './pages/Phones';
 import Favourites from './pages/Favourites';
 import Cart from './pages/Cart';
