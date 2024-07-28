@@ -38,10 +38,10 @@ export const Menu: React.FC<Props> = ({ isOpen, setIsOpen }) => {
   return (
     <div
       className={classNames(
-        'absolute z-10 top-0 bg-white transition-transform duration-500 overflow-hidden w-screen h-screen flex flex-col',
+        'fixed z-10 top-0 bg-white transition-transform duration-500 overflow-hidden w-screen h-screen flex flex-col',
         {
-          'right-0': isOpen,
-          'right-[-100vw]': !isOpen,
+          'translate-x-0': isOpen,
+          'translate-x-full ': !isOpen,
         },
       )}
     >

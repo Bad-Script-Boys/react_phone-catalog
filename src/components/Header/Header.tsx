@@ -7,6 +7,7 @@ import { StateContext } from '../../Store';
 import { BasketLogo } from '../ThemeIcons/BasketLogo';
 import { FavoriteLogo } from '../ThemeIcons/FavoritesLogo';
 import { MainLogo } from '../ThemeIcons/MainLogo';
+import { useTheme } from '../../contexts/ThemeContext';
 
 const classActiveNavLink = ({ isActive }: { isActive: boolean }) =>
   isActive
@@ -17,6 +18,7 @@ export const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const state = useContext(StateContext);
   const { favorites, basket } = state;
+  const { theme } = useTheme();
 
   let totalQuantity = 0;
 
@@ -26,30 +28,32 @@ export const Header: React.FC = () => {
 
   return (
     <>
-      <header className="flex border-b-2 border-borderHeader items-center justify-between text-xs font-extrabold leading-3 tracking-wide uppercase fixed top-0 left-0 w-screen shadow-md h-16">
+      <header
+        className={`header1 z-10 flex border-b-2 border-borderHeader items-center justify-between text-xs font-extrabold leading-3 tracking-wide uppercase fixed top-0 left-0 w-screen shadow-md h-16 ${theme === 'light' ? 'bg-white' : 'bg-[#0f1121]'}`}
+      >
         <div className="flex items-center justify-between h-full">
           <Link to="/">
             <MainLogo />
           </Link>
 
-          <nav className="hidden sm:flex h-full ml-8">
+          <nav className="hidden sm:flex h-full ml-12">
             <ul className="flex ml-12 sm:ml-2 list-none h-full space-x-8 sm:space-x-8 md:space-x-8 lg:space-x-16">
-              <li className="transition-all duration-500 h-full flex items-center ">
+              <li className="transition-all h-full flex items-center ">
                 <NavLink to="/" className={classActiveNavLink}>
                   home
                 </NavLink>
               </li>
-              <li className="transition-all duration-500 h-full flex items-center">
+              <li className="transition-all h-full flex items-center">
                 <NavLink to="/phones" className={classActiveNavLink}>
                   phones
                 </NavLink>
               </li>
-              <li className="transition-all duration-500 h-full flex items-center">
+              <li className="transition-all h-full flex items-center">
                 <NavLink to="/tablets" className={classActiveNavLink}>
                   tablets
                 </NavLink>
               </li>
-              <li className="transition-all duration-500 h-full flex items-center">
+              <li className="transition-all h-full flex items-center">
                 <NavLink to="/accessories" className={classActiveNavLink}>
                   accessories
                 </NavLink>

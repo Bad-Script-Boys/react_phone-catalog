@@ -4,6 +4,7 @@ export const content = [
   './src/components/footer/Footer.module.scss',
 ];
 export const theme = {
+  darkMode: 'class',
   extend: {
     fontFamily: {
       mont: ['Mont', 'sans-serif'],
@@ -22,7 +23,19 @@ export const theme = {
     borderWidth: {
       3: '3px',
     },
+    keyframes: {
+      scrollForNewModels: {
+        '0%': { transform: 'translateX(0)' },
+        '100%': { transform: 'translateX(-100%)' },
+      },
+      scrollForHotPrices: {
+        '0%': { transform: 'translateX(-83%)' },
+        '100%': { transform: 'translateX(83%)' },
+      },
+    },
+    animation: {
+      scrollForNewModels: 'scrollForNewModels 40s linear infinite',
+      scrollForHotPrices: 'scrollForHotPrices 180s linear infinite',
+    },
   },
-  darkMode: 'class',
 };
-export const plugins = [];
