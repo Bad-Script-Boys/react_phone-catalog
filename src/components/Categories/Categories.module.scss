@@ -1,0 +1,175 @@
+// ------------------кастомний клас---------------
+
+.visually-hidden {
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  margin: -1px;
+}
+
+// -----------звичайні клас ----------
+
+.categories {
+  &__colors {
+    @apply flex justify-between w-[100%] relative mb-[24px];
+
+    &_wrap {
+      @apply box-border pb-6 flex-1 md:text-left;
+    }
+    &_title {
+      @apply font-normal text-xs 
+      leading-[15px] text-[#89939A] 
+      whitespace-nowrap mb-2 font-mont;
+    }
+    &_vers {
+      @apply flex space-x-2;
+    }
+    &_option {
+      @apply relative inline-block 
+      w-5 h-5  border-[1px]
+      rounded-full cursor-pointer;
+    }
+    &_option &_input:checked + &_circle::after {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      width: 19px;
+      height: 19px;
+      border: 1px solid black;
+      border-radius: 50%;
+    }
+    &_input {
+      @apply visually-hidden;
+    }
+    &_circle {
+      @apply absolute 
+      top-1/2 left-1/2 
+      w-[15px] h-[15px] 
+      bg-white rounded-full 
+      transform -translate-x-1/2 -translate-y-1/2;
+    }
+    &_id {
+      @apply font-normal text-xs 
+      leading-[15px] text-right 
+      text-[#B4BDC4] flex-1 
+      md:text-right font-mont;
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      max-width: 320px;
+      min-width: 237px;
+      width: 100%;
+      height: 1px;
+      background-color: #e2e6e9;
+    }
+  }
+
+  &__memory {
+    @apply w-[100%] relative pb-6 mb-[24px];
+
+    &_title {
+      @apply font-mont
+      font-normal text-xs 
+      leading-[15px] text-[#89939A] 
+      whitespace-nowrap mb-2;
+    }
+    &_vers {
+      @apply flex space-x-1;
+    }
+    &_option {
+      @apply w-[60px] h-[32px] 
+      border-[1px] 
+      cursor-pointer box-border;
+    }
+
+    &_input {
+      @apply visually-hidden;
+    }
+    &_btn {
+      @apply w-full h-full 
+      bg-white block text-[#313237]
+      font-mont font-medium 
+      text-sm leading-5 
+      text-center flex 
+      items-center justify-center;
+    }
+    &_option &_input:checked + &_btn {
+      @apply bg-[#313237]  text-white;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      max-width: 320px;
+      min-width: 237px;
+      width: 100%;
+      height: 1px;
+      background-color: #e2e6e9;
+    }
+  }
+
+  &__info {
+    @apply max-w-[320px];
+    &_price {
+      @apply flex items-baseline space-x-2 font-normal;
+      &_value {
+        @apply text-5xl font-bold text-gray-900 font-extrabold text-[32px] leading-[41px] tracking-[-0.01em] text-[#313237];
+      }
+      &_discount {
+        @apply text-3xl text-gray-400 line-through font-normal font-medium text-[22px] leading-[28px] line-through text-[#89939A];
+      }
+    }
+    &_main {
+      @apply mt-6 flex space-x-2 max-w-[320px] mb-6;
+
+      &_addBtn {
+        @apply flex items-center min-w-[160px]
+        max-w-[263px] box-border border-[1px]
+        w-[100%]
+        justify-center h-10  
+        bg-[#313237] text-white 
+        rounded-none hover:bg-gray-800 transition
+        focus:bg-white focus:text-[#27AE60] focus:border-[#E2E6E9];
+      }
+      &_likeBtn {
+        @apply min-h-10 min-w-10 
+        hover:text-gray-800 
+        bg-transparent border 
+        border-gray-500 rounded-none 
+        flex items-center justify-center;
+
+        &_frag {
+          @apply text-[#313237] w-4 h-4;
+        }
+
+        &:focus &_frag {
+          @apply bg-red-500 border;
+        }
+      }
+    }
+    &_list {
+      @apply flex flex-col max-w-[320px];
+      &_item {
+        @apply flex justify-between w-[100%] space-y-2;
+        &_name {
+          @apply tracking-tight font-semibold text-xs leading-[15px] text-[#89939A];
+        }
+        &_value {
+          @apply tracking-tight font-semibold text-xs leading-[15px] text-right text-[#313237];
+        }
+      }
+    }
+  }
+}
