@@ -5,11 +5,9 @@ import { Outlet } from 'react-router-dom';
 export function App() {
   return (
     <>
-      <ThemeProvider>
-        <Header />
-        <Outlet />
-        <Footer />
-      </ThemeProvider>
+      <Header />
+      <Outlet />
+      <Footer />
     </>
   );
 }

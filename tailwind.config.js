@@ -29,12 +29,12 @@ export const theme = {
         '100%': { transform: 'translateX(-100%)' },
       },
       scrollForHotPrices: {
-        '0%': { transform: 'translateX(-83%)' },
-        '100%': { transform: 'translateX(83%)' },
+        '0%': { transform: 'translateX(-100%)' },
+        '100%': { transform: 'translateX(0)' },
       },
     },
     animation: {
-      scrollForNewModels: 'scrollForNewModels 40s linear infinite',
+      scrollForNewModels: 'scrollForNewModels 60s linear infinite',
       scrollForHotPrices: 'scrollForHotPrices 180s linear infinite',
     },
   },

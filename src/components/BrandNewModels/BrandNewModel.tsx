@@ -1,6 +1,6 @@
-import { PhonesForNewModels } from '../PhoneCards/PhonesForNewModels';
 import productsFromServer from '../../api/products.json';
 import { Product } from '../../types';
+import { ProductCard } from '../ProductCard';
 
 export const BrandNewModels = () => {
   const phones: Product[] = productsFromServer.filter(
@@ -16,18 +16,25 @@ export const BrandNewModels = () => {
       <div className="mb-[24px] flex justify-between items-center">
         <h2 className="text-[32px] font-extrabold">Brand new models</h2>
       </div>
-      <div className="flex overflow-hidden w-full">
+      <div className="flex overflow-hidden w-full gap-5">
         <div className="flex w-max animate-scrollForNewModels gap-5">
           {filetredPhones.map(product => (
-            <PhonesForNewModels
+            <ProductCard
               key={`${product.id}-duplicate`}
-              image={product.image}
-              name={product.name}
-              fullPrice={product.fullPrice}
-              screen={product.screen}
-              capacity={product.capacity}
-              ram={product.ram}
               product={product}
+              displayFullPriceOnly
+            />
+          ))}
+        </div>
+        <div
+          className="flex w-max animate-scrollForNewModels gap-5"
+          aria-hidden="true"
+        >
+          {filetredPhones.map(product => (
+            <ProductCard
+              key={`${product.id}-duplicate`}
+              product={product}
+              displayFullPriceOnly
             />
           ))}
         </div>

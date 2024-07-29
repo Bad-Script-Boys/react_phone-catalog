@@ -1,6 +1,6 @@
-import { PhonesForHotPrices } from '../PhoneCards/PhonesForHotPrices';
 import productsFromServer from '../../api/products.json';
 import { Product } from '../../types';
+import { ProductCard } from '../ProductCard';
 
 export const HotPrices = () => {
   const phones: Product[] = productsFromServer.filter(
@@ -18,19 +18,27 @@ export const HotPrices = () => {
       <div className="mb-[24px] flex justify-between items-center">
         <h2 className="text-[32px] font-extrabold">Hot Prices</h2>
       </div>
-      <div className="flex overflow-hidden w-full">
+      <div className="flex overflow-hidden w-full gap-5">
         <div className="flex w-max animate-scrollForHotPrices gap-5">
           {filteredPhones.map(product => (
-            <PhonesForHotPrices
+            <ProductCard
               key={product.id}
-              image={product.image}
-              name={product.name}
-              fullPrice={product.fullPrice}
-              price={product.price}
-              screen={product.screen}
-              capacity={product.capacity}
-              ram={product.ram}
               product={product}
+              showFullPrice
+              isHotPrices
+            />
+          ))}
+        </div>
+        <div
+          className="flex w-max animate-scrollForHotPrices gap-5"
+          aria-hidden="true"
+        >
+          {filteredPhones.map(product => (
+            <ProductCard
+              key={product.id}
+              product={product}
+              showFullPrice
+              isHotPrices
             />
           ))}
         </div>
