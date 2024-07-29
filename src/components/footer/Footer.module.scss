@@ -14,7 +14,8 @@
   
   &__content {
   @apply 
-  py-8 flex justify-between max-w-[100%] flex-wrap max-w-[1136px]
+  py-8 flex justify-between max-w-[100%] 
+  flex-wrap max-w-[1136px] 
   px-4 md:px-6 lg:px-8 mx-auto;
   
   }
@@ -33,7 +34,8 @@
   &__link {
     @apply 
     uppercase text-customTextColor 
-    hover:text-black transition-all duration-300;
+    hover:text-black transition-all duration-300
+    font-extrabold;
   }
 
   &__btn_wrap {
@@ -54,18 +56,8 @@
 
 .btn_toTop {
   @apply bg-white p-2 hover:shadow-md 
-  focus:outline-none focus-visible:outline-none 
   w-[32px] h-[32px] hover:border 
   rounded-none bg-transparent 
   flex items-center justify-center
-  transition-all duration-300
-  text-black border-solid border-[#B4BDC4];
-}
-
-.btn_toTop:hover {
-  @apply text-shadow-custom border-[#B4BDC4];
-
-  .btn_name{
-    @apply text-shadow-custom;
-  }
+  text-black border-[#B4BDC4] border-[1px];
 }
