@@ -1,10 +1,10 @@
 /** @type {import('tailwindcss').Config} */
+export const darkMode = 'class';
 export const content = [
   './src/**/*.{js,ts,jsx,tsx}',
   './src/components/footer/Footer.module.scss',
 ];
 export const theme = {
-  darkMode: 'class',
   extend: {
     fontFamily: {
       mont: ['Mont', 'sans-serif'],
@@ -34,8 +34,12 @@ export const theme = {
       },
     },
     animation: {
-      scrollForNewModels: 'scrollForNewModels 60s linear infinite',
+      scrollForNewModels: 'scrollForNewModels 50s linear infinite',
       scrollForHotPrices: 'scrollForHotPrices 180s linear infinite',
     },
   },
 };
+export const variants = {
+  animation: ['responsive', 'hover'],
+};
+export const plugins = [];
