@@ -164,7 +164,7 @@ export const ProductCard: React.FC<Props> = ({
           {product.itemId === added?.itemId ? (
             <button
               className={`flex items-center justify-center h-10 w-40 ${
-                theme === 'light' ? 'bg-white' : 'bg-[#905BFF]'
+                theme === 'light' ? 'bg-white' : 'bg-[#905BFF] text-white'
               } text-[#27AE60] border-2 border-color-[#E2E6E9]`}
               onClick={addToBasket}
             >
