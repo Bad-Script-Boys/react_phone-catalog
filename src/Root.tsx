@@ -1,12 +1,12 @@
 import { App } from './App';
-// import NotFound from './pages/NotFound';
+import NotFound from './components/NotFound';
 import Home from './pages/Home';
 import { Phones } from './pages/Phones';
 import Favourites from './pages/Favourites';
 import Cart from './pages/Cart';
 import ProductDetails from './pages/ProductDetails';
-import Tablets from './pages/Tablets';
-import Accessories from './pages/Accessories';
+import { Tablets } from './pages/Tablets';
+import { Accessories } from './pages/Accessories';
 import {
   HashRouter as Router,
   Route,
@@ -42,7 +42,7 @@ export const Root = () => (
 
             <Route path="favourites" element={<Favourites />} />
             <Route path="cart" element={<Cart />} />
-            {/* <Route path="*" element={<NotFound />} /> */}
+            <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
       </Router>

@@ -1,7 +1,8 @@
 import React from 'react';
+import { AboutSection } from '../../components/About';
 
 const ProductDetails: React.FC = () => {
-  return 0;
+  return <AboutSection />;
 };
 
 export default ProductDetails;

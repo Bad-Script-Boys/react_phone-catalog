@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+export const darkMode = 'class';
 export const content = [
   './src/**/*.{js,ts,jsx,tsx}',
   './src/components/footer/Footer.module.scss',
@@ -33,7 +34,28 @@ export const theme = {
     borderWidth: {
       3: '3px',
     },
+    keyframes: {
+      scrollForNewModels: {
+        '0%': { transform: 'translateX(0)' },
+        '100%': { transform: 'translateX(-100%)' },
+      },
+      scrollForHotPrices: {
+        '0%': { transform: 'translateX(-100%)' },
+        '100%': { transform: 'translateX(0)' },
+      },
+      scrollForMayAlsoLike: {
+        '0%': { transform: 'translateX(0)' },
+        '100%': { transform: 'translateX(-100%)' },
+      },
+    },
+    animation: {
+      scrollForNewModels: 'scrollForNewModels 50s linear infinite',
+      scrollForHotPrices: 'scrollForHotPrices 180s linear infinite',
+      scrollForMayAlsoLike: 'scrollForMayAlsoLike 230s linear infinite',
+    },
   },
 };
+export const variants = {
+  animation: ['responsive', 'hover'],
+};
 export const plugins = [];
-
