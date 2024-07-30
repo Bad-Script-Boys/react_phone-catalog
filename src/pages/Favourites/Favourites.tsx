@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { DispatchContext, StateContext } from '../../Store';
 import { Link } from 'react-router-dom';
-import stroke from '../../assets/img/icons/Vector (Stroke).svg';
+
 import { useTheme } from '../../contexts/ThemeContext';
 import { Product } from '../../types';
 
@@ -26,7 +26,9 @@ const Favorites: React.FC = () => {
     });
   };
 
-  const favoriteProducts = products.filter(product => favorites.includes(product.itemId));
+  const favoriteProducts = products.filter(product =>
+    favorites.includes(product.itemId),
+  );
 
   return (
     <div className="flex flex-col items-center">
@@ -35,16 +37,16 @@ const Favorites: React.FC = () => {
           <Link to="/shop" className="text-gray-700 text-lg font-medium mb-2">
             Back
           </Link>
-          <h1 className="text-2xl md:text-3xl lg:text-[46px]">
-            Favorites
-          </h1>
+          <h1 className="text-2xl md:text-3xl lg:text-[46px]">Favorites</h1>
         </div>
       </div>
 
       <div className="flex flex-col w-full px-4 md:px-8 lg:px-[152px] lg:flex-row gap-4">
         {favoriteProducts.length === 0 ? (
           <div className="flex flex-col items-center justify-center w-full h-64">
-            <p className="text-xl font-medium text-gray-600">Your favorites list is empty.</p>
+            <p className="text-xl font-medium text-gray-600">
+              Your favorites list is empty.
+            </p>
             <Link to="/shop" className="mt-4 text-blue-500 hover:underline">
               Continue Shopping
             </Link>
@@ -65,35 +67,51 @@ const Favorites: React.FC = () => {
                 />
               </Link>
               <Link to={`/${product.category}/${product.itemId}`}>
-                <h3 className={`block mt-1 h-12 mb-[-20px] font-medium text-[14px] leading-[21px] ${
-                  theme === 'light' ? 'text-black' : 'text-white'
-                } text-left`}>
+                <h3
+                  className={`block mt-1 h-12 mb-[-20px] font-medium text-[14px] leading-[21px] ${
+                    theme === 'light' ? 'text-black' : 'text-white'
+                  } text-left`}
+                >
                   {product.name}
                 </h3>
               </Link>
               <div className="mt-4 w-full">
-                <p className={`text-xl font-bold ${
-                  theme === 'light' ? 'text-black' : 'text-white'
-                } mt-2 text-left mb-3`}>{`$${product.fullPrice}`}</p>
+                <p
+                  className={`text-xl font-bold ${
+                    theme === 'light' ? 'text-black' : 'text-white'
+                  } mt-2 text-left mb-3`}
+                >{`$${product.fullPrice}`}</p>
               </div>
               <section>
                 <div className="flex justify-between text-gray-600">
                   <h3 className="text-[#75767F]">{`Screen`}</h3>
-                  <p className={`leading-[15px] ${
-                    theme === 'light' ? 'text-black' : 'text-white'
-                  }`}>{product.screen}</p>
+                  <p
+                    className={`leading-[15px] ${
+                      theme === 'light' ? 'text-black' : 'text-white'
+                    }`}
+                  >
+                    {product.screen}
+                  </p>
                 </div>
                 <div className="flex justify-between text-gray-600">
                   <p className="text-[#75767F]">{`Capacity`}</p>
-                  <p className={`text-black ${
-                    theme === 'dark' ? 'text-white' : 'text-black'
-                  }`}>{product.capacity}</p>
+                  <p
+                    className={`text-black ${
+                      theme === 'dark' ? 'text-white' : 'text-black'
+                    }`}
+                  >
+                    {product.capacity}
+                  </p>
                 </div>
                 <div className="flex justify-between text-gray-600">
                   <p className="text-[#75767F]">{`RAM`}</p>
-                  <p className={`text-black ${
-                    theme === 'dark' ? 'text-white' : 'text-black'
-                  }`}>{product.ram}</p>
+                  <p
+                    className={`text-black ${
+                      theme === 'dark' ? 'text-white' : 'text-black'
+                    }`}
+                  >
+                    {product.ram}
+                  </p>
                 </div>
               </section>
               <div className="mt-6 flex justify-between">
@@ -107,7 +125,9 @@ const Favorites: React.FC = () => {
                 ) : (
                   <button
                     className={`flex items-center justify-center h-10 w-40 ${
-                      theme === 'light' ? 'bg-[#313237] text-white hover:bg-gray-800' : 'bg-[#905BFF] text-white hover:bg-gray-800'
+                      theme === 'light'
+                        ? 'bg-[#313237] text-white hover:bg-gray-800'
+                        : 'bg-[#905BFF] text-white hover:bg-gray-800'
                     } rounded-none transition py-3 px-6`}
                     onClick={() => addToBasket(product)}
                   >
@@ -119,9 +139,17 @@ const Favorites: React.FC = () => {
                   onClick={() => addToFavorites(product)}
                 >
                   {favorites.includes(product.itemId) ? (
-                    <img src="img/icons/liked-logo.svg" className="h-4 w-4" alt="Icon" />
+                    <img
+                      src="img/icons/liked-logo.svg"
+                      className="h-4 w-4"
+                      alt="Icon"
+                    />
                   ) : (
-                    <img src={stroke} className="h-4 w-4" alt="Icon" />
+                    <img
+                      src="img/icons/favorites-logo-white.svg"
+                      className="h-4 w-4"
+                      alt="Icon"
+                    />
                   )}
                 </button>
               </div>
@@ -134,4 +162,3 @@ const Favorites: React.FC = () => {
 };
 
 export default Favorites;
-
