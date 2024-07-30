@@ -32,10 +32,15 @@ export const theme = {
         '0%': { transform: 'translateX(-100%)' },
         '100%': { transform: 'translateX(0)' },
       },
+      scrollForMayAlsoLike: {
+        '0%': { transform: 'translateX(0)' },
+        '100%': { transform: 'translateX(-100%)' },
+      },
     },
     animation: {
       scrollForNewModels: 'scrollForNewModels 50s linear infinite',
       scrollForHotPrices: 'scrollForHotPrices 180s linear infinite',
+      scrollForMayAlsoLike: 'scrollForMayAlsoLike 230s linear infinite',
     },
   },
 };
