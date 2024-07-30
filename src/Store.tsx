@@ -5,8 +5,11 @@ export type Action =
   | { type: 'setProducts'; payload: Product[] }
   | { type: 'addToFavorites'; payload: { itemId: string } }
   | { type: 'removeFromFavorites'; payload: { itemId: string } }
-  | { type: 'addToBasket'; payload: { itemId: string; price: number } }
-  | { type: 'removeFromBasket'; payload: { itemId: string } }
+  | {
+      type: 'addToBasket';
+      payload: { itemId: string; price: number; image: string };
+    }
+  | { type: 'removeFromBasket'; payload: { itemId: string; name: string } }
   | { type: 'removeAllFromBasket'; payload: { itemId: string } }
   | { type: 'deleteOneItem'; payload: { itemId: string; quantity: number } }
   | { type: 'addOneItem'; payload: { itemId: string; quantity: number } }
@@ -15,7 +18,13 @@ export type Action =
 export type State = {
   products: Product[];
   favorites: string[];
-  basket: { itemId: string; quantity: number; price: number }[];
+  basket: {
+    itemId: string;
+    quantity: number;
+    price: number;
+    name: string;
+    image: string;
+  }[];
 };
 
 const FAVORITES_GOODS = 'FAVORITES_GOODS';
@@ -78,6 +87,8 @@ const reducer = (state: State, action: Action): State => {
             itemId: action.payload.itemId,
             quantity: 1,
             price: action.payload.price,
+            name: action.payload.name,
+            image: action.payload.image,
           },
         ];
       } else {
@@ -86,6 +97,8 @@ const reducer = (state: State, action: Action): State => {
           itemId: action.payload.itemId,
           quantity: basket[index].quantity + 1,
           price: action.payload.price,
+          name: action.payload.name,
+          image: action.payload.image,
         };
       }
 
