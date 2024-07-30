@@ -1,7 +1,11 @@
-import React from 'react';
+import productsFromServer from '../../api/products.json';
+import { Catalog } from '../../components/Catalog';
+import { Product } from '../../types';
 
-const Tablets: React.FC = () => {
-  return 0;
+const tablets: Product[] = productsFromServer.filter(
+  product => product.category === 'tablets',
+);
+
+export const Tablets: React.FC = () => {
+  return <Catalog title="Tablets" products={tablets} />;
 };
-
-export default Tablets;
