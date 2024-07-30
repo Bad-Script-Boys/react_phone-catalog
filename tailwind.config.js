@@ -3,16 +3,9 @@ export const content = [
   './src/**/*.{js,ts,jsx,tsx}',
   './src/components/footer/Footer.module.scss',
 ];
-export const content = [
-  './src/**/*.{js,ts,jsx,tsx}',
-  './src/components/footer/Footer.module.scss',
-];
 export const theme = {
   darkMode: 'class',
   extend: {
-    fontFamily: {
-      mont: ['Mont', 'sans-serif'],
-    },
     fontFamily: {
       mont: ['Mont', 'sans-serif'],
     },
@@ -37,4 +30,3 @@ export const theme = {
   },
 };
 export const plugins = [];
-
