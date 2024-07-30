@@ -83,14 +83,25 @@ export const Welcome = () => {
           )}
         </button>
       </div>
-      <div className="flex items-center justify-center gap-4 mt-4">
-        {slides.map((_, index) => (
-          <div
-            key={index}
-            className={`w-5 h-1 ${currentSlide === index ? 'bg-[#313237]' : 'bg-[#E2E6E9]'}`}
-          ></div>
-        ))}
-      </div>
+      {theme === 'light' ? (
+        <div className="flex items-center justify-center gap-4 mt-4">
+          {slides.map((_, index) => (
+            <div
+              key={index}
+              className={`w-5 h-1 ${currentSlide === index ? 'bg-[#313237]' : 'bg-[#E2E6E9]'}`}
+            ></div>
+          ))}
+        </div>
+      ) : (
+        <div className="flex items-center justify-center gap-4 mt-4">
+          {slides.map((_, index) => (
+            <div
+              key={index}
+              className={`w-5 h-1 ${currentSlide === index ? 'bg-[#E2E6E9]' : 'bg-[#313237]'}`}
+            ></div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
