@@ -47,3 +47,4 @@ body.light {
 body.dark { 
   @apply bg-[#0f1121] text-white; 
 }
+
