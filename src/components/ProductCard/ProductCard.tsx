@@ -10,10 +10,10 @@ type Props = {
   showFullPrice?: boolean;
   isHotPrices?: boolean;
   displayFullPriceOnly?: boolean;
-  isFavorite: boolean;
-  isInBasket: boolean;
-  onAddToFavorites: () => void;
-  onAddToBasket: () => void;
+  isFavorite?: boolean;
+  isInBasket?: boolean;
+  onAddToFavorites?: () => void;
+  onAddToBasket?: () => void;
 };
 
 export const ProductCard: React.FC<Props> = ({
