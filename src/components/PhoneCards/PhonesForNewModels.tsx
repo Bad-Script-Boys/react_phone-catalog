@@ -2,8 +2,8 @@ import { Product } from '../../types';
 import React, { useContext } from 'react';
 import { DispatchContext, StateContext } from '../../Store';
 import { Link } from 'react-router-dom';
-import stroke from '../../assets/img/icons/Vector (Stroke).svg';
 import { useTheme } from '../../contexts/ThemeContext';
+import { StrokeIcon } from '../ThemeIcons/StrokeIcon';
 
 type Props = {
   image: string;
@@ -126,7 +126,7 @@ export const PhonesForNewModels: React.FC<Props> = ({
               alt="Icon"
             />
           ) : (
-            <img src={stroke} className="h-4 w-4" alt="Icon" />
+            <StrokeIcon fill="#F1F2F9" className="h-4 w-4" />
           )}
         </button>
       </div>

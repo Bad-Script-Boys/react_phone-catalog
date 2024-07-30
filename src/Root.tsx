@@ -5,8 +5,8 @@ import { Phones } from './pages/Phones';
 import Favourites from './pages/Favourites';
 import Cart from './pages/Cart';
 import ProductDetails from './pages/ProductDetails';
-import Tablets from './pages/Tablets';
-import Accessories from './pages/Accessories';
+import { Tablets } from './pages/Tablets';
+import { Accessories } from './pages/Accessories';
 import {
   HashRouter as Router,
   Route,
