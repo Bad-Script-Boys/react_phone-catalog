@@ -1,0 +1,18 @@
+.specifications {
+  @apply col-span-1 custom-md:col-span-1;
+  &__title {
+    @apply font-extrabold text-[22px] leading-[140%] text-[#313237] pb-4 border-b border-[#E2E6E9];
+  }
+  &__list {
+    @apply flex flex-col mt-6 space-y-2;
+    &_item {
+      @apply flex justify-between;
+      &_name {
+        @apply tracking-tight font-medium text-[14px] leading-[21px] text-[#89939A];
+      }
+      &_value {
+        @apply tracking-tight font-semibold text-xs leading-[15px] text-right text-[#313237];
+      }
+    }
+  }
+}
