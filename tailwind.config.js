@@ -9,6 +9,12 @@ export const theme = {
     fontFamily: {
       mont: ['Mont', 'sans-serif'],
     },
+    screens: {
+      'custom-sm': '500px',
+      'custom-md': '900px',
+      'custom-lg': '1200px',
+      'custom-xl': '1600px',
+    },
     colors: {
       customTextColor: '#89939A',
       borderHeader: '#E2E6E9',
@@ -30,3 +36,4 @@ export const theme = {
   },
 };
 export const plugins = [];
+
