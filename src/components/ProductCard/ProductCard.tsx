@@ -10,6 +10,10 @@ type Props = {
   showFullPrice?: boolean;
   isHotPrices?: boolean;
   displayFullPriceOnly?: boolean;
+  isFavorite: boolean;
+  isInBasket: boolean;
+  onAddToFavorites: () => void;
+  onAddToBasket: () => void;
 };
 
 export const ProductCard: React.FC<Props> = ({
@@ -17,6 +21,10 @@ export const ProductCard: React.FC<Props> = ({
   showFullPrice = false,
   isHotPrices = false,
   displayFullPriceOnly = false,
+  // isFavoriteItem,
+  // isInBasket,
+  // onAddToFavorites,
+  // onAddToBasket,
 }) => {
   const { theme } = useTheme();
   const dispatch = useContext(DispatchContext);
