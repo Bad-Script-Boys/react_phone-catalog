@@ -3,13 +3,23 @@ export const content = [
   './src/**/*.{js,ts,jsx,tsx}',
   './src/components/footer/Footer.module.scss',
 ];
+export const content = [
+  './src/**/*.{js,ts,jsx,tsx}',
+  './src/components/footer/Footer.module.scss',
+];
 export const theme = {
+  darkMode: 'class',
   extend: {
+    fontFamily: {
+      mont: ['Mont', 'sans-serif'],
+    },
     fontFamily: {
       mont: ['Mont', 'sans-serif'],
     },
     colors: {
       customTextColor: '#89939A',
+      borderHeader: '#E2E6E9',
+      darkTheme: '#0F1121',
       customAvailableColor1: '#FCDBC1',
       customAvailableColor2: '#5F7170',
       customAvailableColor3: '#4C4C4C',
@@ -24,12 +34,7 @@ export const theme = {
     borderWidth: {
       3: '3px',
     },
-    screens: {
-      'custom-sm': '320px',
-      'custom-md': '640px',
-      'custom-lg': '1200px',
-      'custom-xl': '1600px',
-    },
   },
 };
 export const plugins = [];
+
