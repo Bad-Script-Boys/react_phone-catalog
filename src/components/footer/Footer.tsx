@@ -1,12 +1,11 @@
 import React from 'react';
 import styles from './Footer.module.scss';
+import { MainLogo } from '../ThemeIcons/MainLogo';
 import { FaAngleUp } from 'react-icons/fa';
 
 const {
   footer,
   footer__content,
-  footer__logo_link,
-  logo_img,
   footer__list,
   footer__item,
   footer__link,
@@ -19,13 +18,7 @@ export const Footer: React.FC = () => {
   return (
     <footer className={footer}>
       <div className={footer__content}>
-        <a href="#" className={footer__logo_link}>
-          <img
-            src="img/icons/nice-gadgets-logo.svg"
-            alt="NICE_GADGETS_logos"
-            className={logo_img}
-          />
-        </a>
+        <MainLogo />
         <ul className={footer__list}>
           <li className={footer__item}>
             <a href="#" className={footer__link}>
@@ -45,7 +38,10 @@ export const Footer: React.FC = () => {
         </ul>
         <div className={footer__btn_wrap}>
           <p className={btn_name}>Back to top</p>
-          <button className={btn_toTop}>
+          <button
+            className={btn_toTop}
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          >
             <FaAngleUp />
           </button>
         </div>
