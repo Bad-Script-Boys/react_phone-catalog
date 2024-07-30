@@ -3,8 +3,9 @@ import React from 'react';
 const NotFound: React.FC = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
+      <div className="mt-[100px] w-full px-4 md:px-8 lg:px-[152px]"></div>
       <img
-        src="/src/images/notfound/notfound.png"
+        src="img/notfound.png"
         alt="404 - Сторінку не знайдено."
         className="w-full max-w-md"
       />

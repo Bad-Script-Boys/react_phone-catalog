@@ -47,11 +47,33 @@ export const theme = {
         '0%': { transform: 'translateX(0)' },
         '100%': { transform: 'translateX(-100%)' },
       },
+      flame: {
+        '0%, 100%': {
+          backgroundColor: '#ff4500',
+          boxShadow: '0 0 5px #ff4500, 0 0 15px #ff4500, 0 0 30px #ff4500',
+        },
+        '50%': {
+          backgroundColor: '#ff8c00',
+          boxShadow: '0 0 10px #ff8c00, 0 0 20px #ff8c00, 0 0 40px #ff8c00',
+        },
+      },
+      flameDark: {
+        '0%, 100%': {
+          backgroundColor: '#8a2be2',
+          boxShadow: '0 0 5px #8a2be2, 0 0 15px #8a2be2, 0 0 30px #8a2be2',
+        },
+        '50%': {
+          backgroundColor: '#9400d3',
+          boxShadow: '0 0 10px #9400d3, 0 0 20px #9400d3, 0 0 40px #9400d3',
+        },
+      },
     },
     animation: {
       scrollForNewModels: 'scrollForNewModels 50s linear infinite',
       scrollForHotPrices: 'scrollForHotPrices 180s linear infinite',
       scrollForMayAlsoLike: 'scrollForMayAlsoLike 230s linear infinite',
+      flame: 'flame 1.5s infinite',
+      flameDark: 'flameDark 1.5s infinite',
     },
   },
 };

@@ -15,8 +15,11 @@ const classActiveNavLink = ({ isActive }: { isActive: boolean }) => {
   const activeTextColor = theme === 'light' ? 'text-black' : 'text-white';
   const inactiveTextColor = 'transition-transform duration-200 hover:scale-110';
 
+  const flameAnimation =
+    theme === 'light' ? 'before:animate-flame' : 'before:animate-flameDark';
+
   return isActive
-    ? `${activeTextColor} relative before:absolute before:top-9 before:left-0 before:w-full before:h-[3px] before:bg-black`
+    ? `${activeTextColor} relative before:absolute before:top-9 before:left-0 before:w-full before:h-[3px] before:bg-black before:content-[''] ${flameAnimation}`
     : inactiveTextColor;
 };
 
@@ -70,7 +73,7 @@ export const Header: React.FC = () => {
         <div className="hidden sm:flex items-center justify-between mr-4">
           <ThemeSwitch />
           <div className="flex items-center justify-center p-4 border-1 border-borderHeader relative cursor-pointer">
-            <Link to="/favorites">
+            <Link to="/favourites">
               <FavoriteLogo />
             </Link>
             {favorites.length !== 0 && (

@@ -23,7 +23,7 @@ export const Welcome = () => {
   }, [slides.length]);
 
   return (
-    <div className="h-screen overflow-x-hidden mt-[56px] md:mt-[32px] sm:mt-[24px]">
+    <div className="overflow-x-hidden mt-[56px] md:mt-[32px] sm:mt-[24px] mb-6">
       <h1 className="text-[48px] font-extrabold pt-12 lg:mx-[152px] mb-[10px]">
         Welcome to Nice Gadgets store!
       </h1>
