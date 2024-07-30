@@ -9,10 +9,16 @@ import { FavoriteLogo } from '../ThemeIcons/FavoritesLogo';
 import { MainLogo } from '../ThemeIcons/MainLogo';
 import { useTheme } from '../../contexts/ThemeContext';
 
-const classActiveNavLink = ({ isActive }: { isActive: boolean }) =>
-  isActive
-    ? 'relative before:absolute before:top-9 before:left-0 before:w-full before:h-[3px] before:bg-black'
-    : ' transition-transform duration-200 hover:scale-110 relative';
+const classActiveNavLink = ({ isActive }: { isActive: boolean }) => {
+  const { theme } = useTheme();
+
+  const activeTextColor = theme === 'light' ? 'text-black' : 'text-white';
+  const inactiveTextColor = 'transition-transform duration-200 hover:scale-110';
+
+  return isActive
+    ? `${activeTextColor} relative before:absolute before:top-9 before:left-0 before:w-full before:h-[3px] before:bg-black`
+    : inactiveTextColor;
+};
 
 export const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,7 +35,7 @@ export const Header: React.FC = () => {
   return (
     <>
       <header
-        className={`header1 z-10 flex border-b-2 border-borderHeader items-center justify-between text-xs font-extrabold leading-3 tracking-wide uppercase fixed top-0 left-0 w-screen shadow-md h-16 ${theme === 'light' ? 'bg-white' : 'bg-[#0f1121]'}`}
+        className={`header1 z-10 flex border-b-2 border-borderHeader items-center justify-between text-xs font-extrabold leading-3 tracking-wide uppercase fixed top-0 left-0 w-screen shadow-md h-16 ${theme === 'light' ? 'bg-white text-[#89939A]' : 'bg-[#0f1121]'}`}
       >
         <div className="flex items-center justify-between h-full">
           <Link to="/">
