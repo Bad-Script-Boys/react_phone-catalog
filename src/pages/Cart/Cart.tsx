@@ -1,10 +1,12 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { DispatchContext, StateContext } from '../../Store';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Cart: React.FC = () => {
   const { basket } = useContext(StateContext);
   const dispatch = useContext(DispatchContext);
+  const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
 
   const increaseQuantity = (itemId: string) => {
     dispatch({ type: 'addOneItem', payload: { itemId, quantity: 1 } });
@@ -27,6 +29,15 @@ const Cart: React.FC = () => {
     });
   };
 
+  const handleCheckout = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    navigate('/');
+  };
+
   const totalItems = basket.reduce((acc, item) => acc + item.quantity, 0);
   const totalPrice = basket.reduce(
     (acc, item) => acc + item.quantity * item.price,
@@ -35,10 +46,9 @@ const Cart: React.FC = () => {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="mt-[100px] w-full px-4 md:px-8 lg:px-[152px]"></div>
       <div className="w-full px-4 md:px-8 lg:px-[152px]">
         <div className="flex flex-col items-start mb-4 md:mb-6 lg:mb-8">
-          <Link to="/" className="text-gray-700 text-lg font-medium mb-2">
+          <Link to="/shop" className="text-gray-700 text-lg font-medium mb-2">
             Back
           </Link>
           <h1 className="text-2xl md:text-3xl lg:text-[46px]">Cart</h1>
@@ -51,7 +61,7 @@ const Cart: React.FC = () => {
             <p className="text-xl font-medium text-gray-600">
               Your cart is empty.
             </p>
-            <Link to="/" className="mt-4 text-blue-500 hover:underline">
+            <Link to="/shop" className="mt-4 text-blue-500 hover:underline">
               Continue Shopping
             </Link>
           </div>
@@ -120,7 +130,10 @@ const Cart: React.FC = () => {
                 Total for {totalItems} items
               </p>
               <div className="w-full border border-solid border-gray-300 mb-6"></div>
-              <button className="flex items-center justify-center h-12 w-full md:w-[320px] bg-[#313237] text-white rounded-none hover:bg-gray-800 transition py-3 px-6">
+              <button
+                className="flex items-center justify-center h-12 w-full md:w-[320px] bg-[#313237] text-white rounded-none hover:bg-gray-800 transition py-3 px-6"
+                onClick={handleCheckout}
+              >
                 Checkout
               </button>
               <button
@@ -133,6 +146,21 @@ const Cart: React.FC = () => {
           </>
         )}
       </div>
+
+      {showModal && (
+        <div className="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center">
+          <div className="bg-white p-8 rounded-lg text-center">
+            <h2 className="text-2xl font-bold mb-4">Purchase Successful!</h2>
+            <p className="text-lg mb-6">Thank you for your purchase.</p>
+            <button
+              className="bg-[#313237] text-white px-4 py-2 hover:bg-red-500 transition"
+              onClick={handleCloseModal}
+            >
+              Go to Home
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
