@@ -63,9 +63,16 @@ const Cart: React.FC = () => {
       <div className="flex flex-col w-full px-4 md:px-8 lg:px-[152px] lg:flex-row">
         {basket.length === 0 ? (
           <div className="flex flex-col items-center justify-center w-full h-64 mb-16">
-            <img src="img/icons/iconcart.png" alt="Icon" className="mb-4" />
+            <img
+              src="img/icons/iconcart.png"
+              alt="Icon"
+              className="mb-4 block h-52 w-52"
+            />
             <p className="text-xl font-medium">Your cart is empty.</p>
-            <Link to="/shop" className="mt-4 text-blue-500 hover:underline">
+            <Link
+              to="/"
+              className="bg-[#313237] py-4 px-8 text-white hover:scale-110 transition-transform duration-500 no-underline hover:text-white mt-4"
+            >
               Continue Shopping
             </Link>
           </div>
