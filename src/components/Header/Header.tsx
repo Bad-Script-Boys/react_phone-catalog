@@ -24,6 +24,19 @@ const classActiveNavLink = ({ isActive }: { isActive: boolean }) => {
     : inactiveTextColor;
 };
 
+const classActiveNavIcon = ({ isActive }: { isActive: boolean }) => {
+  const { theme } = useTheme();
+  const activeTextColor = theme === 'light' ? 'text-black' : 'text-white';
+  const inactiveTextColor = 'transition-transform duration-200 hover:scale-110';
+
+  const flameAnimation =
+    theme === 'light' ? 'before:animate-flame' : 'before:animate-flameDark';
+
+  return isActive
+    ? `${activeTextColor} relative before:absolute before:top-11 before:left-1/2 before:transform before:-translate-x-1/2 before:w-[60px] before:h-[3px] before:bg-black before:content-[''] before:rounded-full ${flameAnimation}`
+    : inactiveTextColor;
+};
+
 export const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const state = useContext(StateContext);
@@ -74,9 +87,9 @@ export const Header: React.FC = () => {
         <div className="hidden sm:flex items-center justify-between mx-4 pl-3 border-x-2 dark:border-gray-500 border-[#323542]">
           <ThemeSwitch />
           <div className="flex items-center justify-center p-4 border-l-2 dark:border-gray-500 border-[#323542] relative cursor-pointer">
-            <Link to="/favourites">
+            <NavLink to="/favourites" className={classActiveNavIcon}>
               <FavoriteLogo />
-            </Link>
+            </NavLink>
             {favorites.length !== 0 && (
               <span className="flex items-center justify-center text-xs absolute top-3 left-7 h-4 w-4 bg-red-500 text-white rounded-full">
                 {favorites.length}
@@ -84,9 +97,9 @@ export const Header: React.FC = () => {
             )}
           </div>
           <div className="flex items-center justify-center border-l-2 dark:border-gray-500 border-[#323542] h-16 p-4  relative cursor-pointer">
-            <Link to="/cart">
+            <NavLink to="/cart" className={classActiveNavIcon}>
               <BasketLogo />
-            </Link>
+            </NavLink>
             {basket.length !== 0 && (
               <span className="flex items-center justify-center text-xs absolute top-3 left-7 h-4 w-4 bg-red-500 text-white rounded-full">
                 {totalQuantity}
