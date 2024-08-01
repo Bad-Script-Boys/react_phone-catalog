@@ -1,8 +1,8 @@
 .about {
-  @apply max-w-screen-xl mx-auto;
+  @apply max-w-screen-custom-lg mx-auto;
 
   &__content {
-    @apply mt-[25px];
+    @apply mt-20;
   }
 
   &__section_title {
@@ -13,6 +13,6 @@
   }
 
   &__main {
-    @apply flex grid grid-cols-1 custom-md:grid-cols-2 gap-10 p-4;
+    @apply flex grid grid-cols-1 sm:grid-cols-2 gap-10 p-4;
   }
 }

@@ -1,31 +1,46 @@
 .gallery {
-  @apply col-span-1 custom-md:col-span-1 p-4
-  flex flex-col 
+  @apply 
+  flex flex-col max-h-[464px] col-span-1 md:col-span-1
   items-center justify-center space-y-4
-  custom-sm:flex-row-reverse
-  custom-sm:space-y-0 
-  custom-sm:space-x-4;
+  sm:flex-row-reverse
+  sm:space-y-1 
+  sm:space-x-4;
 
   &__main_pic_wrap {
-    @apply max-w-[442px] h-64 
-    custom-sm:w-96 
-    custom-sm:h-96 
+    @apply 
+    max-h-[442px] max-w-[442px] px-8 
+    min-h-[274px] min-w-[274px]
+    sm:w-96 
+    sm:h-96 
     object-cover;
   }
+
   &__main_pic_img {
-    @apply max-w-[100%];
+    @apply object-contain w-full h-full transition-transform duration-300 ease-in-out;
+
+    &:hover {
+      @apply transform scale-125;
+    }
   }
 
   &__list {
-    @apply flex space-x-4 
-    custom-sm:flex-col 
-    custom-sm:space-x-0 
-    custom-sm:space-y-4;
+    @apply 
+    flex justify-around justify-between
+    space-x-4
+    sm:space-y-6
+    pb-3 
+    sm:flex-col 
+    sm:space-x-0;
   }
 
   &__item {
-    @apply flex box-border border-2 
-    max-w-[50px] max-h-[50px] 
-    justify-center;
+    @apply border
+    flex box-border 
+    w-[50px] h-[50px] 
+    cursor-pointer;
+  }
+
+  &__item_pic {
+    @apply object-contain w-full h-full;
   }
 }
