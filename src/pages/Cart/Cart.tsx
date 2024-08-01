@@ -51,7 +51,7 @@ const Cart: React.FC = () => {
       className={`flex flex-col items-center ${theme === 'light' ? 'bg-white text-black' : 'bg-gray-900 text-white'}`}
     >
       <div className="w-full px-4 md:px-8 lg:px-[152px]">
-      <div className="mt-[100px] w-full px-4 md:px-8 lg:px-[152px]"></div>
+        <div className="mt-[100px] w-full px-4 md:px-8 lg:px-[152px]"></div>
         <div className="flex flex-col items-start mb-4 md:mb-6 lg:mb-8">
           <Link to="/shop" className="text-lg font-medium mb-2">
             Back

@@ -66,7 +66,7 @@ const Favorites: React.FC = () => {
               Your favorites list is empty.
             </p>
             <Link to="/" className="mt-4 text-blue-500 hover:underline">
-              Continue Shopping
+              Continue shopping
             </Link>
           </div>
         ) : (

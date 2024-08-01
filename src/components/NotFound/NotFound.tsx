@@ -10,12 +10,14 @@ const NotFound: React.FC = () => {
         alt="404 - Сторінку не знайдено."
         className=" h-[300px] object-contain"
       />
-      <p className="text-lg">Вибачте, запитувана сторінка не існує.</p>
+      <p className="text-lg">
+        Look like you&#39;re lost the page you are looking for not avaible!
+      </p>
       <a
         className="bg-[#313237] py-4 px-8 text-white hover:scale-110 transition-transform duration-500 no-underline hover:text-white mt-4"
         href="#"
       >
-        Повернутися на Головну
+        Go to Home
       </a>
     </div>
   );
