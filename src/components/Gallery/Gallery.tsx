@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Gallery.module.scss';
+import { Device } from '../../types/Device';
+import cn from 'classnames';
 
 const {
   gallery,
@@ -10,51 +12,33 @@ const {
   gallery__item_pic,
 } = styles;
 
-export const Gallery: React.FC = () => {
+type Props = {
+  device: Device | null;
+};
+
+export const Gallery: React.FC<Props> = ({ device }) => {
+  const [selectedPic, setSelectedPic] = useState(device?.images[0]);
   return (
     <div className={gallery}>
       <span className={gallery__main_pic_wrap}>
-        <img
-          className={gallery__main_pic_img}
-          src="../../../src/components/Gallery/img/main-img.png"
-        />
+        <img className={gallery__main_pic_img} src={selectedPic} />
       </span>
-      <ul className={gallery__list}>
-        <li className={`${gallery__item} border-black`}>
-          <img
-            className={gallery__item_pic}
-            src="../../../src/components/Gallery/img/img-00.png"
-            alt="your_device_picture"
-          />
-        </li>
-        <li className={gallery__item}>
-          <img
-            className={gallery__item_pic}
-            src="../../../src/components/Gallery/img/img-01.png"
-            alt="your_device_picture"
-          />
-        </li>
-        <li className={gallery__item}>
-          <img
-            className={gallery__item_pic}
-            src="../../../src/components/Gallery/img/img-02.png"
-            alt="your_device_picture"
-          />
-        </li>
-        <li className={gallery__item}>
-          <img
-            className={gallery__item_pic}
-            src="../../../src/components/Gallery/img/img-03.png"
-            alt="your_device_picture"
-          />
-        </li>
-        <li className={gallery__item}>
-          <img
-            className={gallery__item_pic}
-            src="../../../src/components/Gallery/img/img-04.png"
-            alt="your_device_picture"
-          />
-        </li>
+      <ul className={`${gallery__list}`}>
+        {device?.images.map(image => (
+          <li
+            className={cn(`${gallery__item}`, {
+              'border-black': selectedPic === image,
+            })}
+            key={image}
+            onClick={() => setSelectedPic(image)}
+          >
+            <img
+              className={gallery__item_pic}
+              src={image}
+              alt="your_device_picture"
+            />
+          </li>
+        ))}
       </ul>
     </div>
   );

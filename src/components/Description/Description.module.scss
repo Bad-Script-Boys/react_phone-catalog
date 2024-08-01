@@ -4,30 +4,13 @@
   &__title {
     @apply font-extrabold text-[22px] leading-[140%] text-[#313237] pb-4 border-b border-[#E2E6E9];
   }
-  &__general {
+  &__article {
     @apply mb-8 mt-8;
     &_title {
-      @apply font-semibold text-[20px] leading-[26px] text-[#313237] mb-4;
+      @apply font-normal font-bold text-[20px] leading-[26px] text-[#313237] mb-4;
     }
-    &_article {
-      @apply font-medium text-sm leading-[21px] text-[#89939A];
-    }
-  }
-  &__camera {
-    @apply mb-8;
-    &_title {
-      @apply font-semibold text-[20px] leading-[26px] text-[#313237] mb-4;
-    }
-    &_article {
-      @apply font-medium text-sm leading-[21px] text-[#89939A];
-    }
-  }
-  &__additional {
-    &_title {
-      @apply font-semibold text-[20px] leading-[26px] text-[#313237] mb-4;
-    }
-    &_article {
-      @apply font-medium text-sm leading-[21px] text-[#89939A];
+    &_text {
+      @apply font-mont font-medium text-[14px] leading-[23px] text-[#89939A];
     }
   }
 }
