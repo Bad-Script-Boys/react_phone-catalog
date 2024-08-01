@@ -59,11 +59,11 @@ export const theme = {
       },
       flameDark: {
         '0%, 100%': {
-          backgroundColor: '#8a2be2',
+          backgroundColor: '#f1f2f9',
           boxShadow: '0 0 5px #8a2be2, 0 0 15px #8a2be2, 0 0 30px #8a2be2',
         },
         '50%': {
-          backgroundColor: '#9400d3',
+          backgroundColor: '#905BFF',
           boxShadow: '0 0 10px #9400d3, 0 0 20px #9400d3, 0 0 40px #9400d3',
         },
       },

@@ -6,7 +6,7 @@ export const ThemeSwitch = () => {
 
   return (
     <div
-      className="mr-3 hidden lg:block cursor-pointer p-2 rounded-full bg-gray-200 dark:bg-gray-700 transition-transform duration-500 hover:scale-110 h-full"
+      className="mr-3 lg:block cursor-pointer p-2 rounded-full bg-gray-200 dark:bg-gray-700 border-2 dark:border-gray-500 border-[#323542] transition-transform duration-500 hover:scale-110 h-full"
       onClick={toggleTheme}
     >
       {theme === 'light' ? (
