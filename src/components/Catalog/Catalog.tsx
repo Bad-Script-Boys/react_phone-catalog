@@ -11,7 +11,7 @@ export const Catalog: React.FC<Props> = ({ title, products }) => {
   const { theme } = useTheme();
 
   return (
-    <div className="px-5 md:px-6 py-[35px] md:py-[100px] max-w-screen-2xl m-auto">
+    <div className="px-5 md:px-6 py-[35px] md:py-[100px] max-w-screen-custom-lg m-auto">
       <nav className="flex mb-6" aria-label="Breadcrumb">
         <ol className="inline-flex items-center space-x-1 md:space-x-3">
           <li className="inline-flex items-center">
