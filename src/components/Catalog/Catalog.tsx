@@ -1,5 +1,6 @@
 import { useTheme } from '../../contexts/ThemeContext';
 import { Product } from '../../types';
+import { Breadcrumbs } from '../Breadcrumbs';
 import { ProductCard } from '../ProductCard';
 
 type Props = {
@@ -12,44 +13,7 @@ export const Catalog: React.FC<Props> = ({ title, products }) => {
 
   return (
     <div className="px-5 md:px-6 py-[35px] md:py-[100px] max-w-screen-custom-lg m-auto">
-      <nav className="flex mb-6" aria-label="Breadcrumb">
-        <ol className="inline-flex items-center space-x-1 md:space-x-3">
-          <li className="inline-flex items-center">
-            <a
-              href="/"
-              className="text-gray-700 hover:text-gray-900 inline-flex items-center"
-            >
-              <svg
-                className="w-4 h-4 mr-2"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M10 20a1 1 0 0 1-.707-.293l-9-9A1 1 0 0 1 1.707 9.293L10 17.586l8.293-8.293A1 1 0 1 1 19.707 10.707l-9 9A1 1 0 0 1 10 20zM10 0a1 1 0 0 1 .707.293l9 9a1 1 0 0 1-1.414 1.414L10 1.414 1.707 10.707A1 1 0 1 1 .293 9.293l9-9A1 1 0 0 1 10 0z" />
-              </svg>
-              Home
-            </a>
-          </li>
-          <li>
-            <div className="flex items-center">
-              <svg
-                className="w-6 h-6 text-gray-400"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M7.293 14.707a1 1 0 0 1 0-1.414L10.586 10 7.293 6.707a1 1 0 0 1 1.414-1.414l4 4a1 1 0 0 1 0 1.414l-4 4a1 1 0 0 1-1.414 0z" />
-              </svg>
-              <a
-                href="/phones"
-                className="ml-1 text-sm font-medium text-gray-700 hover:text-gray-900 md:ml-2"
-              >
-                {title}
-              </a>
-            </div>
-          </li>
-        </ol>
-      </nav>
+      <Breadcrumbs />
       <div className="flex justify-between items-center mb-8">
         <div>
           <h1 className="text-3xl font-bold">{title}</h1>
