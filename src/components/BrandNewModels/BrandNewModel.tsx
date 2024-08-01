@@ -21,7 +21,7 @@ export const BrandNewModels = () => {
       <div className="mb-[24px] flex justify-between items-center">
         <h2 className="text-[32px] font-extrabold">Brand new models</h2>
       </div>
-      <div className="flex overflow-hidden w-full gap-5">
+      <div className="flex overflow-hidden w-full gap-5 min-h-[650px] items-center">
         <div
           className="flex w-max animate-scrollForNewModels gap-5"
           ref={firstAnimationRef}

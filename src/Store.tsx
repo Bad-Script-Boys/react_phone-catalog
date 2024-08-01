@@ -1,11 +1,14 @@
-import { useReducer, createContext } from 'react';
+import { useReducer, createContext, Dispatch } from 'react';
 import { Product } from './types/Product';
 
 export type Action =
   | { type: 'setProducts'; payload: Product[] }
   | { type: 'addToFavorites'; payload: { itemId: string } }
   | { type: 'removeFromFavorites'; payload: { itemId: string } }
-  | { type: 'addToBasket'; payload: { itemId: string; price: number } }
+  | {
+      type: 'addToBasket';
+      payload: { itemId: string; price: number; name: string; image: string };
+    }
   | { type: 'removeFromBasket'; payload: { itemId: string } }
   | { type: 'removeAllFromBasket'; payload: { itemId: string } }
   | { type: 'deleteOneItem'; payload: { itemId: string; quantity: number } }
@@ -15,7 +18,13 @@ export type Action =
 export type State = {
   products: Product[];
   favorites: string[];
-  basket: { itemId: string; quantity: number; price: number }[];
+  basket: {
+    itemId: string;
+    quantity: number;
+    price: number;
+    image: string;
+    name: string;
+  }[];
 };
 
 const FAVORITES_GOODS = 'FAVORITES_GOODS';
@@ -30,8 +39,6 @@ const initialState: State = {
   basket: basketArr === null ? [] : JSON.parse(basketArr),
 };
 
-type InitialDispatch = (action: Action) => void;
-
 const reducer = (state: State, action: Action): State => {
   switch (action.type) {
     case 'setProducts':
@@ -45,9 +52,7 @@ const reducer = (state: State, action: Action): State => {
         ...state,
         favorites: [...state.favorites, action.payload.itemId],
       };
-
       localStorage.setItem(FAVORITES_GOODS, JSON.stringify(newState.favorites));
-
       return newState;
     }
 
@@ -58,44 +63,31 @@ const reducer = (state: State, action: Action): State => {
           item => item !== action.payload.itemId,
         ),
       };
-
       localStorage.setItem(FAVORITES_GOODS, JSON.stringify(newState.favorites));
-
       return newState;
     }
 
     case 'addToBasket': {
-      let basket = [];
-
       const index = state.basket.findIndex(
         item => item.itemId === action.payload.itemId,
       );
-
+      const basket = [...state.basket];
       if (index === -1) {
-        basket = [
-          ...state.basket,
-          {
-            itemId: action.payload.itemId,
-            quantity: 1,
-            price: action.payload.price,
-          },
-        ];
-      } else {
-        basket = [...state.basket];
-        basket[index] = {
+        basket.push({
           itemId: action.payload.itemId,
-          quantity: basket[index].quantity + 1,
+          quantity: 1,
           price: action.payload.price,
+          image: action.payload.image,
+          name: action.payload.name,
+        });
+      } else {
+        basket[index] = {
+          ...basket[index],
+          quantity: basket[index].quantity + 1,
         };
       }
-
-      const newState = {
-        ...state,
-        basket,
-      };
-
+      const newState = { ...state, basket };
       localStorage.setItem(BASKET, JSON.stringify(newState.basket));
-
       return newState;
     }
 
@@ -106,9 +98,7 @@ const reducer = (state: State, action: Action): State => {
           item => item.itemId !== action.payload.itemId,
         ),
       };
-
       localStorage.setItem(BASKET, JSON.stringify(newState.basket));
-
       return newState;
     }
 
@@ -119,64 +109,50 @@ const reducer = (state: State, action: Action): State => {
           item => item.itemId !== action.payload.itemId,
         ),
       };
-
       localStorage.setItem(BASKET, JSON.stringify(newState.basket));
-
       return newState;
     }
 
     case 'deleteOneItem': {
-      let basket = [];
-
       const index = state.basket.findIndex(
         item => item.itemId === action.payload.itemId,
       );
-
-      const item = state.basket.find(el => el.itemId === action.payload.itemId);
-
-      if (item?.quantity === 1) {
-        basket = state.basket.filter(el => el.itemId !== action.payload.itemId);
-      } else {
-        basket = [...state.basket];
+      const item = state.basket[index];
+      let basket = [...state.basket];
+      if (item && item.quantity === 1) {
+        basket = basket.filter(el => el.itemId !== action.payload.itemId);
+      } else if (item) {
         basket[index] = {
-          ...basket[index],
-          itemId: action.payload.itemId,
-          quantity: basket[index].quantity - 1,
+          ...item,
+          quantity: item.quantity - 1,
         };
       }
-
-      const newState = {
-        ...state,
-        basket,
-      };
-
+      const newState = { ...state, basket };
       localStorage.setItem(BASKET, JSON.stringify(newState.basket));
-
+      return newState;
+    }
+    case 'addOneItem': {
+      const index = state.basket.findIndex(
+        item => item.itemId === action.payload.itemId,
+      );
+      const basket = [...state.basket];
+      basket[index] = {
+        ...basket[index],
+        quantity: basket[index].quantity + 1,
+      };
+      const newState = { ...state, basket };
+      localStorage.setItem(BASKET, JSON.stringify(newState.basket));
       return newState;
     }
 
-    case 'addOneItem': {
-      let basket = [];
-
-      basket = [...state.basket];
-
-      const index = state.basket.findIndex(
-        item => item.itemId === action.payload.itemId,
+    case 'setBasketItem': {
+      const basket = state.basket.map(item =>
+        item.itemId === action.payload.itemId
+          ? { ...item, quantity: action.payload.quantity }
+          : item,
       );
-
-      basket[index] = {
-        ...basket[index],
-        itemId: action.payload.itemId,
-        quantity: basket[index].quantity + 1,
-      };
-
-      const newState = {
-        ...state,
-        basket,
-      };
-
+      const newState = { ...state, basket };
       localStorage.setItem(BASKET, JSON.stringify(newState.basket));
-
       return newState;
     }
 
@@ -185,8 +161,8 @@ const reducer = (state: State, action: Action): State => {
   }
 };
 
-export const StateContext = createContext(initialState);
-export const DispatchContext = createContext<InitialDispatch>(() => {});
+export const StateContext = createContext<State>(initialState);
+export const DispatchContext = createContext<Dispatch<Action>>(() => {});
 
 type Props = {
   children: React.ReactNode;

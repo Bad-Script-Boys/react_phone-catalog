@@ -1,0 +1,17 @@
+.loader-container {
+  @apply flex items-center justify-center h-screen m-0;
+}
+
+.loader {
+  @apply w-16 h-16 border-8 border-t-8 border-gray-200 border-t-slate-950 rounded-full animate-spin;
+  border-top-color: #ff4d4d;
+  border-right-color: #ff914d;
+  border-bottom-color: #4dff4d;
+  border-left-color: #4d4dff;
+  animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

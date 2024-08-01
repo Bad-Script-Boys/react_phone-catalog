@@ -15,8 +15,11 @@ const classActiveNavLink = ({ isActive }: { isActive: boolean }) => {
   const activeTextColor = theme === 'light' ? 'text-black' : 'text-white';
   const inactiveTextColor = 'transition-transform duration-200 hover:scale-110';
 
+  const flameAnimation =
+    theme === 'light' ? 'before:animate-flame' : 'before:animate-flameDark';
+
   return isActive
-    ? `${activeTextColor} relative before:absolute before:top-9 before:left-0 before:w-full before:h-[3px] before:bg-black`
+    ? `${activeTextColor} relative before:absolute before:top-9 before:left-0 before:w-full before:h-[3px] before:bg-black before:content-[''] ${flameAnimation}`
     : inactiveTextColor;
 };
 
@@ -35,7 +38,7 @@ export const Header: React.FC = () => {
   return (
     <>
       <header
-        className={`header1 z-10 flex border-b-2 border-borderHeader items-center justify-between text-xs font-extrabold leading-3 tracking-wide uppercase fixed top-0 left-0 w-screen shadow-md h-16 ${theme === 'light' ? 'bg-white text-[#89939A]' : 'bg-[#0f1121]'}`}
+        className={`header1 z-10 flex border-b-2 border-borderHeader items-center justify-between text-xs font-extrabold leading-3 tracking-wide uppercase fixed top-0 left-0 w-screen shadow-md h-16 ${theme === 'light' ? 'bg-white text-[#89939A]' : 'bg-[#0f1121] border-gray-500'}`}
       >
         <div className="flex items-center justify-between h-full">
           <Link to="/">
@@ -70,7 +73,7 @@ export const Header: React.FC = () => {
         <div className="hidden sm:flex items-center justify-between mr-4">
           <ThemeSwitch />
           <div className="flex items-center justify-center p-4 border-1 border-borderHeader relative cursor-pointer">
-            <Link to="/favorites">
+            <Link to="/favourites">
               <FavoriteLogo />
             </Link>
             {favorites.length !== 0 && (
@@ -79,7 +82,7 @@ export const Header: React.FC = () => {
               </span>
             )}
           </div>
-          <div className="flex items-center justify-center h-16 p-4 border-l-2 border-borderHeader relative cursor-pointer">
+          <div className="flex items-center justify-center h-16 p-4 border-l-2 dark:border-gray-500 border-borderHeader relative cursor-pointer">
             <Link to="/cart">
               <BasketLogo />
             </Link>

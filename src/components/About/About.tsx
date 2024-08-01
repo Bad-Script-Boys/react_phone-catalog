@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import styles from './About.module.scss';
-import { Breadcrumbs } from '../Breadcrumbs';
 import { Gallery } from '../Gallery';
 import { Categories } from '../Categories';
 import { Description } from '../Description';
 import { Specifications } from '../Specifications';
+import { Breadcrumbs } from '../Breadcrumbs';
 import { getDevices } from '../../utils/fetchProducts';
 import { Device } from '../../types/Device';
 import { useLocation } from 'react-router-dom';
 import { MayAlsoLike } from '../MayAlsoLike/MayAlsoLike';
-import { InfinitySpin } from 'react-loader-spinner';
 
 const {
   about,
@@ -64,7 +63,9 @@ export const AboutSection: React.FC = () => {
   return (
     <div className={about}>
       <div className={about__content}>
-        {/* <Breadcrumbs device={device} /> */}
+        <div className="mt-20">
+          <Breadcrumbs />
+        </div>
 
         {!loadingDevice && (
           <>

@@ -23,7 +23,7 @@ export const HotPrices = () => {
       <div className="mb-[24px] flex justify-between items-center">
         <h2 className="text-[32px] font-extrabold">Hot Prices</h2>
       </div>
-      <div className="flex overflow-hidden w-full gap-5">
+      <div className="flex overflow-hidden w-full gap-5 min-h-[650px] items-center">
         <div
           className="flex w-max animate-scrollForHotPrices gap-5"
           ref={firstAnimationRef}

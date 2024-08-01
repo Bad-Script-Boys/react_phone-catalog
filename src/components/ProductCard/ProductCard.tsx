@@ -10,6 +10,10 @@ type Props = {
   showFullPrice?: boolean;
   isHotPrices?: boolean;
   displayFullPriceOnly?: boolean;
+  isFavorite?: boolean;
+  isInBasket?: boolean;
+  onAddToFavorites?: () => void;
+  onAddToBasket?: () => void;
 };
 
 export const ProductCard: React.FC<Props> = ({
@@ -17,6 +21,10 @@ export const ProductCard: React.FC<Props> = ({
   showFullPrice = false,
   isHotPrices = false,
   displayFullPriceOnly = false,
+  // isFavoriteItem,
+  // isInBasket,
+  // onAddToFavorites,
+  // onAddToBasket,
 }) => {
   const { theme } = useTheme();
   const dispatch = useContext(DispatchContext);
@@ -62,10 +70,10 @@ export const ProductCard: React.FC<Props> = ({
 
   return (
     <div
-      className={`flex flex-col justify-between w-[272px] h-[506px] border border-transparent ${
+      className={`flex flex-col justify-between w-[272px] h-[506px] border ${
         theme === 'light'
           ? 'bg-white hover:shadow-lg border-[#E2E6E9]'
-          : 'bg-[#161827] hover:border-[#323542]'
+          : 'bg-[#161827] border-transparent hover:border-[#323542]'
       } rounded-lg p-8 `}
     >
       <Link to={`/${product.category}/${product.itemId}`}>
