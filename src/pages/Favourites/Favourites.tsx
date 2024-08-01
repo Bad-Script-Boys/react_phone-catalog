@@ -59,27 +59,29 @@ const Favorites: React.FC = () => {
         </div>
       </div>
 
-      <div className="flex flex-col w-full px-4 md:px-8 lg:px-[152px] lg:flex-row gap-4">
+      <div className="w-full px-4 md:px-8 lg:px-[152px]">
         {favoriteProducts.length === 0 ? (
           <div className="flex flex-col items-center justify-center w-full h-64">
             <p className="text-xl font-medium text-gray-600">
               Your favorites list is empty.
             </p>
             <Link to="/" className="mt-4 text-blue-500 hover:underline">
-              Continue Shopping
+              Continue shopping
             </Link>
           </div>
         ) : (
-          favoriteProducts.map(product => (
-            <ProductCard
-              key={product.itemId}
-              product={product}
-              isFavorite={favorites.includes(product.itemId)}
-              isInBasket={basket.some(item => item.itemId === product.itemId)}
-              onAddToFavorites={() => addToFavorites(product)}
-              onAddToBasket={() => addToBasket(product)}
-            />
-          ))
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+            {favoriteProducts.map(product => (
+              <ProductCard
+                key={product.itemId}
+                product={product}
+                isFavorite={favorites.includes(product.itemId)}
+                isInBasket={basket.some(item => item.itemId === product.itemId)}
+                onAddToFavorites={() => addToFavorites(product)}
+                onAddToBasket={() => addToBasket(product)}
+              />
+            ))}
+          </div>
         )}
       </div>
     </div>
