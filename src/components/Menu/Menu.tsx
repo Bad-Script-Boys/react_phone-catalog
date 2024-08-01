@@ -2,10 +2,16 @@ import React, { useContext } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { StateContext } from '../../Store';
+import { ThemeSwitch } from '../ThemeSwitch/ThemeSwitch';
+import { MainLogo } from '../ThemeIcons/MainLogo';
+import { CloseIcon } from '../ThemeIcons/CloseIcon';
+import { useTheme } from '../../contexts/ThemeContext';
+import { BasketLogo } from '../ThemeIcons/BasketLogo';
+import { FavoriteLogo } from '../ThemeIcons/FavoritesLogo';
 
 export const classActiveNavLink = ({ isActive }: { isActive: boolean }) =>
-  classNames('text-black font-bold text-xs uppercase', {
-    'border-b-2 border-black': isActive,
+  classNames('text-black font-bold text-xs uppercase dark:text-white', {
+    'border-b-2 border-black dark:border-white': isActive,
   });
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) =>
@@ -22,6 +28,7 @@ type Props = {
 };
 
 export const Menu: React.FC<Props> = ({ isOpen, setIsOpen }) => {
+  const { theme } = useTheme();
   const state = useContext(StateContext);
   const { favorites, basket } = state;
 
@@ -38,7 +45,7 @@ export const Menu: React.FC<Props> = ({ isOpen, setIsOpen }) => {
   return (
     <div
       className={classNames(
-        'fixed z-10 top-0 bg-white transition-transform duration-500 overflow-hidden w-screen h-screen flex flex-col',
+        'fixed z-10 top-0 bg-white dark:bg-darkTheme transition-transform duration-500 overflow-hidden w-screen h-screen flex flex-col',
         {
           'translate-x-0': isOpen,
           'translate-x-full ': !isOpen,
@@ -47,17 +54,16 @@ export const Menu: React.FC<Props> = ({ isOpen, setIsOpen }) => {
     >
       <div className="flex justify-between p-0 shadow-md h-16">
         <Link to="/">
-          <img
-            src="img/icons/nice-gadgets-logo.svg"
-            alt="logo"
-            className="ml-6 block w-16 h-6 my-5"
-          />
+          <MainLogo />
         </Link>
         <div
-          className="w-16 flex justify-center items-center border-l"
+          className="w-[82px] flex justify-center items-center border-l"
           onClick={() => setIsOpen(false)}
         >
-          <img src="img/icons/close-icon.svg" alt="close" className="w-6 h-6" />
+          <CloseIcon
+            fill={`${theme === 'light' ? 'black' : 'white'}`}
+            className="w-6 h-6 mr-4"
+          />
         </div>
       </div>
 
@@ -105,29 +111,35 @@ export const Menu: React.FC<Props> = ({ isOpen, setIsOpen }) => {
       </div>
 
       <div className="border-t border-gray-300 h-16 flex justify-between absolute bottom-0 w-full">
-        <NavLink to="/favorites" className={getLinkClass} onClick={click}>
-          <img
-            src="img/icons/favourites-logo.svg"
-            alt="favorites"
-            className="w-5 h-5"
-          />
-          {favorites.length !== 0 && (
-            <span className="flex items-center justify-center text-xs absolute top-3 left-7 h-4 w-4 bg-red-500 text-white rounded-full">
-              {favorites.length}
-            </span>
-          )}
-        </NavLink>
+        <div className="flex w-full">
+          <div className="w-1/3 flex justify-center items-center relative">
+            <div className="">
+              <ThemeSwitch />
+            </div>
+          </div>
 
-        <div className="border-r border-gray-300"></div>
+          <div className="w-1/3 flex justify-center items-center relative">
+            <NavLink to="/favourites" className={getLinkClass} onClick={click}>
+              <FavoriteLogo />
+              {favorites.length !== 0 && (
+                <span className="flex items-center justify-center text-xs absolute top-3 left-7 h-4 w-4 bg-red-500 text-white rounded-full">
+                  {favorites.length}
+                </span>
+              )}
+            </NavLink>
+          </div>
 
-        <NavLink to="/card" className={getLinkClass} onClick={click}>
-          <img src="img/icons/basket-logo.svg" alt="shop" className="w-5 h-5" />
-          {basket.length !== 0 && (
-            <span className="flex items-center justify-center text-xs absolute top-3 left-7 h-4 w-4 bg-red-500 text-white rounded-full">
-              {totalQuantity}
-            </span>
-          )}
-        </NavLink>
+          <div className="w-1/3 flex justify-center items-center relative">
+            <NavLink to="/cart" className={getLinkClass} onClick={click}>
+              <BasketLogo />
+              {basket.length !== 0 && (
+                <span className="flex items-center justify-center text-xs absolute top-3 left-7 h-4 w-4 bg-red-500 text-white rounded-full">
+                  {totalQuantity}
+                </span>
+              )}
+            </NavLink>
+          </div>
+        </div>
       </div>
     </div>
   );

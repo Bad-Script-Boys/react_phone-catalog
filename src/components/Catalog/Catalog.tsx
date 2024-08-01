@@ -233,4 +233,3 @@ export const Catalog: React.FC<Props> = ({ title, products }) => {
     </div>
   );
 };
-

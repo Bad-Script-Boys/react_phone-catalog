@@ -190,8 +190,10 @@ export const ProductCard: React.FC<Props> = ({
           )}
           <button
             onClick={addToFavorites}
-            className={`h-10 w-10 hover:text-white bg-transparent border border-[#E2E6E9] ${
-              theme === 'dark' && 'bg-[#323542] border-[#323542]'
+            className={`h-10 w-10 hover:text-white bg-transparent border ${
+              theme === 'dark'
+                ? 'bg-[#323542] border-[#323542]'
+                : 'border-[#E2E6E9]'
             } rounded-none flex items-center justify-center`}
           >
             {favorites.includes(product.itemId) ? (

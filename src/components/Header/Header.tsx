@@ -8,6 +8,7 @@ import { BasketLogo } from '../ThemeIcons/BasketLogo';
 import { FavoriteLogo } from '../ThemeIcons/FavoritesLogo';
 import { MainLogo } from '../ThemeIcons/MainLogo';
 import { useTheme } from '../../contexts/ThemeContext';
+import { BurgerIcon } from '../ThemeIcons/BurgerIcon';
 
 const classActiveNavLink = ({ isActive }: { isActive: boolean }) => {
   const { theme } = useTheme();
@@ -19,7 +20,20 @@ const classActiveNavLink = ({ isActive }: { isActive: boolean }) => {
     theme === 'light' ? 'before:animate-flame' : 'before:animate-flameDark';
 
   return isActive
-    ? `${activeTextColor} relative before:absolute before:top-9 before:left-0 before:w-full before:h-[3px] before:bg-black before:content-[''] ${flameAnimation}`
+    ? `${activeTextColor} relative before:absolute before:top-9 before:left-0 before:w-full before:h-[3px] before:bg-black before:content-[''] before:rounded-full ${flameAnimation}`
+    : inactiveTextColor;
+};
+
+const classActiveNavIcon = ({ isActive }: { isActive: boolean }) => {
+  const { theme } = useTheme();
+  const activeTextColor = theme === 'light' ? 'text-black' : 'text-white';
+  const inactiveTextColor = 'transition-transform duration-200 hover:scale-110';
+
+  const flameAnimation =
+    theme === 'light' ? 'before:animate-flame' : 'before:animate-flameDark';
+
+  return isActive
+    ? `${activeTextColor} relative before:absolute before:top-11 before:left-1/2 before:transform before:-translate-x-1/2 before:w-[60px] before:h-[3px] before:bg-black before:content-[''] before:rounded-full ${flameAnimation}`
     : inactiveTextColor;
 };
 
@@ -38,7 +52,7 @@ export const Header: React.FC = () => {
   return (
     <>
       <header
-        className={`header1 z-10 flex border-b-2 border-borderHeader items-center justify-between text-xs font-extrabold leading-3 tracking-wide uppercase fixed top-0 left-0 w-screen shadow-md h-16 ${theme === 'light' ? 'bg-white text-[#89939A]' : 'bg-[#0f1121] border-gray-500'}`}
+        className={`header1 z-10 flex border-b-2 dark:border-gray-500 border-[#323542] items-center justify-between text-xs font-extrabold leading-3 tracking-wide uppercase fixed top-0 left-0 w-screen shadow-md h-16 ${theme === 'light' ? 'bg-white text-[#89939A]' : 'bg-[#0f1121]'}`}
       >
         <div className="flex items-center justify-between h-full">
           <Link to="/">
@@ -70,22 +84,22 @@ export const Header: React.FC = () => {
             </ul>
           </nav>
         </div>
-        <div className="hidden sm:flex items-center justify-between mr-4">
+        <div className="hidden sm:flex items-center justify-between mx-4 pl-3 border-x-2 dark:border-gray-500 border-[#323542]">
           <ThemeSwitch />
-          <div className="flex items-center justify-center p-4 border-1 border-borderHeader relative cursor-pointer">
-            <Link to="/favourites">
+          <div className="flex items-center justify-center p-4 border-l-2 dark:border-gray-500 border-[#323542] relative cursor-pointer">
+            <NavLink to="/favourites" className={classActiveNavIcon}>
               <FavoriteLogo />
-            </Link>
+            </NavLink>
             {favorites.length !== 0 && (
               <span className="flex items-center justify-center text-xs absolute top-3 left-7 h-4 w-4 bg-red-500 text-white rounded-full">
                 {favorites.length}
               </span>
             )}
           </div>
-          <div className="flex items-center justify-center h-16 p-4 border-l-2 dark:border-gray-500 border-borderHeader relative cursor-pointer">
-            <Link to="/cart">
+          <div className="flex items-center justify-center border-l-2 dark:border-gray-500 border-[#323542] h-16 p-4  relative cursor-pointer">
+            <NavLink to="/cart" className={classActiveNavIcon}>
               <BasketLogo />
-            </Link>
+            </NavLink>
             {basket.length !== 0 && (
               <span className="flex items-center justify-center text-xs absolute top-3 left-7 h-4 w-4 bg-red-500 text-white rounded-full">
                 {totalQuantity}
@@ -93,11 +107,10 @@ export const Header: React.FC = () => {
             )}
           </div>
         </div>
-        <div className="flex items-center justify-center p-5 border-l border-borderHeader sm:hidden relative h-full">
-          <img
-            src="img/icons/menu-burger-logo.svg"
-            alt="menu"
-            className="h-full w-full object-center"
+        <div className="flex items-center justify-center p-5 border-l-2 dark:border-gray-500 border-[#323542] sm:hidden relative h-full">
+          <BurgerIcon
+            fill={`${theme === 'light' ? 'black' : 'white'}`}
+            className="w-6 h-6 mr-4"
             onClick={() => setIsOpen(true)}
           />
         </div>
