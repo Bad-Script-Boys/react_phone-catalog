@@ -18,10 +18,12 @@ type Props = {
 };
 
 export const ThemeProvider: React.FC<Props> = ({ children }) => {
-  const [theme, setTheme] = useState('light');
+  const storedTheme = localStorage.getItem('theme');
+  const [theme, setTheme] = useState(storedTheme || 'light');
 
   useEffect(() => {
     document.body.className = theme === 'light' ? 'light' : 'dark';
+    localStorage.setItem('theme', theme);
   }, [theme]);
 
   const toggleTheme = () => {

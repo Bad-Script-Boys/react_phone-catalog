@@ -1,18 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Welcome } from '../../components/Welcome/Welcome';
 import { BrandNewModels } from '../../components/BrandNewModels/BrandNewModel';
 import { ShopByCategory } from '../../components/ShopByCategory/ShopByCategory';
 import { HotPrices } from '../../components/HotPrices/HotPrices';
 import { MayAlsoLike } from '../../components/MayAlsoLike/MayAlsoLike';
 
-const Home: React.FC = () => (
-  <>
-    <Welcome />
-    <BrandNewModels />
-    <ShopByCategory />
-    <HotPrices />
-    <MayAlsoLike />
-  </>
-);
+const Home: React.FC = () => {
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, []);
+  return (
+    <>
+      <Welcome />
+      <BrandNewModels />
+      <ShopByCategory />
+      <HotPrices />
+      <MayAlsoLike />
+    </>
+  );
+};
 
 export default Home;
