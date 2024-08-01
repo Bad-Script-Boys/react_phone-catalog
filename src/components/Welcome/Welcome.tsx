@@ -27,7 +27,7 @@ export const Welcome = () => {
       <h1 className="text-[48px] font-extrabold pt-12 lg:mx-[152px] mb-[10px]">
         Welcome to Nice Gadgets store!
       </h1>
-      <div className="mx-8 mb-4 lg:mx-[152px] gap-4 flex justify-between ">
+      <div className="mx-8 mb-4 lg:mx-[152px] gap-4 flex justify-center ">
         <button
           className={`w-8 border-2 ${theme === 'dark' ? 'bg-[#323542] border-none' : ' border-[#B4BDC3]'}`}
           onClick={handlePrev}

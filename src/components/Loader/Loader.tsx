@@ -1,4 +1,4 @@
-import styles from './Loader.module.scss'; // Импорт SCSS модуля
+import styles from './Loader.module.scss';
 
 export const Loader = () => {
   return (

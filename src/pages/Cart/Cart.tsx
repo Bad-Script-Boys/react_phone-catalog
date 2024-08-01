@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { DispatchContext, StateContext } from '../../Store';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTheme } from '../../contexts/ThemeContext';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
 
 const Cart: React.FC = () => {
   const { theme } = useTheme();
@@ -53,9 +54,7 @@ const Cart: React.FC = () => {
       <div className="w-full px-4 md:px-8 lg:px-[152px]">
         <div className="mt-[100px] w-full px-4 md:px-8 lg:px-[152px]"></div>
         <div className="flex flex-col items-start mb-4 md:mb-6 lg:mb-8">
-          <Link to="/shop" className="text-lg font-medium mb-2">
-            Back
-          </Link>
+          <Breadcrumbs />
           <h1 className="text-2xl md:text-3xl lg:text-[46px]">Cart</h1>
         </div>
       </div>

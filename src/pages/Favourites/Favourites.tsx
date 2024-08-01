@@ -53,9 +53,6 @@ const Favorites: React.FC = () => {
       <div className="mt-[100px] w-full px-4 md:px-8 lg:px-[152px]"></div>
       <div className="w-full px-4 md:px-8 lg:px-[152px]">
         <div className="flex flex-col items-start mb-4 md:mb-6 lg:mb-8">
-          {/* <Link to="/" className="text-gray-700 text-lg font-medium mb-2">
-            Back
-          </Link> */}
           <Breadcrumbs />
           <h1 className="text-2xl md:text-3xl lg:text-[46px]">Favorites</h1>
         </div>
@@ -80,7 +77,7 @@ const Favorites: React.FC = () => {
             </Link>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-4">
             {favoriteProducts.map(product => (
               <ProductCard
                 key={product.itemId}
