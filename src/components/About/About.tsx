@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './About.module.scss';
 import { Gallery } from '../Gallery';
-import { Categories } from '../Categories';
+import { Categories } from '../Categories/Categories';
 import { Description } from '../Description';
 import { Specifications } from '../Specifications';
 import { Breadcrumbs } from '../Breadcrumbs';
@@ -26,6 +26,13 @@ export const AboutSection: React.FC = () => {
   const lastIndx = pathname.lastIndexOf('/') + 1;
   const deviceId = pathname.slice(lastIndx);
   const deviceCategory = pathname.slice(1, lastIndx - 1);
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, [pathname]);
 
   useEffect(() => {
     setLoadingDevice(true);

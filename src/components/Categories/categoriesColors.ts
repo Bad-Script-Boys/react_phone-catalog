@@ -8,7 +8,7 @@ export function colorNameToRgb(colorName: string) {
     white: 'rgb(255, 255, 255)',
     red: 'rgb(231 51 51 / 91%)',
     green: 'rgb(139 222 181 / 69%)',
-    blue: 'rgb(0, 0, 255)',
+    blue: 'rgb(67 67 133)',
     yellow: 'rgb(248 255 47 / 67%)',
     cyan: 'rgb(0, 255, 255)',
     magenta: 'rgb(255, 0, 255)',

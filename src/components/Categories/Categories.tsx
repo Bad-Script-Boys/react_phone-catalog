@@ -43,7 +43,7 @@ type Props = {
 
 export const Categories: React.FC<Props> = ({ device }) => {
   const [currColor, setCurrColor] = useState(device?.color);
-  const [currCapacity, setCurrCapacity] = useState(device?.capacity);
+  const [currCapacity, setCurrCapacity] = useState('');
 
   const navigate = useNavigate();
   const { pathname } = useLocation();
@@ -57,49 +57,51 @@ export const Categories: React.FC<Props> = ({ device }) => {
   }
 
   useEffect(() => {
-    if (currColor) {
-      const pathArr = pathname.split('-');
-      let newPath: string[] = [];
-
-      for (let i = 0; i < pathArr.length; i++) {
-        if (
-          pathArr[i].toLowerCase().includes('gb') ||
-          pathArr[i].toLowerCase().includes('tb') ||
-          pathArr[i].toLowerCase().includes('mm')
-        ) {
-          newPath = pathArr.slice(0, i + 1);
-          newPath.push(currColor.toLowerCase().replace(/ /g, '-'));
-          break;
-        }
+    const pathArr = pathname.split('-');
+    for (let i = 0; i < pathArr.length; i++) {
+      if (
+        pathArr[i].toLowerCase().includes('gb') ||
+        pathArr[i].toLowerCase().includes('tb') ||
+        pathArr[i].toLowerCase().includes('mm')
+      ) {
+        setCurrCapacity(pathArr[i].toUpperCase());
+        setCurrColor(pathArr[i + 1]);
+        break;
       }
-      navigate(newPath.join('-'));
     }
-  }, [currCapacity, currColor, pathname, navigate]);
-
-  useEffect(() => {
-    if (currCapacity) {
-      const pathArr = pathname.split('-');
-      for (let i = 0; i < pathArr.length; i++) {
-        if (
-          pathArr[i].toLowerCase().includes('gb') ||
-          pathArr[i].toLowerCase().includes('tb') ||
-          pathArr[i].toLowerCase().includes('mm')
-        ) {
-          console.log(pathArr[i]);
-          pathArr[i] = currCapacity.toLowerCase();
-          break;
-        }
-      }
-      navigate(pathArr.join('-'));
-    }
-  }, [currCapacity, pathname, navigate]);
+  }, []);
 
   const handleCurrColor = (chosenСolor: string) => {
-    setCurrColor(chosenСolor);
+    const pathArr = pathname.split('-');
+    let newPath: string[] = [];
+
+    for (let i = 0; i < pathArr.length; i++) {
+      if (
+        pathArr[i].toLowerCase().includes('gb') ||
+        pathArr[i].toLowerCase().includes('tb') ||
+        pathArr[i].toLowerCase().includes('mm')
+      ) {
+        newPath = pathArr.slice(0, i + 1);
+        newPath.push(chosenСolor.toLowerCase().replace(/ /g, '-'));
+        break;
+      }
+    }
+    navigate(newPath.join('-'));
   };
 
   const handleCurrCapacity = (chosenСapacity: string) => {
-    setCurrCapacity(chosenСapacity);
+    const pathArr = pathname.split('-');
+    for (let i = 0; i < pathArr.length; i++) {
+      if (
+        pathArr[i].toLowerCase().includes('gb') ||
+        pathArr[i].toLowerCase().includes('tb') ||
+        pathArr[i].toLowerCase().includes('mm')
+      ) {
+        pathArr[i] = chosenСapacity.toLowerCase();
+        break;
+      }
+    }
+    navigate(pathArr.join('-'));
   };
 
   const handleAddToCart = () => {
@@ -205,8 +207,8 @@ export const Categories: React.FC<Props> = ({ device }) => {
                   <span
                     className={categories__memory_btn}
                     style={{
-                      backgroundColor: `${currCapacity === capacity.toString() && '#313237'}`,
-                      color: `${currCapacity === capacity.toString() && 'white'}`,
+                      backgroundColor: `${currCapacity === capacity.toString() ? '#313237' : 'white'}`,
+                      color: `${currCapacity === capacity.toString() ? 'white' : '#313237'}`,
                     }}
                   >
                     {capacity}
