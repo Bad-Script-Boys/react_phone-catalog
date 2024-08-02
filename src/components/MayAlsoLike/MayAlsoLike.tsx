@@ -3,6 +3,7 @@ import productsFromServer from '../../api/products.json';
 import { Product } from '../../types';
 import { ProductCard } from '../ProductCard';
 import { CardWrapper } from '../../utils/CardWrapper';
+import { useLocation } from 'react-router-dom';
 
 const getRandomPhones = (phones: Product[], count: number) => {
   const shuffled = phones.sort(() => 0.5 - Math.random());
@@ -10,11 +11,28 @@ const getRandomPhones = (phones: Product[], count: number) => {
 };
 
 export const MayAlsoLike = () => {
-  const phones: Product[] = productsFromServer.filter(
-    product => product.category === 'phones',
+  const { pathname } = useLocation();
+
+  const selectType = pathname.split('-');
+
+  let currentType = '';
+
+  for (let i = 0; i < selectType.length; i++) {
+    if (selectType[i].toLowerCase().includes('phones')) {
+      currentType = 'phones';
+    }
+    if (selectType[i].toLowerCase().includes('tablets')) {
+      currentType = 'tablets';
+    }
+    if (selectType[i].toLowerCase().includes('accessories')) {
+      currentType = 'accessories';
+    }
+  }
+  const typeDevices: Product[] = productsFromServer.filter(
+    product => product.category === currentType,
   );
 
-  const randomPhones = getRandomPhones(phones, 30);
+  const randomDevices = getRandomPhones(typeDevices, 30);
 
   const firstAnimationRef = useRef<HTMLDivElement | null>(null);
   const secondAnimationRef = useRef<HTMLDivElement | null>(null);
@@ -29,7 +47,7 @@ export const MayAlsoLike = () => {
           className="flex w-max animate-scrollForMayAlsoLike gap-5"
           ref={firstAnimationRef}
         >
-          {randomPhones.map(product => (
+          {randomDevices.map(product => (
             <CardWrapper
               key={product.id}
               firstAnimationRef={firstAnimationRef}
@@ -44,7 +62,7 @@ export const MayAlsoLike = () => {
           aria-hidden="true"
           ref={secondAnimationRef}
         >
-          {randomPhones.map(product => (
+          {randomDevices.map(product => (
             <CardWrapper
               key={product.id}
               firstAnimationRef={firstAnimationRef}
