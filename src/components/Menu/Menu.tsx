@@ -52,8 +52,8 @@ export const Menu: React.FC<Props> = ({ isOpen, setIsOpen }) => {
         },
       )}
     >
-      <div className="flex justify-between p-0 shadow-md h-16">
-        <Link to="/">
+      <div className="flex justify-between shadow-md h-16">
+        <Link className="flex items-center ml-6" to="/">
           <MainLogo />
         </Link>
         <div
