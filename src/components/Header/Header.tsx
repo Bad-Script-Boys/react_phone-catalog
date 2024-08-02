@@ -52,7 +52,7 @@ export const Header: React.FC = () => {
   return (
     <>
       <header
-        className={`header1 z-10 flex border-b-2 dark:border-gray-500 border-[#323542] items-center justify-between text-xs font-extrabold leading-3 tracking-wide uppercase fixed top-0 left-0 w-screen shadow-md h-16 ${theme === 'light' ? 'bg-white text-[#89939A]' : 'bg-[#0f1121]'}`}
+        className={`header1 z-10 flex border-b-2 dark:border-gray-500 border-[#E2E6E9] items-center justify-between text-xs font-extrabold leading-3 tracking-wide uppercase fixed top-0 left-0 w-screen shadow-md h-16 ${theme === 'light' ? 'bg-white text-[#89939A]' : 'bg-[#0f1121]'}`}
       >
         <div className="flex items-center justify-between h-full">
           <Link to="/">
@@ -84,9 +84,9 @@ export const Header: React.FC = () => {
             </ul>
           </nav>
         </div>
-        <div className="hidden sm:flex items-center justify-between mx-4 pl-3 border-x-2 dark:border-gray-500 border-[#323542]">
+        <div className="hidden sm:flex items-center justify-between mx-4 pl-3 border-x-2 dark:border-gray-500 border-[#E2E6E9]">
           <ThemeSwitch />
-          <div className="flex items-center justify-center p-4 border-l-2 dark:border-gray-500 border-[#323542] relative cursor-pointer">
+          <div className="flex items-center justify-center p-4 border-l-2 dark:border-gray-500 border-[#E2E6E9] relative cursor-pointer">
             <NavLink to="/favourites" className={classActiveNavIcon}>
               <FavoriteLogo />
             </NavLink>
@@ -96,7 +96,7 @@ export const Header: React.FC = () => {
               </span>
             )}
           </div>
-          <div className="flex items-center justify-center border-l-2 dark:border-gray-500 border-[#323542] h-16 p-4  relative cursor-pointer">
+          <div className="flex items-center justify-center border-l-2 dark:border-gray-500 border-[#E2E6E9] h-16 p-4  relative cursor-pointer">
             <NavLink to="/cart" className={classActiveNavIcon}>
               <BasketLogo />
             </NavLink>
@@ -107,7 +107,7 @@ export const Header: React.FC = () => {
             )}
           </div>
         </div>
-        <div className="flex items-center justify-center p-5 border-l-2 dark:border-gray-500 border-[#323542] sm:hidden relative h-full">
+        <div className="flex items-center justify-center p-5 border-l-2 dark:border-gray-500 border-[#E2E6E9] sm:hidden relative h-full">
           <BurgerIcon
             fill={`${theme === 'light' ? 'black' : 'white'}`}
             className="w-6 h-6 mr-4"
