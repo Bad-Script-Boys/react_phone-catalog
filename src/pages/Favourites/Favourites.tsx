@@ -62,7 +62,7 @@ const Favorites: React.FC = () => {
         {favoriteProducts.length === 0 ? (
           <div className="flex flex-col items-center justify-center w-full h-64  mb-16">
             <img
-              src="img/icons/empty-favorite.jpg"
+              src="img/icons/empty-favorite.png"
               alt="Icon"
               className="mb-4 block h-52 w-52"
             />
