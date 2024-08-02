@@ -26,6 +26,8 @@ export const Catalog: React.FC<Props> = ({ title, products }) => {
   const minPrice = Math.min(...products.map(p => p.price));
   const maxPrice = Math.max(...products.map(p => p.price));
   const [priceRange, setPriceRange] = useState([minPrice, maxPrice]);
+  const trackAnimationClass =
+    theme === 'dark' ? 'animate-flameDark' : 'animate-flame';
 
   useEffect(() => {
     window.scrollTo({
@@ -173,7 +175,7 @@ export const Catalog: React.FC<Props> = ({ title, products }) => {
               <option value={products.length}>All</option>
             </select>
           </div>
-          <div>
+          <div className="pl-2">
             <label
               htmlFor="priceRange"
               className={`block text-sm pt-12 font-medium text-${theme === 'dark' ? 'gray-400' : 'gray-700'}`}
@@ -186,21 +188,36 @@ export const Catalog: React.FC<Props> = ({ title, products }) => {
               onChange={values => setPriceRange(values)}
               renderTrack={({ props, children }) => (
                 <div
-                  className="h-1 w-[200px] bg-[#ccc] dark:bg-[#905BFF]"
                   {...props}
                   style={{
                     ...props.style,
+                    height: '3px',
+                    width: '200px',
+                    background:
+                      theme === 'dark'
+                        ? `linear-gradient(to right, #89939A ${((priceRange[0] - minPrice) / (maxPrice - minPrice)) * 100}%,
+                #905BFF ${((priceRange[0] - minPrice) / (maxPrice - minPrice)) * 100}%,
+                #905BFF ${((priceRange[1] - minPrice) / (maxPrice - minPrice)) * 100}%,
+                #89939A ${((priceRange[1] - minPrice) / (maxPrice - minPrice)) * 100}%)`
+                        : `linear-gradient(to right, #ccc ${((priceRange[0] - minPrice) / (maxPrice - minPrice)) * 100}%,
+                yellow ${((priceRange[0] - minPrice) / (maxPrice - minPrice)) * 100}%,
+                yellow ${((priceRange[1] - minPrice) / (maxPrice - minPrice)) * 100}%,
+                #ccc ${((priceRange[1] - minPrice) / (maxPrice - minPrice)) * 100}%)`,
                   }}
+                  className={`rounded ${trackAnimationClass}`}
                 >
                   {children}
                 </div>
               )}
               renderThumb={({ props }) => (
                 <div
-                  className="h-3 w-3 bg-black dark:bg-white rounded-full"
                   {...props}
                   style={{
                     ...props.style,
+                    height: '13px',
+                    width: '13px',
+                    backgroundColor: theme === 'dark' ? 'white' : '#323542',
+                    borderRadius: '50%',
                   }}
                 />
               )}
