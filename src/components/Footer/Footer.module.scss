@@ -10,25 +10,24 @@
 
 .footer {
   @apply 
-  border-t-2 border-customTextColor w-screen;
+  border-t-2 border-customTextColor max-w-full mx-auto justify-center;
   
   &__content {
   @apply 
-  py-8 flex justify-between max-w-[100%] 
-  flex-wrap max-w-[1136px] 
-  px-4 md:px-6 lg:px-8 mx-auto;
+  py-8 px-4 mx-auto sm:flex sm:justify-between items-center max-w-screen-custom-lg;
   
   }
 
-  &__logo_link {
+  &__logo_wrap {
+    @apply block mb-4 sm:mb-0;
   }
 
   &__list {
-    @apply flex justify-between w-[288px];
+    @apply block mb-4 w-[378px] sm:flex sm:justify-around md:justify-between sm:mb-0 space-y-4 sm:space-y-0;
   }
 
   &__item {
-    display: block;
+    display: block space-y-2; 
   }
 
   &__link {
@@ -39,7 +38,7 @@
   }
 
   &__btn_wrap {
-    @apply flex items-center justify-center;
+    @apply flex items-center justify-center block;
   }
 
 }
@@ -55,9 +54,10 @@
 }
 
 .btn_toTop {
-  @apply bg-white p-2 hover:shadow-md 
-  w-[32px] h-[32px] hover:border 
-  rounded-none bg-transparent 
+  @apply 
+  bg-white p-2 w-[32px] h-[32px] 
+  hover:bg-gray-800 transition
+  rounded-none bg-transparent hover:shadow-md
   flex items-center justify-center
-  text-black border-[#B4BDC4] border-[1px];
+  border-[#B4BDC4] border-[1px];
 }

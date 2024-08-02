@@ -4,6 +4,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { useEffect, useState } from 'react';
 import { Loader } from './components/Loader/Loader';
+import NotificationProvider from './components/Notification/Notification';
 
 export function App() {
   const [loading, setLoading] = useState(true);
@@ -29,9 +30,11 @@ export function App() {
 
   return (
     <ThemeProvider>
-      <Header />
-      {loading ? <Loader /> : <Outlet />}
-      <Footer />
+      <NotificationProvider>
+        <Header />
+        {loading ? <Loader /> : <Outlet />}
+        <Footer />
+      </NotificationProvider>
     </ThemeProvider>
   );
 }

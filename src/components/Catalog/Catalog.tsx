@@ -4,6 +4,7 @@ import { useTheme } from '../../contexts/ThemeContext';
 import { Product } from '../../types';
 import { Breadcrumbs } from '../Breadcrumbs';
 import { ProductCard } from '../ProductCard';
+import { Range } from 'react-range';
 
 type Props = {
   title: string;
@@ -22,6 +23,9 @@ export const Catalog: React.FC<Props> = ({ title, products }) => {
   const [currentPage, setCurrentPage] = useState(
     Number(searchParams.get('page')) || 1,
   );
+  const minPrice = Math.min(...products.map(p => p.price));
+  const maxPrice = Math.max(...products.map(p => p.price));
+  const [priceRange, setPriceRange] = useState([minPrice, maxPrice]);
 
   useEffect(() => {
     window.scrollTo({
@@ -29,6 +33,14 @@ export const Catalog: React.FC<Props> = ({ title, products }) => {
       behavior: 'smooth',
     });
   }, [currentPage]);
+
+  useEffect(() => {
+    const params = new URLSearchParams();
+    params.append('page', currentPage.toString());
+    params.append('perPage', itemsPerPage.toString());
+    params.append('sort', sort);
+    navigate({ search: params.toString() });
+  }, [currentPage, itemsPerPage, sort, navigate]);
 
   const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSort(e.target.value);
@@ -57,9 +69,13 @@ export const Catalog: React.FC<Props> = ({ title, products }) => {
     return 0;
   });
 
-  const totalPages = Math.ceil(sortedProducts.length / itemsPerPage);
+  const filteredProducts = sortedProducts.filter(
+    product => product.price >= priceRange[0] && product.price <= priceRange[1],
+  );
+
+  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
-  const paginatedProducts = sortedProducts.slice(
+  const paginatedProducts = filteredProducts.slice(
     startIndex,
     startIndex + itemsPerPage,
   );
@@ -118,8 +134,8 @@ export const Catalog: React.FC<Props> = ({ title, products }) => {
           </p>
         </div>
       </div>
-      <div className="flex justify-between items-center mb-8">
-        <div className="flex space-x-4">
+      <div className="flex flex-col sm:flex-row sm:justify-between items-center mb-8">
+        <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 items-center">
           <div>
             <label
               htmlFor="sort"
@@ -131,7 +147,7 @@ export const Catalog: React.FC<Props> = ({ title, products }) => {
               id="sort"
               value={sort}
               onChange={handleSortChange}
-              className={`mt-1 block w-full pl-3 pr-10 py-2 text-base border border-${theme === 'dark' && '[#323542]'} focus:outline-none focus:border-indigo-500 sm:text-sm rounded-md shadow-sm bg-${theme === 'dark' && '[#323542]'} text-${theme === 'dark' && 'white'}`}
+              className={`mt-1 block w-full pl-3 pr-10 py-2 text-base border border-${theme === 'dark' ? '[#323542]' : 'gray-300'} focus:outline-none focus:border-indigo-500 sm:text-sm rounded-md shadow-sm bg-${theme === 'dark' ? '[#323542]' : 'white'} text-${theme === 'dark' ? 'white' : 'black'}`}
             >
               <option value="newest">Newest</option>
               <option value="price">Cheapest</option>
@@ -149,7 +165,7 @@ export const Catalog: React.FC<Props> = ({ title, products }) => {
               id="itemsPerPage"
               value={itemsPerPage}
               onChange={handleItemsPerPageChange}
-              className={`mt-1 block w-full pl-3 pr-10 py-2 text-base border border-${theme === 'dark' && '[#323542]'} focus:outline-none focus:border-indigo-500 sm:text-sm rounded-md bg-${theme === 'dark' && '[#323542]'} text-${theme === 'dark' && 'white'}`}
+              className={`mt-1 block w-full pl-3 pr-10 py-2 text-base border border-${theme === 'dark' ? '[#323542]' : 'gray-300'} focus:outline-none focus:border-indigo-500 sm:text-sm rounded-md shadow-sm bg-${theme === 'dark' ? '[#323542]' : 'white'} text-${theme === 'dark' ? 'white' : 'black'}`}
             >
               <option value={4}>4</option>
               <option value={8}>8</option>
@@ -157,16 +173,51 @@ export const Catalog: React.FC<Props> = ({ title, products }) => {
               <option value={products.length}>All</option>
             </select>
           </div>
+          <div>
+            <label
+              htmlFor="priceRange"
+              className={`block text-sm pt-12 font-medium text-${theme === 'dark' ? 'gray-400' : 'gray-700'}`}
+            ></label>
+            <Range
+              step={1}
+              min={minPrice}
+              max={maxPrice}
+              values={priceRange}
+              onChange={values => setPriceRange(values)}
+              renderTrack={({ props, children }) => (
+                <div
+                  className="h-1 w-[200px] bg-[#ccc] dark:bg-[#905BFF]"
+                  {...props}
+                  style={{
+                    ...props.style,
+                  }}
+                >
+                  {children}
+                </div>
+              )}
+              renderThumb={({ props }) => (
+                <div
+                  className="h-3 w-3 bg-black dark:bg-white rounded-full"
+                  {...props}
+                  style={{
+                    ...props.style,
+                  }}
+                />
+              )}
+            />
+            <div className="flex justify-between text-sm text-black dark:text-gray-400 mt-2">
+              <span>${priceRange[0]}</span>
+              <span>${priceRange[1]}</span>
+            </div>
+          </div>
         </div>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 justify-center">
         {paginatedProducts.map(product => (
-          <ProductCard
-            product={product}
-            key={product.id}
-            showFullPrice
-            isHotPrices
-          />
+          <div className="mx-auto" key={product.id}>
+            <ProductCard product={product} showFullPrice isHotPrices />
+          </div>
         ))}
       </div>
 

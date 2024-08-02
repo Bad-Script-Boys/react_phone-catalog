@@ -3,6 +3,7 @@ import { DispatchContext, StateContext } from '../../Store';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTheme } from '../../contexts/ThemeContext';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
+import useNotification from '../../components/Notification/useNotification';
 
 const Cart: React.FC = () => {
   const { theme } = useTheme();
@@ -10,17 +11,21 @@ const Cart: React.FC = () => {
   const dispatch = useContext(DispatchContext);
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
+  const { notifySuccess, notifyInfo } = useNotification();
 
   const increaseQuantity = (itemId: string) => {
     dispatch({ type: 'addOneItem', payload: { itemId, quantity: 1 } });
+    notifySuccess('Item quantity increased!');
   };
 
   const decreaseQuantity = (itemId: string) => {
     dispatch({ type: 'deleteOneItem', payload: { itemId, quantity: 1 } });
+    notifySuccess('Item quantity decreaded!');
   };
 
   const removeItem = (itemId: string) => {
     dispatch({ type: 'removeFromBasket', payload: { itemId } });
+    notifyInfo('Item removed from basket!');
   };
 
   const clearBasket = () => {
@@ -30,6 +35,7 @@ const Cart: React.FC = () => {
         payload: { itemId: item.itemId },
       });
     });
+    notifyInfo('All items removed from basket!');
   };
 
   const handleCheckout = () => {
@@ -39,6 +45,7 @@ const Cart: React.FC = () => {
   const handleCloseModal = () => {
     setShowModal(false);
     navigate('/');
+    notifySuccess('Checkout completed successfully!');
   };
 
   const totalItems = basket.reduce((acc, item) => acc + item.quantity, 0);

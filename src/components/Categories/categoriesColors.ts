@@ -34,6 +34,9 @@ export function colorNameToRgb(colorName: string) {
     coral: 'rgb(255, 127, 80)',
     graphite: 'rgb(65, 66, 76)',
     sierrablue: 'rgb(191, 218, 247)',
+    'sky blue': 'rgb(135, 206, 235)',
+    'space gray': 'rgb(79,91,102)',
+    'rose gold': 'rgb(241 191 199)',
   };
 
   colorName = colorName.toLowerCase();

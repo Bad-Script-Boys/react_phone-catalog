@@ -54,7 +54,7 @@ export const Header: React.FC = () => {
       <header
         className={`header1 z-10 flex border-b-2 dark:border-gray-500 border-[#E2E6E9] items-center justify-between text-xs font-extrabold leading-3 tracking-wide uppercase fixed top-0 left-0 w-screen shadow-md h-16 ${theme === 'light' ? 'bg-white text-[#89939A]' : 'bg-[#0f1121]'}`}
       >
-        <div className="flex items-center justify-between h-full">
+        <div className="flex items-center justify-between h-full ml-6 sm:ml-4">
           <Link to="/">
             <MainLogo />
           </Link>

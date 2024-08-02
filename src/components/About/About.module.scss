@@ -8,11 +8,10 @@
   &__section_title {
     @apply font-extrabold text-4xl  
   leading-[41px] tracking-tight 
-  text-gray-900 
   mb-8 custom-md:mb-10;
   }
 
   &__main {
-    @apply flex grid grid-cols-1 sm:grid-cols-2 gap-10 p-4;
+    @apply grid grid-cols-1 sm:grid-cols-2 gap-10 p-4;
   }
 }

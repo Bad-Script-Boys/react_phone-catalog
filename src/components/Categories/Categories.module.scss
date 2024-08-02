@@ -24,7 +24,7 @@
     }
     &_title {
       @apply font-normal text-xs 
-      leading-[15px] text-[#89939A] 
+      leading-[15px] text-[#89939A]
       whitespace-nowrap mb-2 font-mont;
     }
     &_vers {
@@ -79,7 +79,7 @@
     }
     &_option {
       @apply w-[60px] h-[32px] 
-      border-[1px] 
+      border-[1px]
       cursor-pointer box-border;
     }
 
@@ -114,7 +114,7 @@
     &_price {
       @apply flex items-baseline space-x-2 font-normal;
       &_value {
-        @apply text-5xl font-bold text-gray-900 font-extrabold text-[32px] leading-[41px] tracking-[-0.01em] text-[#313237];
+        @apply text-5xl font-extrabold text-[32px] leading-[41px] tracking-[-0.01em] ;
       }
       &_discount {
         @apply text-3xl text-gray-400 line-through font-normal font-medium text-[22px] leading-[28px] line-through text-[#89939A];
@@ -156,7 +156,7 @@
           @apply tracking-tight font-semibold text-xs leading-[15px] text-[#89939A];
         }
         &_value {
-          @apply tracking-tight font-semibold text-xs leading-[15px] text-right text-[#313237];
+          @apply tracking-tight font-semibold text-xs leading-[15px] text-right ;
         }
       }
     }
