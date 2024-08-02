@@ -25,7 +25,7 @@ export const Footer: React.FC = () => {
         <ul className={footer__list}>
           <li className={footer__item}>
             <a
-              href="#"
+              href="https://github.com/Bad-Script-Boys/react_phone-catalog"
               className="font-extrabold text-customTextColor hover:text-black dark:text-white transition-all duration-300 dark:hover:text-[#905BFF]"
             >
               Github

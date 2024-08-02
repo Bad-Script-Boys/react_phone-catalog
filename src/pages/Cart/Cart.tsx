@@ -55,18 +55,16 @@ const Cart: React.FC = () => {
   );
 
   return (
-    <div
-      className={`flex flex-col items-center ${theme === 'light' ? 'bg-white text-black' : 'bg-gray-900 text-white'}`}
-    >
-      <div className="w-full px-4 md:px-8 lg:px-[152px]">
-        <div className="mt-[100px] w-full px-4 md:px-8 lg:px-[152px]"></div>
+    <div className="max-w-screen-2xl m-auto flex flex-col items-center">
+      <div className="w-full px-4 md:px-8 ">
+        <div className="mt-[100px] w-full px-4 md:px-8"></div>
         <div className="flex flex-col items-start mb-4 md:mb-6 lg:mb-8">
           <Breadcrumbs />
           <h1 className="text-2xl md:text-3xl lg:text-[46px]">Cart</h1>
         </div>
       </div>
 
-      <div className="flex flex-col w-full px-4 md:px-8 lg:px-[152px] lg:flex-row">
+      <div className="flex flex-col w-full px-4 md:px-8  lg:flex-row">
         {basket.length === 0 ? (
           <div className="flex flex-col items-center justify-center w-full h-64 mb-16">
             <img
@@ -88,7 +86,7 @@ const Cart: React.FC = () => {
               {basket.map(item => (
                 <div
                   key={item.itemId}
-                  className={`flex items-center border border-solid mb-4 h-[128px] ${theme === 'light' ? 'border-gray-300' : 'border-gray-600'}`}
+                  className={`flex items-center border border-solid mb-4 h-[128px] ${theme === 'light' ? 'border-gray-300 bg-white text-black' : 'border-gray-600 bg-gray-900 text-white'}`}
                 >
                   <button
                     className="text-red-500 mr-4 ml-4 hover:text-white hover:bg-[#313237] transition duration-200 ease-in-out p-2 rounded-full"
@@ -146,7 +144,7 @@ const Cart: React.FC = () => {
             </div>
 
             <div
-              className={`w-full md:w-[368px] max-h-[288px] mb-[30px] border border-solid ${theme === 'light' ? 'border-gray-300' : 'border-gray-600'} flex flex-col items-center md:ml-8 py-6 overflow-y-auto`}
+              className={`w-full md:w-[368px] max-h-[288px] mb-[30px] border border-solid ${theme === 'light' ? 'border-gray-300' : 'border-gray-600'} flex flex-col items-center md:ml-8 py-6 overflow-hidden`}
             >
               <p
                 className={`text-2xl md:text-3xl lg:text-[32px] font-bold ${theme === 'light' ? 'text-gray-900' : 'text-white'} text-left mb-4`}
