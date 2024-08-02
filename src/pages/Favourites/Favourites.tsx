@@ -5,10 +5,12 @@ import { Product } from '../../types';
 import productsFromServer from './../../api/products.json';
 import { ProductCard } from '../../components/ProductCard';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
+import useNotification from '../../components/Notification/useNotification';
 
 const Favorites: React.FC = () => {
   const dispatch = useContext(DispatchContext);
   const { favorites, products, basket } = useContext(StateContext);
+  const { notifySuccess, notifyInfo } = useNotification();
 
   useEffect(() => {
     dispatch({
@@ -23,6 +25,11 @@ const Favorites: React.FC = () => {
       type: isFavorite ? 'removeFromFavorites' : 'addToFavorites',
       payload: { itemId: product.itemId },
     });
+    if (isFavorite) {
+      notifyInfo(`${product.name} removed from favorites!`);
+    } else {
+      notifySuccess(`${product.name} added to favorites!`);
+    }
   };
 
   const addToBasket = (product: Product) => {
@@ -42,6 +49,11 @@ const Favorites: React.FC = () => {
           },
         };
     dispatch(action);
+    if (alreadyInBasket) {
+      notifyInfo(`${product.name} removed from cart!`);
+    } else {
+      notifySuccess(`${product.name} added to cart!`);
+    }
   };
 
   const favoriteProducts = products.filter(product =>

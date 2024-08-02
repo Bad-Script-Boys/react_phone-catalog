@@ -23,33 +23,9 @@ export const AboutSection: React.FC = () => {
   const [loadingDevice, setLoadingDevice] = useState(true);
   const { pathname } = useLocation();
 
-  // const {
-  //   id,
-  //   category,
-  //   namespaceId,
-  //   name: string,
-  //   capacityAvailable,
-  //   capacity,
-  //   priceRegular,
-  //   priceDiscount,
-  //   colorsAvailable,
-  //   color,
-  //   images,
-  //   description,
-  //   screen,
-  //   resolution,
-  //   processor,
-  //   ram,
-  //   camera,
-  //   zoom,
-  //   cell,
-  // } = device;
-
   const lastIndx = pathname.lastIndexOf('/') + 1;
   const deviceId = pathname.slice(lastIndx);
   const deviceCategory = pathname.slice(1, lastIndx - 1);
-
-  console.log('device:', device);
 
   useEffect(() => {
     setLoadingDevice(true);

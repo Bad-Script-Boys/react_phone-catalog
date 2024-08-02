@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styles from './Categories.module.scss';
 import { Device } from '../../types/Device';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -7,6 +7,7 @@ import cn from 'classnames';
 import { DispatchContext, StateContext } from '../../Store';
 import { useTheme } from '../../contexts/ThemeContext';
 import { StrokeIcon } from '../ThemeIcons/StrokeIcon';
+import useNotification from '../Notification/useNotification';
 
 const {
   categories,
@@ -49,34 +50,56 @@ export const Categories: React.FC<Props> = ({ device }) => {
   const state = useContext(StateContext);
   const dispatch = useContext(DispatchContext);
   const { theme } = useTheme();
+  const { notifySuccess, notifyInfo } = useNotification();
 
   if (!device) {
     return null;
   }
 
   useEffect(() => {
-    if (currColor !== undefined) {
-      const lastIndx = pathname.lastIndexOf('-') + 1;
-      navigate(`${pathname.slice(0, lastIndx) + currColor}`);
+    if (currColor) {
+      const pathArr = pathname.split('-');
+      let newPath: string[] = [];
+
+      for (let i = 0; i < pathArr.length; i++) {
+        if (
+          pathArr[i].toLowerCase().includes('gb') ||
+          pathArr[i].toLowerCase().includes('tb') ||
+          pathArr[i].toLowerCase().includes('mm')
+        ) {
+          newPath = pathArr.slice(0, i + 1);
+          newPath.push(currColor.toLowerCase().replace(/ /g, '-'));
+          break;
+        }
+      }
+      navigate(newPath.join('-'));
     }
-  }, [currColor, pathname, navigate]);
+  }, [currCapacity, currColor, pathname, navigate]);
 
   useEffect(() => {
-    if (currCapacity !== undefined) {
+    if (currCapacity) {
       const pathArr = pathname.split('-');
-      if (currCapacity) {
-        pathArr[pathArr.length - 2] = currCapacity.toLowerCase();
+      for (let i = 0; i < pathArr.length; i++) {
+        if (
+          pathArr[i].toLowerCase().includes('gb') ||
+          pathArr[i].toLowerCase().includes('tb') ||
+          pathArr[i].toLowerCase().includes('mm')
+        ) {
+          console.log(pathArr[i]);
+          pathArr[i] = currCapacity.toLowerCase();
+          break;
+        }
       }
-      navigate(`${pathArr.join('-')}`);
+      navigate(pathArr.join('-'));
     }
   }, [currCapacity, pathname, navigate]);
 
-  const handleCurrColor = (chosenColor: string) => {
-    setCurrColor(chosenColor);
+  const handleCurrColor = (chosenСolor: string) => {
+    setCurrColor(chosenСolor);
   };
 
-  const handleCurrCapacity = (chosenCapacity: string) => {
-    setCurrCapacity(chosenCapacity);
+  const handleCurrCapacity = (chosenСapacity: string) => {
+    setCurrCapacity(chosenСapacity);
   };
 
   const handleAddToCart = () => {
@@ -88,6 +111,7 @@ export const Categories: React.FC<Props> = ({ device }) => {
           type: 'removeFromBasket',
           payload: { itemId: device.id },
         });
+        notifyInfo(`${device.name} removed from cart!`);
       } else {
         dispatch({
           type: 'addToBasket',
@@ -98,6 +122,7 @@ export const Categories: React.FC<Props> = ({ device }) => {
             image: device.images[0],
           },
         });
+        notifySuccess(`${device.name} added to cart!`);
       }
     }
   };
@@ -111,11 +136,13 @@ export const Categories: React.FC<Props> = ({ device }) => {
           type: 'removeFromFavorites',
           payload: { itemId: device.id },
         });
+        notifyInfo(`${device.name} removed from favorites!`);
       } else {
         dispatch({
           type: 'addToFavorites',
           payload: { itemId: device.id },
         });
+        notifySuccess(`${device.name} added to favorites!`);
       }
     }
   };

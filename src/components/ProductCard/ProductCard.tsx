@@ -4,6 +4,7 @@ import { StrokeIcon } from '../ThemeIcons/StrokeIcon';
 import { DispatchContext, StateContext } from '../../Store';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import useNotification from '../Notification/useNotification';
 
 type Props = {
   product: Product;
@@ -21,15 +22,12 @@ export const ProductCard: React.FC<Props> = ({
   showFullPrice = false,
   isHotPrices = false,
   displayFullPriceOnly = false,
-  // isFavoriteItem,
-  // isInBasket,
-  // onAddToFavorites,
-  // onAddToBasket,
 }) => {
   const { theme } = useTheme();
   const dispatch = useContext(DispatchContext);
   const state = useContext(StateContext);
   const { favorites, basket } = state;
+  const { notifySuccess, notifyInfo } = useNotification();
 
   const isFavorite = !!favorites.find(item => item === product.itemId);
   const added = basket.find(
@@ -42,6 +40,7 @@ export const ProductCard: React.FC<Props> = ({
         type: 'addToFavorites',
         payload: product,
       });
+      notifySuccess(`${product.name} added to favorites!`);
     }
 
     if (isFavorite) {
@@ -49,6 +48,7 @@ export const ProductCard: React.FC<Props> = ({
         type: 'removeFromFavorites',
         payload: { itemId: product.itemId },
       });
+      notifyInfo(`${product.name} removed from favorites!`);
     }
   };
 
@@ -58,6 +58,7 @@ export const ProductCard: React.FC<Props> = ({
         type: 'addToBasket',
         payload: product,
       });
+      notifySuccess(`${product.name} added to cart!`);
     }
 
     if (added) {
@@ -65,6 +66,7 @@ export const ProductCard: React.FC<Props> = ({
         type: 'removeFromBasket',
         payload: { itemId: product.itemId },
       });
+      notifyInfo(`${product.name} removed from cart!`);
     }
   };
 
