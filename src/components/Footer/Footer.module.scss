@@ -10,11 +10,11 @@
 
 .footer {
   @apply 
-  border-t-2 border-customTextColor max-w-full mx-auto justify-center;
+  border-t-2 border-customTextColor max-w-full mx-auto justify-center h-20 w-full;
   
   &__content {
   @apply 
-  py-8 px-4 mx-auto sm:flex sm:justify-between items-center max-w-screen-custom-lg;
+  py-8 px-4 mx-auto sm:flex sm:justify-between items-center max-w-screen-custom-lg h-20;
   
   }
 
@@ -28,13 +28,6 @@
 
   &__item {
     display: block space-y-2; 
-  }
-
-  &__link {
-    @apply 
-    uppercase text-customTextColor 
-    hover:text-black transition-all duration-300
-    font-extrabold;
   }
 
   &__btn_wrap {
@@ -55,8 +48,8 @@
 
 .btn_toTop {
   @apply 
-  bg-white p-2 w-[32px] h-[32px] 
-  hover:bg-gray-800 transition
+   p-2 w-[32px] h-[32px] 
+   transition
   rounded-none bg-transparent hover:shadow-md
   flex items-center justify-center
   border-[#B4BDC4] border-[1px];

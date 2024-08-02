@@ -31,9 +31,11 @@ export function App() {
   return (
     <ThemeProvider>
       <NotificationProvider>
-        <Header />
-        {loading ? <Loader /> : <Outlet />}
-        <Footer />
+        <div className="flex flex-col min-h-screen">
+          <Header />
+          <div className="flex-grow">{loading ? <Loader /> : <Outlet />}</div>
+          <Footer />
+        </div>
       </NotificationProvider>
     </ThemeProvider>
   );
