@@ -61,16 +61,16 @@ const Favorites: React.FC = () => {
   );
 
   return (
-    <div className="flex flex-col items-center">
-      <div className="mt-[100px] w-full px-4 md:px-8 lg:px-[152px]"></div>
-      <div className="w-full px-4 md:px-8 lg:px-[152px]">
+    <div className="flex flex-col max-w-screen-2xl m-auto items-center">
+      <div className="mt-[100px] w-full px-4 md:px-8"></div>
+      <div className="w-full px-4 md:px-8">
         <div className="flex flex-col items-start mb-4 md:mb-6 lg:mb-8">
           <Breadcrumbs />
           <h1 className="text-2xl md:text-3xl lg:text-[46px]">Favorites</h1>
         </div>
       </div>
 
-      <div className="w-full px-4 md:px-8 lg:px-[152px]">
+      <div className="w-full px-4 md:px-8">
         {favoriteProducts.length === 0 ? (
           <div className="flex flex-col items-center justify-center w-full h-64  mb-16">
             <img
