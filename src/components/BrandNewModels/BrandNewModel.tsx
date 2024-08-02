@@ -17,7 +17,7 @@ export const BrandNewModels = () => {
   const secondAnimationRef = useRef<HTMLDivElement | null>(null);
 
   return (
-    <div className="lg:mx-[152px] overflow-x-hidden mb-[80px]">
+    <div className="max-w-screen-xl mx-auto md:px-6 lg:px-8 lg:pb-20">
       <div className="mb-[24px] flex justify-between items-center">
         <h2 className="text-[32px] font-extrabold">Brand new models</h2>
       </div>

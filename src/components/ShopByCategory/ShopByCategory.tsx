@@ -9,55 +9,70 @@ export const ShopByCategory = () => {
   const totalAccessoires = accessoiredFromServer.length;
 
   return (
-    <div className="lg:mx-[152px] overflow-x-hidden mb-[80px]">
-      <h2 className="text-[32px] font-extrabold mb-[24px]">Shop by category</h2>
-      <div className="flex items-center justify-between gap-3">
-        <div>
-          <div className="relative w-[310px] rounded-tl-lg h-[310px] bg-[#6D6474] mb-[24px] overflow-hidden">
+    <div className="px-4 pb-14 max-w-screen-xl mx-auto md:px-6 lg:px-8 lg:pb-20">
+      <h2 className="font-mont text-2xl font-extrabold leading-8 text-left text-black mb-6 md:text-3xl md:leading-10 dark:text-white">
+        Shop by category
+      </h2>
+      <div className="flex flex-col w-full h-auto md:flex-row md:gap-6">
+        <div className="w-full mb-8">
+          <div className="relative overflow-hidden bg-gray-600 w-full aspect-square mb-6">
             <Link to="/phones">
               <img
                 src="img/category-phones.webp"
-                alt="phones"
-                className="absolute top-14 left-12 transition-transform duration-500 transform hover:scale-125"
+                alt="categoryPhones"
+                className="absolute w-full h-auto top-12 left-12 transition-transform duration-500 transform hover:scale-105"
               />
             </Link>
           </div>
-          <NavLink to="/phones">
-            <h3 className="mb-[4px] font-semibold text-[20px]">
-              Mobile phones
-            </h3>
+          <NavLink
+            to="/phones"
+            className="font-mont text-xl font-bold leading-6 text-left text-black dark:text-white pb-1"
+          >
+            Mobile phones
           </NavLink>
-          <p className="font-medium text-[14px] text-[#89939A]">{`${totalPhones} models`}</p>
+          <h4 className="font-mont text-sm font-semibold leading-5 text-left text-gray-500">
+            {`${totalPhones} models`}
+          </h4>
         </div>
-        <div>
-          <div className="relative w-[310px] rounded-tl-lg h-[310px] bg-[#89939A] mb-[24px] overflow-hidden">
+        <div className="w-full mb-8">
+          <div className="relative overflow-hidden bg-gray-400 w-full aspect-square mb-6">
             <Link to="/tablets">
               <img
                 src="img/category-tablets.webp"
-                alt="phones"
-                className="absolute top-12 left-10 transition-transform duration-500 transform hover:scale-125"
+                alt="categoryTablets"
+                className="absolute w-full h-auto top-12 left-12 transition-transform duration-500 transform hover:scale-105"
               />
             </Link>
           </div>
-          <NavLink to="/tablets">
-            <h3 className="mb-[4px] font-semibold text-[20px]">Tablets</h3>
+          <NavLink
+            to="/tablets"
+            className="font-mont text-xl font-bold leading-6 text-left text-black dark:text-white pb-1"
+          >
+            Tablets
           </NavLink>
-          <p className="font-medium text-[14px] text-[#89939A]">{`${totalTablets} models`}</p>
+          <h4 className="font-mont text-sm font-semibold leading-5 text-left text-gray-500">
+            {`${totalTablets} models`}
+          </h4>
         </div>
-        <div>
-          <div className="relative rounded-tl-lg w-[310px] h-[310px] bg-[#973d5f] mb-[24px] overflow-hidden">
-            <Link to="/accessoires">
+        <div className="w-full">
+          <div className="relative overflow-hidden w-full aspect-square mb-6 bg-opacity-40 bg-purple-700">
+            <Link to="/accessories">
               <img
-                src="img/category-accessoires.png"
-                alt="phones"
-                className="absolute object-none top-4 left-2 transition-transform duration-500 transform hover:scale-125"
+                src="img/category-accessories.webp"
+                alt="categoryAccessories"
+                className="absolute w-full h-auto top-12 left-12 transition-transform duration-500 transform hover:scale-105"
               />
             </Link>
           </div>
-          <NavLink to="/accessoires">
-            <h3 className="mb-[4px] font-semibold text-[20px]">Accessories</h3>
+          <NavLink
+            to="/accessories"
+            className="font-mont text-xl font-bold leading-6 text-left text-black dark:text-white pb-1"
+          >
+            Accessories
           </NavLink>
-          <p className="font-medium text-[14px] text-[#89939A]">{`${totalAccessoires} models`}</p>
+          <h4 className="font-sans text-sm font-semibold leading-5 text-left text-gray-500">
+            {`${totalAccessoires} models`}
+          </h4>
         </div>
       </div>
     </div>
