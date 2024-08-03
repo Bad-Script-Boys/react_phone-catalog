@@ -23,7 +23,7 @@ export function App() {
     setLoading(true);
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 500);
+    }, 700);
 
     return () => clearTimeout(timer);
   }, [location.pathname]);
