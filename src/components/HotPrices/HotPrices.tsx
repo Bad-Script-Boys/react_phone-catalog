@@ -19,7 +19,7 @@ export const HotPrices = () => {
   const secondAnimationRef = useRef<HTMLDivElement | null>(null);
 
   return (
-    <div className="max-w-screen-xl mx-auto md:px-6 lg:px-8 lg:pb-20">
+    <div className="px-4 pb-14 max-w-screen-xl mx-auto md:px-6 lg:px-8 lg:pb-20">
       <div className="mb-[24px] flex justify-between items-center">
         <h2 className="text-[32px] font-extrabold">Hot Prices</h2>
       </div>
