@@ -1,0 +1,35 @@
+.light-theme .Toastify__toast--success {
+  background: white;
+  color: black;
+}
+
+.dark-theme .Toastify__toast--success {
+  background: #905BFF;
+  color: white;
+}
+
+.dark-theme .Toastify__toast--success .Toastify__progress-bar {
+  background: white;
+}
+
+.light-theme .Toastify__toast--success .Toastify__toast-icon {
+  color: currentColor;
+}
+
+.light-theme .Toastify__toast--info {
+  background: #F3D408;
+  color: black;
+}
+
+.dark-theme .Toastify__toast--info {
+  background: #F3D408;
+  color: black;
+}
+
+.dark-theme .Toastify__toast--info .Toastify__progress-bar {
+  background: black;
+}
+
+.light-theme .Toastify__toast--info .Toastify__progress-bar {
+  background: black;
+}

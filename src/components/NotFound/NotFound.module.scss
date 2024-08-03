@@ -1,0 +1,131 @@
+:root {
+  --star-color-light: #BC0000;
+  --star-color-dark: linear-gradient(90deg, rgba(121,9,118,1) 45%, rgba(0,212,255,1) 100%);
+  --astronaut-color-light: #000;
+  --astronaut-color-dark: #fff;
+  --star-glow-light: 0 0 8px 2px rgba(128, 0, 128, 0.5);
+  --star-glow-dark: 0 0 12px 4px rgba(128, 0, 128, 0.9);
+}
+
+.notFoundWrapper {
+  @apply flex-col items-center min-h-screen px-4;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &.light {
+    background-color: #fff;
+    --star-color: var(--star-color-light);
+    --astronaut-color: var(--astronaut-color-light);
+  }
+
+  &.dark {
+    background-color: #0F1121;
+    --star-color: var(--star-color-dark);
+    --astronaut-color: var(--astronaut-color-dark);
+  }
+}
+
+.starsContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.star {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: var(--star-color);
+  border-radius: 50%;
+  animation: twinkle 1.5s infinite alternate;
+  box-shadow: var(--star-glow-light);
+}
+
+.notFoundWrapper.dark .star {
+  box-shadow: var(--star-glow-dark);
+}
+
+@keyframes twinkle {
+  0% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes moveStarsUp {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+.starsMoving {
+  animation: moveStarsUp 50s linear infinite;
+}
+
+.astronaut {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 1;
+  animation: flyAstronaut 15s infinite alternate ease-in-out;
+}
+
+@keyframes flyAstronaut {
+  0% {
+    transform: translateX(-200%) translateY(0);
+  }
+  25% {
+    transform: translateX(0%) translateY(15vh);
+  }
+  50% {
+    transform: translateX(0%) translateY(-15vh);
+  }
+  75% {
+    transform: translateX(0%) translateY(5vh);
+  }
+  100% {
+    transform: translateX(200%) translateY(0);
+  }
+}
+
+.title {
+  position: absolute;
+  font-size: 48px;
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  color: var(--astronaut-color);
+  z-index: 2;
+  bottom: 20%;
+}
+
+.button {
+  @apply w-[200px] h-[50px] bg-black dark:bg-white text-white dark:text-black text-center leading-[50px] z-20 absolute bottom-[10%] font-semibold;
+}
