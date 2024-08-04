@@ -40,7 +40,7 @@ export const Welcome = () => {
   }, [mobileSlides.length]);
 
   return (
-    <div className="max-w-screen-xl mx-auto md:px-6 lg:px-8 lg:pb-20 pt-[70px] md:mt-[32px] sm:mt-[24px] mb-10">
+    <div className="max-w-screen-xl mx-auto md:px-6 lg:px-8 lg:pb-20 pt-[70px] md:mt-[32px] sm:mt-[24px] mb-4">
       <h1 className="text-[48px] lg:text-[48px] lg:px-0 font-extrabold mb-[30px] px-4 max-w-screen-xl mx-auto md:px-6">
         Welcome to Nice Gadgets store!
       </h1>
@@ -72,7 +72,7 @@ export const Welcome = () => {
             {mobileSlides.map((slide, index) => (
               <div
                 key={index}
-                className={`slide flex-shrink-0 w-full h-[400px] ${currentSlide === index ? 'flip' : ''}`}
+                className={`slide flex-shrink-0 w-full h-[400px] ${currentSlide === index ? 'flip' : ''} relative`}
               >
                 <img
                   src={slide}
@@ -89,6 +89,22 @@ export const Welcome = () => {
                   alt={`Slide ${index}`}
                   className="w-full h-full object-cover object-top hidden md:block"
                 />
+                {index === 0 && (
+                  <a
+                    href="/react_phone-catalog/#/phones/apple-iphone-14-pro-128gb-spaceblack"
+                    className="absolute inset-0 bg-transparent"
+                    style={{
+                      top: '84%',
+                      left: '15%',
+                      transform: 'translate(-50%, -50%)',
+                      width: '200px',
+                      height: '50px',
+                      zIndex: 10,
+                    }}
+                  >
+                    <span className="sr-only">Hidden Button</span>
+                  </a>
+                )}
               </div>
             ))}
           </div>

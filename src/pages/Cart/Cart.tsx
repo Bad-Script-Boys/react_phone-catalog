@@ -43,6 +43,7 @@ const Cart: React.FC = () => {
   };
 
   const handleCloseModal = () => {
+    clearBasket();
     setShowModal(false);
     navigate('/');
     notifySuccess('Checkout completed successfully!');
@@ -55,7 +56,7 @@ const Cart: React.FC = () => {
   );
 
   return (
-    <div className="max-w-screen-2xl m-auto flex flex-col items-center">
+    <div className="px-4 pb-14 max-w-screen-xl mx-auto md:px-6 lg:px-8 lg:pb-20">
       <div className="w-full px-4 md:px-8 ">
         <div className="mt-[100px] w-full px-4 md:px-8"></div>
         <div className="flex flex-col items-start mb-4 md:mb-6 lg:mb-8">
@@ -179,12 +180,12 @@ const Cart: React.FC = () => {
       {showModal && (
         <div className="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center">
           <div
-            className={`bg-white p-8 rounded-lg text-center ${theme === 'light' ? 'bg-white text-black' : 'bg-gray-900 text-white'}`}
+            className={`bg-white dark:bg-[#905BFF] p-8 rounded-lg text-center ${theme === 'light' ? 'bg-white text-black' : 'bg-gray-900 text-white'}`}
           >
             <h2 className="text-2xl font-bold mb-4">Purchase Successful!</h2>
             <p className="text-lg mb-6">Thank you for your purchase.</p>
             <button
-              className="bg-[#313237] text-white px-4 py-2 hover:bg-red-500 transition"
+              className="bg-[#313237] text-white dark:bg-white dark:text-black px-4 py-2 hover:bg-red-500 transition"
               onClick={handleCloseModal}
             >
               Go to Home
