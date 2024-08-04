@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useTheme } from '../../contexts/ThemeContext';
-import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { FaEnvelope, FaTelegramPlane } from 'react-icons/fa';
 
 const DeveloperProfiles: React.FC = () => {
   const { theme } = useTheme();
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, []);
 
   const developerProfiles = [
     {
