@@ -72,18 +72,18 @@ const Favorites: React.FC = () => {
 
       <div className="w-full px-4 md:px-8">
         {favoriteProducts.length === 0 ? (
-          <div className="flex flex-col items-center justify-center w-full h-64  mb-16">
+          <div className="flex flex-col items-center">
             <img
               src="img/icons/empty-favorite.png"
               alt="Icon"
-              className="mb-4 block h-52 w-52"
+              className="mb-4 block h-96 w-96"
             />
-            <p className="text-xl font-medium text-gray-600">
+            <p className="text-xl font-medium text-gray-600 dark:text-white">
               Your favorites list is empty.
             </p>
             <Link
               to="/"
-              className="bg-[#313237] py-4 px-8 text-white hover:scale-110 transition-transform duration-500 no-underline hover:text-white mt-4"
+              className="bg-[#313237] py-4 dark:bg-[#905BFF] px-8 text-white hover:scale-110 transition-transform duration-500 no-underline hover:text-white mt-4"
             >
               Continue Shopping
             </Link>

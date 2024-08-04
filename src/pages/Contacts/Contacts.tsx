@@ -58,7 +58,7 @@ const DeveloperProfiles: React.FC = () => {
 
   return (
     <div
-      className={`min-h-screen flex flex-col items-center justify-center ${theme === 'dark' ? 'bg-gray-900 text-gray-100' : 'bg-white text-gray-900'}`}
+      className={`min-h-screen flex flex-col items-center justify-center ${theme === 'dark' ? 'text-gray-100' : 'bg-white text-gray-900'}`}
     >
       <div className="w-full px-4 md:px-8 lg:px-[152px] mt-[50px]">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-center">
