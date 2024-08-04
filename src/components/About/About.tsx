@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import styles from './About.module.scss';
 import { Gallery } from '../Gallery';
 import { Categories } from '../Categories/Categories';
 import { Description } from '../Description';
@@ -9,14 +8,6 @@ import { getDevices } from '../../utils/fetchProducts';
 import { Device } from '../../types/Device';
 import { useLocation } from 'react-router-dom';
 import { MayAlsoLike } from '../MayAlsoLike/MayAlsoLike';
-
-const {
-  about,
-  about__content,
-  about__wrap,
-  about__section_title,
-  about__main,
-} = styles;
 
 export const AboutSection: React.FC = () => {
   const [device, setDevice] = useState<Device | null>(null);
@@ -44,27 +35,27 @@ export const AboutSection: React.FC = () => {
   }, [pathname]);
 
   return (
-    <div className={about}>
-      <div className={about__content}>
-        <div className="mt-20">
-          <Breadcrumbs />
-        </div>
-
-        {!loadingDevice && (
-          <>
-            <div className={about__wrap}>
-              <h1 className={about__section_title}>{device?.name}</h1>
-              <div className={about__main}>
-                <Gallery device={device} />
-                <Categories device={device} />
-                <Description device={device} />
-                <Specifications device={device} />
-              </div>
-            </div>
-            <MayAlsoLike />
-          </>
-        )}
+    <div className="max-w-screen-custom-lg mx-auto">
+      <div className="mt-20">
+        <Breadcrumbs />
       </div>
+
+      {!loadingDevice && (
+        <>
+          <div className="mt-8 md:mt-12">
+            <h1 className="font-extrabold text-4xl leading-[41px] tracking-tight mb-8 md:mb-10">
+              {device?.name}
+            </h1>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 p-4">
+              <Gallery device={device} />
+              <Categories device={device} />
+              <Description device={device} />
+              <Specifications device={device} />
+            </div>
+          </div>
+          <MayAlsoLike />
+        </>
+      )}
     </div>
   );
 };

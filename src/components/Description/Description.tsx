@@ -1,14 +1,5 @@
 import React from 'react';
-import styles from './Description.module.scss';
 import { Device } from '../../types/Device';
-
-const {
-  description,
-  description__title,
-  description__article,
-  description__article_title,
-  description__article_text,
-} = styles;
 
 type Props = {
   device: Device | null;
@@ -16,12 +7,16 @@ type Props = {
 
 export const Description: React.FC<Props> = ({ device }) => {
   return (
-    <div className={description}>
-      <h2 className={description__title}>About</h2>
+    <div className="col-span-1 custom-md:col-span-1">
+      <h2 className="font-extrabold text-[22px] leading-[140%] pb-4 border-b border-[#E2E6E9]">
+        About
+      </h2>
       {device?.description.map(articles => (
-        <div className={description__article} key={articles.title}>
-          <h3 className={description__article_title}>{articles.title}</h3>
-          <article className={description__article_text}>
+        <div className="mb-8 mt-8" key={articles.title}>
+          <h3 className="font-bold text-[20px] leading-[26px] mb-4">
+            {articles.title}
+          </h3>
+          <article className="font-mont font-medium text-[14px] leading-[23px] text-[#89939A]">
             {articles.text}
           </article>
         </div>
