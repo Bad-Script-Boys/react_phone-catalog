@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './Footer.module.scss';
 import { MainLogo } from '../ThemeIcons/MainLogo';
 import { useTheme } from '../../contexts/ThemeContext';
+import { Link } from 'react-router-dom';
 
 const {
   footer,
@@ -32,12 +33,12 @@ export const Footer: React.FC = () => {
             </a>
           </li>
           <li className={footer__item}>
-            <a
-              href="#"
+            <Link
+              to="/contacts"
               className="font-extrabold text-customTextColor hover:text-black dark:text-white transition-all duration-300 dark:hover:text-[#905BFF]"
             >
               Contacts
-            </a>
+            </Link>
           </li>
           <li className={footer__item}>
             <a

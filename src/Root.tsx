@@ -7,6 +7,7 @@ import Cart from './pages/Cart';
 import ProductDetails from './pages/ProductDetails';
 import { Tablets } from './pages/Tablets';
 import { Accessories } from './pages/Accessories';
+import DeveloperProfiles from './pages/Contacts/Contacts';
 import {
   HashRouter as Router,
   Route,
@@ -38,6 +39,10 @@ export const Root = () => (
             <Route path="accessories">
               <Route index element={<Accessories />} />
               <Route path=":itemId?" element={<ProductDetails />} />
+            </Route>
+
+            <Route path="contacts">
+              <Route index element={<DeveloperProfiles />} />
             </Route>
 
             <Route path="favourites" element={<Favourites />} />
