@@ -4,10 +4,12 @@ import cn from 'classnames';
 import { Device } from '../../types/Device';
 import { useLocation, useNavigate } from 'react-router-dom';
 import {
-  afterStyle,
+  afterStyleDark,
+  afterStyleLight,
   categoriesColorsStyle,
   visuallyHidden,
 } from '../Categories/customStyles';
+import { useTheme } from '../../contexts/ThemeContext';
 
 type Props = {
   device: Device | null;
@@ -17,6 +19,8 @@ type Props = {
 export const CategoriesColors: React.FC<Props> = ({ device, currColor }) => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
+  const { theme } = useTheme();
+  const afterStyle = theme === 'light' ? afterStyleLight : afterStyleDark;
 
   const handleCurrColor = (chosenСolor: string) => {
     const pathArr = pathname.split('-');
@@ -33,7 +37,7 @@ export const CategoriesColors: React.FC<Props> = ({ device, currColor }) => {
         break;
       }
     }
-    navigate(newPath.join('-'));
+    navigate(newPath.join('-'), { replace: true });
   };
 
   return (
@@ -43,7 +47,10 @@ export const CategoriesColors: React.FC<Props> = ({ device, currColor }) => {
     >
       <div style={afterStyle} />
       <div className="box-border pb-6 flex-1 md:text-left w-[320px]">
-        <p className="font-normal text-xs leading-[15px] text-[#89939A] whitespace-nowrap mb-2 font-mont">
+        <p
+          className={`text-xs leading-[15px] whitespace-nowrap mb-2 font-mont 
+            ${theme === 'light' ? 'font-semibold text-[#89939A]' : 'font-bold text-[#75767F]'}`}
+        >
           Available colors
         </p>
         <div className="flex space-x-2 w-[100%]">
@@ -52,9 +59,12 @@ export const CategoriesColors: React.FC<Props> = ({ device, currColor }) => {
             return (
               <label
                 className={cn(
-                  `inline-block flex items-center justify-center w-8 h-8  border-[1px] rounded-full cursor-pointer bg-white`,
+                  `flex items-center justify-center w-9 h-9 border-[1px] rounded-full cursor-pointer 
+                  ${theme === 'dark' && 'dark:border-[#3B3E4A]'}`,
                   {
-                    'border border-black': currColor === color,
+                    'border-black': currColor === color && theme === 'light',
+                    'dark:border-[#F1F2F9]':
+                      currColor === color && theme === 'dark',
                   },
                 )}
                 htmlFor={`color-${color}`}
@@ -77,7 +87,10 @@ export const CategoriesColors: React.FC<Props> = ({ device, currColor }) => {
           })}
         </div>
       </div>
-      <p className="font-normal text-xs leading-[15px] text-right text-[#B4BDC4] flex-1 md:text-right font-mont">
+      <p
+        className={`font-bold text-xs leading-[15px] text-right text-[#B4BDC4] flex-1 md:text-right font-mont 
+            ${theme === 'light' ? 'text-[#B4BDC4]' : 'text-[#4A4D58]'}`}
+      >
         ID:&nbsp;802390
       </p>
     </div>

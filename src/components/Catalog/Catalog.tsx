@@ -26,8 +26,6 @@ export const Catalog: React.FC<Props> = ({ title, products }) => {
   const minPrice = Math.min(...products.map(p => p.price));
   const maxPrice = Math.max(...products.map(p => p.price));
   const [priceRange, setPriceRange] = useState([minPrice, maxPrice]);
-  const trackAnimationClass =
-    theme === 'dark' ? 'animate-flameDark' : 'animate-flame';
 
   useEffect(() => {
     window.scrollTo({
@@ -136,95 +134,97 @@ export const Catalog: React.FC<Props> = ({ title, products }) => {
           </p>
         </div>
       </div>
-      <div className="flex flex-col sm:flex-row sm:justify-between items-center mb-8">
-        <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 items-center">
-          <div>
-            <label
-              htmlFor="sort"
-              className={`block text-sm font-medium text-${theme === 'dark' ? 'gray-400' : 'gray-700'}`}
-            >
-              Sort by
-            </label>
-            <select
-              id="sort"
-              value={sort}
-              onChange={handleSortChange}
-              className={`mt-1 block w-full pl-3 pr-10 py-2 text-base border border-${theme === 'dark' ? '[#323542]' : 'gray-300'} focus:outline-none focus:border-indigo-500 sm:text-sm rounded-md shadow-sm bg-${theme === 'dark' ? '[#323542]' : 'white'} text-${theme === 'dark' ? 'white' : 'black'}`}
-            >
-              <option value="newest">Newest</option>
-              <option value="price">Cheapest</option>
-              <option value="alphabetical">Alphabetically</option>
-            </select>
-          </div>
-          <div>
-            <label
-              htmlFor="itemsPerPage"
-              className={`block text-sm font-medium text-${theme === 'dark' ? 'gray-400' : 'gray-700'}`}
-            >
-              Items on page
-            </label>
-            <select
-              id="itemsPerPage"
-              value={itemsPerPage}
-              onChange={handleItemsPerPageChange}
-              className={`mt-1 block w-full pl-3 pr-10 py-2 text-base border border-${theme === 'dark' ? '[#323542]' : 'gray-300'} focus:outline-none focus:border-indigo-500 sm:text-sm rounded-md shadow-sm bg-${theme === 'dark' ? '[#323542]' : 'white'} text-${theme === 'dark' ? 'white' : 'black'}`}
-            >
-              <option value={4}>4</option>
-              <option value={8}>8</option>
-              <option value={16}>16</option>
-              <option value={products.length}>All</option>
-            </select>
-          </div>
-          <div className="pl-2">
-            <label
-              htmlFor="priceRange"
-              className={`block text-sm pt-12 font-medium text-${theme === 'dark' ? 'gray-400' : 'gray-700'}`}
-            ></label>
-            <Range
-              step={1}
-              min={minPrice}
-              max={maxPrice}
-              values={priceRange}
-              onChange={values => setPriceRange(values)}
-              renderTrack={({ props, children }) => (
-                <div
-                  {...props}
-                  style={{
-                    ...props.style,
-                    height: '3px',
-                    width: '200px',
-                    background:
-                      theme === 'dark'
-                        ? `linear-gradient(to right, #89939A ${((priceRange[0] - minPrice) / (maxPrice - minPrice)) * 100}%,
+      <div>
+        <div className="flex flex-col sm:flex-row sm:justify-between items-center mb-8">
+          <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 items-start">
+            <div>
+              <label
+                htmlFor="sort"
+                className={`block text-sm font-medium text-${theme === 'dark' ? 'gray-400' : 'gray-700'}`}
+              >
+                Sort by
+              </label>
+              <select
+                id="sort"
+                value={sort}
+                onChange={handleSortChange}
+                className={`mt-1 block w-full pl-3 pr-10 py-2 text-base border border-${theme === 'dark' ? '[#323542]' : 'gray-300'} focus:outline-none focus:border-indigo-500 sm:text-sm rounded-md shadow-sm bg-${theme === 'dark' ? '[#323542]' : 'white'} text-${theme === 'dark' ? 'white' : 'black'}`}
+              >
+                <option value="newest">Newest</option>
+                <option value="price">Cheapest</option>
+                <option value="alphabetical">Alphabetically</option>
+              </select>
+            </div>
+            <div>
+              <label
+                htmlFor="itemsPerPage"
+                className={`block text-sm font-medium text-${theme === 'dark' ? 'gray-400' : 'gray-700'}`}
+              >
+                Items on page
+              </label>
+              <select
+                id="itemsPerPage"
+                value={itemsPerPage}
+                onChange={handleItemsPerPageChange}
+                className={`mt-1 block w-full pl-3 pr-10 py-2 text-base border border-${theme === 'dark' ? '[#323542]' : 'gray-300'} focus:outline-none focus:border-indigo-500 sm:text-sm rounded-md shadow-sm bg-${theme === 'dark' ? '[#323542]' : 'white'} text-${theme === 'dark' ? 'white' : 'black'}`}
+              >
+                <option value={4}>4</option>
+                <option value={8}>8</option>
+                <option value={16}>16</option>
+                <option value={products.length}>All</option>
+              </select>
+            </div>
+            <div className="pl-2">
+              <label
+                htmlFor="priceRange"
+                className={`block text-sm pt-10 font-medium text-${theme === 'dark' ? 'gray-400' : 'gray-700'}`}
+              ></label>
+              <Range
+                step={1}
+                min={minPrice}
+                max={maxPrice}
+                values={priceRange}
+                onChange={values => setPriceRange(values)}
+                renderTrack={({ props, children }) => (
+                  <div
+                    {...props}
+                    style={{
+                      ...props.style,
+                      height: '3px',
+                      width: '200px',
+                      background:
+                        theme === 'dark'
+                          ? `linear-gradient(to right, #89939A ${((priceRange[0] - minPrice) / (maxPrice - minPrice)) * 100}%,
                 #905BFF ${((priceRange[0] - minPrice) / (maxPrice - minPrice)) * 100}%,
                 #905BFF ${((priceRange[1] - minPrice) / (maxPrice - minPrice)) * 100}%,
                 #89939A ${((priceRange[1] - minPrice) / (maxPrice - minPrice)) * 100}%)`
-                        : `linear-gradient(to right, #ccc ${((priceRange[0] - minPrice) / (maxPrice - minPrice)) * 100}%,
-                yellow ${((priceRange[0] - minPrice) / (maxPrice - minPrice)) * 100}%,
-                yellow ${((priceRange[1] - minPrice) / (maxPrice - minPrice)) * 100}%,
+                          : `linear-gradient(to right, #ccc ${((priceRange[0] - minPrice) / (maxPrice - minPrice)) * 100}%,
+                #ff8c00 ${((priceRange[0] - minPrice) / (maxPrice - minPrice)) * 100}%,
+                #ff8c00 ${((priceRange[1] - minPrice) / (maxPrice - minPrice)) * 100}%,
                 #ccc ${((priceRange[1] - minPrice) / (maxPrice - minPrice)) * 100}%)`,
-                  }}
-                  className={`rounded ${trackAnimationClass}`}
-                >
-                  {children}
-                </div>
-              )}
-              renderThumb={({ props }) => (
-                <div
-                  {...props}
-                  style={{
-                    ...props.style,
-                    height: '13px',
-                    width: '13px',
-                    backgroundColor: theme === 'dark' ? 'white' : '#323542',
-                    borderRadius: '50%',
-                  }}
-                />
-              )}
-            />
-            <div className="flex justify-between text-sm text-black dark:text-gray-400 mt-2">
-              <span>${priceRange[0]}</span>
-              <span>${priceRange[1]}</span>
+                    }}
+                    // className={`rounded ${trackAnimationClass}`}
+                  >
+                    {children}
+                  </div>
+                )}
+                renderThumb={({ props }) => (
+                  <div
+                    {...props}
+                    style={{
+                      ...props.style,
+                      height: '10px',
+                      width: '10px',
+                      backgroundColor: theme === 'dark' ? 'white' : '#323542',
+                      borderRadius: '50%',
+                    }}
+                  />
+                )}
+              />
+              <div className="flex justify-between text-sm text-black dark:text-gray-400 mt-2">
+                <span>${priceRange[0]}</span>
+                <span>${priceRange[1]}</span>
+              </div>
             </div>
           </div>
         </div>

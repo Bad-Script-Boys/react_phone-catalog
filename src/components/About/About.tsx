@@ -32,28 +32,30 @@ export const AboutSection: React.FC = () => {
         setDevice(devices.find((dev: Device) => dev.id === deviceId) || null);
       })
       .finally(() => setLoadingDevice(false));
-  }, [pathname]);
+  }, [deviceCategory, deviceId]);
 
   return (
     <div className="max-w-screen-custom-lg mx-auto">
-      <div className="mt-20">
+      <div className="mt-20 p-4">
         <Breadcrumbs />
       </div>
 
       {!loadingDevice && (
         <>
-          <div className="mt-8 md:mt-12">
+          <div className="mt-4 p-4">
             <h1 className="font-extrabold text-4xl leading-[41px] tracking-tight mb-8 md:mb-10">
               {device?.name}
             </h1>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 p-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
               <Gallery device={device} />
               <Categories device={device} />
               <Description device={device} />
               <Specifications device={device} />
             </div>
           </div>
-          <MayAlsoLike />
+          <div className=" px-4 max-w-screen-custom-lg mx-auto grid grid-cols-1">
+            <MayAlsoLike />
+          </div>
         </>
       )}
     </div>

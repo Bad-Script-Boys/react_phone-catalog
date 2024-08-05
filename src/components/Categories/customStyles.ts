@@ -15,7 +15,7 @@ export const categoriesColorsStyle: React.CSSProperties = {
   position: 'relative',
 };
 
-export const afterStyle: React.CSSProperties = {
+export const afterStyleLight: React.CSSProperties = {
   content: "''",
   position: 'absolute',
   left: 0,
@@ -25,4 +25,15 @@ export const afterStyle: React.CSSProperties = {
   width: '100%',
   height: '1px',
   backgroundColor: '#e2e6e9',
+};
+export const afterStyleDark: React.CSSProperties = {
+  content: "''",
+  position: 'absolute',
+  left: 0,
+  bottom: 0,
+  maxWidth: '320px',
+  minWidth: '237px',
+  width: '100%',
+  height: '1px',
+  backgroundColor: '#3B3E4A',
 };

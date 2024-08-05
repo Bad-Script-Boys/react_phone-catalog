@@ -70,7 +70,7 @@ export const CategoriesInfo: React.FC<Props> = ({ device }) => {
           {`$${device?.priceDiscount}`}
         </p>
         <p
-          className="text-3xl text-gray-400 line-through font-normal font-medium text-[22px] 
+          className="text-3xl font-medium text-[22px] 
           leading-[28px] line-through text-[#89939A]"
         >
           {`$${device?.priceRegular}`}
@@ -90,7 +90,7 @@ export const CategoriesInfo: React.FC<Props> = ({ device }) => {
           <button
             className={`flex items-center justify-center h-12 w-full box-border ${
               theme === 'light' ? 'bg-[#313237]' : 'bg-[#905BFF]'
-            } text-white rounded-none hover:bg-gray-800 transition`}
+            } text-white rounded-none hover:bg-gray-800 transition border-color-[#E2E6E9]`}
             onClick={handleAddToCart}
           >
             Add to cart
@@ -99,7 +99,7 @@ export const CategoriesInfo: React.FC<Props> = ({ device }) => {
         <button
           onClick={handleAddToFavorites}
           className={`min-h-12 min-w-12 hover:text-white bg-transparent border border-[#E2E6E9] ${
-            theme === 'dark' && 'bg-[#323542] border-[#323542]'
+            theme === 'dark' && 'dark:bg-[#323542] border-0'
           } rounded-none flex items-center justify-center`}
         >
           {state.favorites.includes(device?.id) ? (
@@ -117,25 +117,25 @@ export const CategoriesInfo: React.FC<Props> = ({ device }) => {
         </button>
       </div>
       <ul className="flex flex-col max-w-[320px]">
-        <li className="flex justify-between w-[100%] space-y-2">
+        <li className="flex justify-between w-[100%] mb-2 items-center">
           <p className="tracking-tight font-semibold text-xs leading-[15px] text-[#89939A]">
             Screen
           </p>
           <p className="tracking-tight font-semibold text-xs leading-[15px] text-right">{` ${device?.screen}`}</p>
         </li>
-        <li className="flex justify-between w-[100%] space-y-2">
+        <li className="flex justify-between w-[100%] mb-2 items-center">
           <p className="tracking-tight font-semibold text-xs leading-[15px] text-[#89939A]">
             Resolution
           </p>
           <p className="tracking-tight font-semibold text-xs leading-[15px] text-right">{`${device?.resolution}`}</p>
         </li>
-        <li className="flex justify-between w-[100%] space-y-2">
+        <li className="flex justify-between w-[100%] mb-2 items-center">
           <p className="tracking-tight font-semibold text-xs leading-[15px] text-[#89939A]">
             Processor
           </p>
           <p className="tracking-tight font-semibold text-xs leading-[15px] text-right">{`${device?.processor}`}</p>
         </li>
-        <li className="flex justify-between w-[100%] space-y-2">
+        <li className="flex justify-between w-[100%] mb-2 items-center">
           <p className="tracking-tight font-semibold text-xs leading-[15px] text-[#89939A]">
             RAM
           </p>

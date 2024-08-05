@@ -61,7 +61,7 @@ const Favorites: React.FC = () => {
   );
 
   return (
-    <div className="flex flex-col max-w-screen-2xl m-auto items-center">
+    <div className="px-4 pb-14 max-w-screen-xl mx-auto md:px-6 lg:px-8 lg:pb-20">
       <div className="mt-[100px] w-full px-4 md:px-8"></div>
       <div className="w-full px-4 md:px-8">
         <div className="flex flex-col items-start mb-4 md:mb-6 lg:mb-8">
@@ -72,24 +72,24 @@ const Favorites: React.FC = () => {
 
       <div className="w-full px-4 md:px-8">
         {favoriteProducts.length === 0 ? (
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center justify-center w-full h-64  mb-16">
             <img
               src="img/icons/empty-favorite.png"
               alt="Icon"
-              className="mb-4 block h-96 w-96"
+              className="mb-4 block h-52 w-52"
             />
-            <p className="text-xl font-medium text-gray-600 dark:text-white">
+            <p className="text-xl font-medium text-gray-600">
               Your favorites list is empty.
             </p>
             <Link
               to="/"
-              className="bg-[#313237] py-4 dark:bg-[#905BFF] px-8 text-white hover:scale-110 transition-transform duration-500 no-underline hover:text-white mt-4"
+              className="bg-[#313237] py-4 px-8 text-white hover:scale-110 transition-transform duration-500 no-underline hover:text-white mt-4"
             >
               Continue Shopping
             </Link>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-4">
             {favoriteProducts.map(product => (
               <ProductCard
                 key={product.itemId}
