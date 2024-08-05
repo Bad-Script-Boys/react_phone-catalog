@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useTheme } from '../../contexts/ThemeContext';
-import { FaEnvelope, FaTelegramPlane } from 'react-icons/fa';
+import { FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa';
 
 const DeveloperProfiles: React.FC = () => {
   const { theme } = useTheme();
@@ -18,41 +18,41 @@ const DeveloperProfiles: React.FC = () => {
       name: 'Yaroslav Avramidi',
       role: 'Front-end Developer',
       email: 'avramidi.yaroslav@gmail.com',
-      telegram: 'https://t.me/@isbdgsbej',
+      linkedin: 'https://ua.linkedin.com',
       image: 'img/developers/Yaroslav.jpg',
-      profileLink: 'https://ua.linkedin.com',
+      profileLink: 'https://github.com/yaroslav1177',
     },
     {
       name: 'Maksym Hryvko',
       role: 'Front-end Developer',
       email: 'maksym.hryvko@gmail.com',
-      telegram: 'https://t.me/mrmakson98',
+      linkedin: 'https://ua.linkedin.com',
       image: 'img/developers/Maksym.jpg',
-      profileLink: 'https://ua.linkedin.com',
+      profileLink: 'https://github.com/mhryvko',
     },
     {
       name: 'Vitalii Lytvynenko',
       role: 'Front-end Developer',
-      email: 'example@example.com',
-      telegram: 'https://t.me/@litvivit',
+      email: 'vitalii.lytvynenko.dev@gmail.com',
+      linkedin: 'https://www.linkedin.com/in/vitalii-lytvynenko-2546ba2a1/',
       image: 'img/developers/Vitalii.jpg',
-      profileLink: 'https://ua.linkedin.com',
+      profileLink: 'https://github.com/vitalii-lytvynenko',
     },
     {
       name: 'Stanislav Kushnir',
       role: 'Front-end Developer',
       email: 'stan.k.2019@outlook.com',
-      telegram: 'https://t.me/como_e_stas',
+      linkedin: 'https://ua.linkedin.com',
       image: 'img/developers/Stanislav.jpg',
-      profileLink: 'https://ua.linkedin.com',
+      profileLink: 'https://github.com/StsKushnir',
     },
     {
       name: 'Dmytro Boboshko',
       role: 'Front-end Developer',
-      email: 'example@example.com',
-      telegram: 'https://t.me/@Dimu4',
+      email: 'boboshko.dev@gmail.com',
+      linkedin: 'https://ua.linkedin.com/in/dmytro-boboshko-11216a27',
       image: 'img/developers/Dmytro.jpg',
-      profileLink: 'https://ua.linkedin.com',
+      profileLink: 'https://github.com/DSB-18',
     },
   ];
 
@@ -97,23 +97,24 @@ const DeveloperProfiles: React.FC = () => {
                       <p className="text-sm">{dev.email}</p>
                     </div>
                     <div className="flex items-center mb-4">
-                      <FaTelegramPlane className="mr-2" />
+                      <FaLinkedin className="mr-2" />
                       <a
-                        href={dev.telegram}
+                        href={dev.linkedin}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-sm text-blue-500 hover:underline"
                       >
-                        Telegram Profile
+                        LinkedIn Profile
                       </a>
                     </div>
                     <a
                       href={dev.profileLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-red-500 py-2 px-4 text-white rounded-full hover:bg-red-600 transition-colors duration-300"
+                      className="bg-red-500 py-2 px-4 text-white rounded-full hover:bg-red-600 transition-colors duration-300 flex items-center"
                     >
-                      View Profile
+                      <FaGithub className="mr-2" />
+                      View GitHub
                     </a>
                   </div>
                 </div>
@@ -152,23 +153,24 @@ const DeveloperProfiles: React.FC = () => {
                       <p className="text-sm">{dev.email}</p>
                     </div>
                     <div className="flex items-center mb-4">
-                      <FaTelegramPlane className="mr-2" />
+                      <FaLinkedin className="mr-2" />
                       <a
-                        href={dev.telegram}
+                        href={dev.linkedin}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-sm text-blue-500 hover:underline"
                       >
-                        Telegram Profile
+                        LinkedIn Profile
                       </a>
                     </div>
                     <a
                       href={dev.profileLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-red-500 py-2 px-4 text-white rounded-full hover:bg-red-600 transition-colors duration-300"
+                      className="bg-red-500 py-2 px-4 text-white rounded-full hover:bg-red-600 transition-colors duration-300 flex items-center"
                     >
-                      View Profile
+                      <FaGithub className="mr-2" />
+                      View GitHub
                     </a>
                   </div>
                 </div>
