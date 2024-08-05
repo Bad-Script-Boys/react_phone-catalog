@@ -58,14 +58,14 @@ const DeveloperProfiles: React.FC = () => {
 
   return (
     <div
-      className={`min-h-screen flex flex-col items-center justify-center py-20 ${theme === 'dark' ? ' text-gray-100' : 'bg-white text-gray-900'}`}
+      className={`min-h-screen flex flex-col items-center justify-center ${theme === 'dark' ? 'text-gray-100' : 'bg-white text-gray-900'}`}
     >
-      <div className="w-full px-4 md:px-8 lg:px-[152px] mt-[5px] mb-10">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-5 text-center">
+      <div className="w-full px-4 md:px-8 lg:px-[152px] mt-[50px]">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-center">
           Meet Our Team
         </h1>
         <div className="flex flex-col items-center">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             {developerProfiles.slice(0, 3).map((dev, index) => (
               <motion.div
                 key={index}
