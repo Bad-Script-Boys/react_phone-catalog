@@ -31,7 +31,7 @@ export const Gallery: React.FC<Props> = ({ device }) => {
         />
       </span>
       <ul
-        className="flex justify-center sm:justify-start mt-10 sm:mr-2 sm:mb-auto sm:mt-0  space-x-1 sm:space-y-4 sm:flex-col sm:space-x-0 whitespace-nowrap"
+        className="flex justify-center sm:justify-start mt-10 sm:mr-2 sm:mb-auto sm:mt-0  space-x-3 sm:space-y-1 sm:flex-col sm:space-x-0 whitespace-nowrap"
         onWheel={handleWheel}
       >
         {device?.images.map(image => (

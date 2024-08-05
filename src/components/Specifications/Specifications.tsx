@@ -18,7 +18,7 @@ export const Specifications: React.FC<Props> = ({ device }) => {
         Tech specs
       </h2>
       <ul className="flex flex-col mt-6 space-y-2">
-        <li className="flex justify-between">
+        <li className="flex justify-between items-center">
           <p className="tracking-tight font-medium text-[14px] leading-[21px] text-[#89939A]">
             Screen
           </p>
@@ -26,7 +26,7 @@ export const Specifications: React.FC<Props> = ({ device }) => {
             {device?.screen}
           </p>
         </li>
-        <li className="flex justify-between">
+        <li className="flex justify-between items-center">
           <p className="tracking-tight font-medium text-[14px] leading-[21px] text-[#89939A]">
             Resolution
           </p>
@@ -34,7 +34,7 @@ export const Specifications: React.FC<Props> = ({ device }) => {
             {device?.resolution}
           </p>
         </li>
-        <li className="flex justify-between">
+        <li className="flex justify-between items-center">
           <p className="tracking-tight font-medium text-[14px] leading-[21px] text-[#89939A]">
             Processor
           </p>
@@ -42,7 +42,7 @@ export const Specifications: React.FC<Props> = ({ device }) => {
             {device?.processor}
           </p>
         </li>
-        <li className="flex justify-between">
+        <li className="flex justify-between items-center">
           <p className="tracking-tight font-medium text-[14px] leading-[21px] text-[#89939A]">
             RAM
           </p>
@@ -50,7 +50,7 @@ export const Specifications: React.FC<Props> = ({ device }) => {
             {device?.ram}
           </p>
         </li>
-        <li className="flex justify-between">
+        <li className="flex justify-between items-center">
           <p className="tracking-tight font-medium text-[14px] leading-[21px] text-[#89939A]">
             Built in memory
           </p>
@@ -59,7 +59,7 @@ export const Specifications: React.FC<Props> = ({ device }) => {
           </p>
         </li>
         {device?.camera !== undefined && (
-          <li className="flex justify-between">
+          <li className="flex justify-between items-center">
             <p className="tracking-tight font-medium text-[14px] leading-[21px] text-[#89939A]">
               Camera
             </p>
@@ -69,7 +69,7 @@ export const Specifications: React.FC<Props> = ({ device }) => {
           </li>
         )}
         {device?.camera !== undefined && (
-          <li className="flex justify-between">
+          <li className="flex justify-between items-center">
             <p className="tracking-tight font-medium text-[14px] leading-[21px] text-[#89939A]">
               Zoom
             </p>
@@ -78,7 +78,7 @@ export const Specifications: React.FC<Props> = ({ device }) => {
             </p>
           </li>
         )}
-        <li className="flex justify-between">
+        <li className="flex justify-between items-center">
           <p className="tracking-tight font-medium text-[14px] leading-[21px] text-[#89939A]">
             Cell
           </p>

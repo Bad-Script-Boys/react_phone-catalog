@@ -135,7 +135,7 @@ export const Catalog: React.FC<Props> = ({ title, products }) => {
         </div>
       </div>
       <div>
-        <div className="flex flex-col sm:flex-row sm:justify-between items-center mb-8">
+        <div className="flex flex-col sm:flex-row sm:justify-between items-center mr-14 mb-8">
           <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 items-start">
             <div>
               <label

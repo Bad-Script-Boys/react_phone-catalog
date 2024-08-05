@@ -116,26 +116,26 @@ export const CategoriesInfo: React.FC<Props> = ({ device }) => {
           )}
         </button>
       </div>
-      <ul className="flex flex-col max-w-[320px]">
-        <li className="flex justify-between w-[100%] mb-2 items-center">
+      <ul className="flex flex-col max-w-[320px] space-y-2">
+        <li className="flex justify-between w-[100%] items-center">
           <p className="tracking-tight font-semibold text-xs leading-[15px] text-[#89939A]">
             Screen
           </p>
           <p className="tracking-tight font-semibold text-xs leading-[15px] text-right">{` ${device?.screen}`}</p>
         </li>
-        <li className="flex justify-between w-[100%] mb-2 items-center">
+        <li className="flex justify-between w-[100%] items-center">
           <p className="tracking-tight font-semibold text-xs leading-[15px] text-[#89939A]">
             Resolution
           </p>
           <p className="tracking-tight font-semibold text-xs leading-[15px] text-right">{`${device?.resolution}`}</p>
         </li>
-        <li className="flex justify-between w-[100%] mb-2 items-center">
+        <li className="flex justify-between w-[100%] items-center">
           <p className="tracking-tight font-semibold text-xs leading-[15px] text-[#89939A]">
             Processor
           </p>
           <p className="tracking-tight font-semibold text-xs leading-[15px] text-right">{`${device?.processor}`}</p>
         </li>
-        <li className="flex justify-between w-[100%] mb-2 items-center">
+        <li className="flex justify-between w-[100%] items-center">
           <p className="tracking-tight font-semibold text-xs leading-[15px] text-[#89939A]">
             RAM
           </p>
