@@ -9,7 +9,13 @@ export const Footer: React.FC = () => {
   const { theme } = useTheme();
 
   return (
-    <footer className="border-t-[1px] border-customTextColor max-w-full mx-auto justify-center h-20 w-full">
+    <footer
+      className="border-t-2 dark:border-gray-500 border-[#E2E6E9] max-w-full mx-auto justify-center h-20 w-full"
+      style={{
+        boxShadow:
+          '0 -4px 6px -1px rgba(0, 0, 0, 0.1), 0 -2px 4px -1px rgba(0, 0, 0, 0.06)',
+      }}
+    >
       <div className="py-8 px-4 mx-auto sm:flex sm:justify-between items-center max-w-screen-custom-lg">
         <span className="block mb-4 sm:mb-0">
           <Link to="/">

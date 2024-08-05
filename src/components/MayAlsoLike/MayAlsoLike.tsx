@@ -53,7 +53,7 @@ export const MayAlsoLike = () => {
   };
 
   return (
-    <div className="overflow-x-hidden mb-[80px]">
+    <div className="overflow-x-hidden mb-[80px] mt-10">
       <div className="mb-[24px] flex justify-between items-center">
         <h2 className="text-[32px] font-extrabold">You may also like</h2>
         <div className="flex sm:hidden gap-6">

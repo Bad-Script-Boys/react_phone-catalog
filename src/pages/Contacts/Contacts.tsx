@@ -94,7 +94,9 @@ const DeveloperProfiles: React.FC = () => {
                     </p>
                     <div className="flex items-center mb-2">
                       <FaEnvelope className="mr-2" />
-                      <p className="text-sm">{dev.email}</p>
+                      <a href={`mailto:${dev.email}`} className="text-sm">
+                        {dev.email}
+                      </a>
                     </div>
                     <div className="flex items-center mb-4">
                       <FaLinkedin className="mr-2" />

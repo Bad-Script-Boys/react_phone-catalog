@@ -40,7 +40,7 @@ export const Welcome = () => {
   }, [mobileSlides.length]);
 
   return (
-    <div className="max-w-screen-xl mx-auto md:px-6 lg:px-8 lg:pb-20 pt-[70px] md:mt-8 mt-6 mb-4">
+    <div className="max-w-screen-xl mx-auto md:px-6 lg:px-8 lg:pb-20 pt-[70px] md:mt-8 mt-6 sm:mb-4 mb-10">
       <h1 className="text-[48px] lg:text-[48px] lg:px-0 font-extrabold mb-[30px] px-4 max-w-screen-xl mx-auto md:px-6">
         Welcome to Nice Gadgets store!
       </h1>

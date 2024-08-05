@@ -76,7 +76,7 @@ const Favorites: React.FC = () => {
             <img
               src="img/icons/empty-favorite.png"
               alt="Icon"
-              className="mb-4 block h-96 w-96"
+              className="mb-4 block sm:h-96 sm:w-96 h-52 w-52"
             />
             <p className="text-xl font-medium dark:text-white">
               Your cart is empty.
