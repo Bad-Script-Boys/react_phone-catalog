@@ -10,8 +10,9 @@ import { BasketLogo } from '../ThemeIcons/BasketLogo';
 import { FavoriteLogo } from '../ThemeIcons/FavoritesLogo';
 
 export const classActiveNavLink = ({ isActive }: { isActive: boolean }) =>
-  classNames('text-black font-bold text-xs uppercase dark:text-white', {
-    'border-b-2 border-black dark:border-white': isActive,
+  classNames('font-bold text-xs uppercase text-[#89939A]', {
+    'text-gray-900 dark:text-white border-b-2 border-gray-900 dark:border-white':
+      isActive,
   });
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) =>
