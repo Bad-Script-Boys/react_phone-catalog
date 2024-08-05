@@ -9,6 +9,9 @@ import { FavoriteLogo } from '../ThemeIcons/FavoritesLogo';
 import { MainLogo } from '../ThemeIcons/MainLogo';
 import { useTheme } from '../../contexts/ThemeContext';
 import { BurgerIcon } from '../ThemeIcons/BurgerIcon';
+import { SearchBar } from '../Search/SearchBar';
+import { SearchResultsList } from '../Search/SearchResultList';
+import { Product } from '../../types';
 
 const classActiveNavLink = ({ isActive }: { isActive: boolean }) => {
   const { theme } = useTheme();
@@ -42,6 +45,7 @@ export const Header: React.FC = () => {
   const state = useContext(StateContext);
   const { favorites, basket } = state;
   const { theme } = useTheme();
+  const [results, setResults] = useState<Product[]>([]);
 
   let totalQuantity = 0;
 
@@ -84,9 +88,15 @@ export const Header: React.FC = () => {
             </ul>
           </nav>
         </div>
-        <div className="hidden sm:flex items-center justify-between mx-4 pl-3 border-x-2 dark:border-gray-500 border-[#E2E6E9]">
-          <ThemeSwitch />
-          <div className="flex items-center justify-center p-4 border-l-2 dark:border-gray-500 border-[#E2E6E9] relative cursor-pointer">
+        <div className="hidden h-16 sm:flex items-center justify-between mx-4 pl-3 dark:border-gray-500 border-[#E2E6E9]">
+          <div className="hidden mt-auto xl:block p-4 max-w-[300px] mx-0">
+            <SearchBar setResults={setResults} />
+            {results && results.length > 0 && (
+              <SearchResultsList results={results} />
+            )}
+          </div>
+          <div className="flex items-center justify-center p-4 gap-4 dark:border-gray-500 border-[#E2E6E9] relative cursor-pointer">
+            <ThemeSwitch />
             <NavLink to="/favourites" className={classActiveNavIcon}>
               <FavoriteLogo />
             </NavLink>
@@ -96,7 +106,7 @@ export const Header: React.FC = () => {
               </span>
             )}
           </div>
-          <div className="flex items-center justify-center border-l-2 dark:border-gray-500 border-[#E2E6E9] h-16 p-4  relative cursor-pointer">
+          <div className="flex items-center justify-center  dark:border-gray-500 border-[#E2E6E9] h-16 p-4  relative cursor-pointer">
             <NavLink to="/cart" className={classActiveNavIcon}>
               <BasketLogo />
             </NavLink>
