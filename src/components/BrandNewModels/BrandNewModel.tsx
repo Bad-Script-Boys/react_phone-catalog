@@ -33,7 +33,7 @@ export const BrandNewModels = () => {
 
   return (
     <div className="px-4 pb-14 max-w-screen-xl mx-auto md:px-6 lg:px-8 lg:pb-20">
-      <div className="mb-[24px] flex justify-between items-center">
+      <div className="flex justify-between items-center">
         <h2 className="text-[32px] font-extrabold">Brand new models</h2>
         <div className="flex sm:hidden gap-4">
           <button

@@ -13,7 +13,7 @@ export const ShopByCategory = () => {
       <h2 className="font-mont text-[34px] font-extrabold leading-8 text-left text-black mb-20 md:text-3xl md:leading-10 dark:text-white">
         Shop by category
       </h2>
-      <div className="flex flex-col w-full h-auto md:flex-row md:gap-6">
+      <div className="flex flex-col w-full h-auto sm:flex-row sm:gap-6">
         <div className="w-full mb-8">
           <div className="relative overflow-hidden bg-gray-600 w-full aspect-square mb-6">
             <Link to="/phones">
