@@ -1,42 +1,79 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { Product } from '../../types';
 import { FaSearch } from 'react-icons/fa';
 import productsFromServer from '../../api/products.json';
-import { Product } from '../../types';
+import { SearchResultsList } from './SearchResultList';
 
-interface SearchBarProps {
+interface SearchProps {
   setResults: (results: Product[]) => void;
+  setFocused: (focused: boolean) => void;
 }
 
-export const SearchBar: React.FC<SearchBarProps> = ({ setResults }) => {
+export const SearchBar: React.FC<SearchProps> = ({ setResults, setFocused }) => {
   const [input, setInput] = useState('');
+  const [results, setResultsState] = useState<Product[]>([]);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const fetchData = (value: string) => {
-    const results = productsFromServer.filter(product => {
-      return (
-        value &&
-        product &&
-        product.name &&
-        product.name.toLowerCase().includes(value.toLowerCase())
-      );
-    });
-    setResults(results);
+    if (value.trim() === '') {
+      setResultsState([]);
+      setResults([]);
+      return;
+    }
+
+    const filteredResults = productsFromServer.filter(product =>
+      product.name.toLowerCase().includes(value.toLowerCase()),
+    );
+    setResultsState(filteredResults);
+    setResults(filteredResults);
   };
 
-  const handleChange = (value: string) => {
-    setInput(value);
-    fetchData(value);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInput(e.target.value);
+    fetchData(e.target.value);
+    setFocused(true);
   };
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      containerRef.current &&
+      !containerRef.current.contains(event.target as Node)
+    ) {
+      setInput('');
+      setResultsState([]);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   return (
-    <div className="w-full max-w-xs mx-auto flex flex-col items-center relative">
+    <div className="relative w-full max-w-xs mx-auto" ref={containerRef}>
       <div className="relative w-full h-10">
         <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 scale-150 text-gray-500" />
         <input
           placeholder="Type to search..."
+          type="search"
           value={input}
-          onChange={e => handleChange(e.target.value)}
-          className="w-full h-full pl-10 pr-3 border-none rounded-lg shadow-md focus:outline-none dark:text-darkTheme"
+          onChange={handleChange}
+          onBlur={() => setFocused(false)}
+          className="w-full h-full pl-10 pr-3 border-none rounded-lg shadow-md focus:outline-none dark:text-darkTheme text-base dark:shadow-orange-500"
         />
+        {results.length > 0 && (
+          <SearchResultsList
+            results={results}
+            onResultClick={() => {
+              setInput('');
+              setResults([]);
+              setResultsState([]);
+              setFocused(false);
+            }}
+          />
+        )}
       </div>
     </div>
   );
