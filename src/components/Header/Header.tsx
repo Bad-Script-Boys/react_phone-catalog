@@ -53,8 +53,7 @@ export const Header: React.FC = () => {
     totalQuantity += item.quantity;
   }
 
-  const handleResultClick = (product: Product) => {
-    setInput('');
+  const handleResultClick = () => {
     setResults([]);
     setFocused(false);
   };
