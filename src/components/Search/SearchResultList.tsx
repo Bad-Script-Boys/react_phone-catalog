@@ -21,7 +21,7 @@ export const SearchResultsList: React.FC<SearchResultsListProps> = ({
 
   return (
     <div
-      className={`w-full flex flex-col shadow-lg rounded-lg mt-4 max-h-[50vh] overflow-y-auto dark:shadow-orange-700 light:shadow-grey-700 br-10 ${theme === 'light' ? 'bg-white' : 'bg-[#0f1121]'}`}
+      className={`w-full flex flex-col shadow-lg rounded-lg mt-4 max-h-[50vh] overflow-y-auto dark:shadow-purple-800 light:shadow-grey-700 br-10 ${theme === 'light' ? 'bg-white' : 'bg-[#0f1121]'}`}
       style={{
         overflowY: 'scroll',
         scrollbarWidth: 'none',

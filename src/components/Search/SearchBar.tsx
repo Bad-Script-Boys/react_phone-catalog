@@ -9,7 +9,10 @@ interface SearchProps {
   setFocused: (focused: boolean) => void;
 }
 
-export const SearchBar: React.FC<SearchProps> = ({ setResults, setFocused }) => {
+export const SearchBar: React.FC<SearchProps> = ({
+  setResults,
+  setFocused,
+}) => {
   const [input, setInput] = useState('');
   const [results, setResultsState] = useState<Product[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -61,7 +64,7 @@ export const SearchBar: React.FC<SearchProps> = ({ setResults, setFocused }) => 
           value={input}
           onChange={handleChange}
           onBlur={() => setFocused(false)}
-          className="w-full h-full pl-10 pr-3 border-none rounded-lg shadow-md focus:outline-none dark:text-darkTheme text-base dark:shadow-orange-500"
+          className="w-full h-full pl-10 pr-3 border-2 rounded-lg shadow-md focus:outline-none dark:text-white text-base dark:bg-darkTheme"
         />
         {results.length > 0 && (
           <SearchResultsList
