@@ -64,7 +64,8 @@ export const SearchBar: React.FC<SearchProps> = ({
           value={input}
           onChange={handleChange}
           onBlur={() => setFocused(false)}
-          className="w-full h-full pl-10 pr-3 border-2 rounded-lg shadow-md focus:outline-none dark:text-white text-base dark:bg-darkTheme"
+          className="w-full h-full pl-10 pr-3 shadow-md focus:outline-none dark:text-white text-base dark:bg-darkTheme"
+          style={{ borderRadius: 0, fontWeight: 'normal', border: 'none' }}
         />
         {results.length > 0 && (
           <SearchResultsList

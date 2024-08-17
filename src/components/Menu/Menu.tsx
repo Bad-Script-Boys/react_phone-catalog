@@ -19,7 +19,7 @@ const getLinkClass = ({ isActive }: { isActive: boolean }) =>
   classNames(
     'flex items-center justify-center h-16 w-1/2 relative text-gray-600',
     {
-      'border-b-2 border-black': isActive,
+      'border-b-4 border-black dark:border-white': isActive,
     },
   );
 
